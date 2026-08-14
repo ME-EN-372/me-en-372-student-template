@@ -11,7 +11,7 @@ This folder is where the work lives.
 |---|---|---|
 | P1 — product selection | Fri Sep 18 | [`p1-selection.md`](p1-selection.md) |
 | P2 — teardown package | Fri Oct 9 | [`p2-teardown/`](p2-teardown/) |
-| P3 — analysis plan + hand calcs | Fri Nov 13 | [`p3-analysis.md`](p3-analysis.md) |
+| P3 — analysis plan, hand calcs + first FEA model | Fri Nov 13 | [`p3-analysis.md`](p3-analysis.md) |
 | P4a — showcase video | Wed Dec 9 | link it in [`p4a-video.md`](p4a-video.md) |
 | P4 — final analysis package | Fri Dec 11 | [`p4-report.md`](p4-report.md) |
 

@@ -73,3 +73,11 @@ disclosed use is worth easy points. The full policy is on Canvas.
 - Almost every A0 problem is one of: two-factor-authentication prompts, a
   university-vs-personal email mix-up, or an org invite that was never accepted.
   Bring your laptop to a TA.
+
+## Licensing
+
+Your coursework is yours — nothing here claims any right over what you put in
+this repository. The template's scaffolding (folder layout, templates,
+`CLAUDE.md`, the workflow) is MIT-licensed. See
+[`TEMPLATE-LICENSE.md`](TEMPLATE-LICENSE.md), which also explains why it is not
+named `LICENSE`, and why you should keep your repository private.

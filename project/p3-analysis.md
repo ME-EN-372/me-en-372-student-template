@@ -1,4 +1,4 @@
-# P3 — Component analysis plan + hand calculations (due Fri Nov 13, 5:00 pm · 25 pts)
+# P3 — Component analysis plan, hand calculations + preliminary FEA (due Fri Nov 13, 5:00 pm · 29 pts)
 
 **Team:** <names>  **Component:** <what you are analyzing>
 
@@ -23,6 +23,29 @@ fatigue criterion, and modified Goodman is not a static one.>
 
 <Full structured problem-solving format at the critical section. Symbolic first,
 then numbers with units. Same skeleton as your homework.>
+
+## Preliminary FEA model
+
+*Built at **Lab 10 (Thu Nov 5)** with TA support — a week before this is due, so
+the model exists before the last fortnight of the semester. It does not have to
+be converged and it does not have to agree with the hand calc; it has to run, be
+documented well enough that someone else could rebuild it, and be the same
+component the calculations above are about.*
+
+| Item | Your model |
+|---|---|
+| Geometry as modelled (and what you removed) | <fillets kept? threads suppressed?> |
+| Material and where the property came from | <e.g. 6061-T6, MatWeb, E = 68.9 GPa> |
+| Loads | <magnitude, direction, where applied> |
+| Boundary conditions | <what is fixed, and why that is what the real part sees> |
+| Element type / mesh | <element count, element order, local refinement> |
+| First-pass result for the quantity of interest | <value + units + where on the part> |
+
+**Agreement tolerance, declared in advance:** <e.g. "within 15% of the hand-calc
+peak stress"> — write this before you compare the two numbers. A tolerance
+chosen after seeing both is worth nothing.
+
+**Screenshot:** <mesh + result plot, captioned>
 
 ## Checks performed
 
