@@ -59,8 +59,12 @@ course:
 Haiku, which is fast, cheap, and right for most of what you will ask. For a
 harder question — "walk me through why my FEA and my hand calculation disagree"
 — tag it `@claude+sonnet`, or `@claude+sonnet:high` to have it think longer.
-Reach for that when the first answer misses, not by default; the run summary on
-each job tells you which model actually replied.
+`@claude+opus` is available for the genuinely hard ones. Reach for these when
+the first answer misses, not by default; the run summary on each job tells you
+which model actually replied.
+
+Note that `:high` only does something on models that have an effort setting —
+Sonnet and Opus. On Haiku it is ignored, and the run summary says so.
 
 **The rule that keeps you safe:** you must be able to defend every number you
 submit. The exams are closed-AI, the oral defense is live, and the project asks
