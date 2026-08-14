@@ -1,0 +1,263 @@
+# Lets students summon Claude by writing "@claude ..." in an issue, an issue
+# comment, a pull-request comment, or a PR review comment.
+#
+# Requires one organization secret, CLAUDE_CODE_OAUTH_TOKEN, shared to every
+# student repository. That token comes from the course's Claude subscription
+# (`claude setup-token`), with "API credits overflow" enabled in claude.ai
+# settings so runs keep working past the subscription's included usage — there
+# is no separate Anthropic API key to mint or rotate.
+# See ../../SETUP.md for how the course instantiates this.
+#
+# THIS FILE IS APPLIED BY HAND, not by scripts/sync_student_template.py. The sync
+# token has no Workflows permission on purpose: that permission would let an
+# "@claude" comment install a workflow into every repository generated from this
+# template, all of which are shared CLAUDE_CODE_OAUTH_TOKEN. Edit it here anyway
+# — the sync script diffs this copy against the template repo's on every run and
+# fails if they drift, printing the gh command that applies it.
+#
+# ---------------------------------------------------------------------------
+# Model selection, in one paragraph
+#
+#   @claude                     -> Haiku    (the default, and the right answer
+#                                  for almost every student ping)
+#   @claude+sonnet              -> Sonnet
+#   @claude+opus                -> Opus
+#   @claude+sonnet:high         -> Sonnet at high effort
+#
+# Model names are FAMILY ALIASES, not pinned ids: `haiku` resolves to the
+# latest Haiku at run time, so the course never has to ship a commit to pick up
+# a new release. (`claude --help`: "Provide an alias for the latest model".)
+#
+# Effort is only sent to families that accept it — see EFFORT_FAMILIES below.
+# A bare `@claude` therefore carries no effort flag at all, which is correct:
+# Haiku has no effort parameter.
+#
+# Anything outside ALLOWED_FAMILIES falls back to the default and says so in
+# the job summary rather than failing — a student should get an answer, not a
+# red X. This mirrors the course repo's selector (.github/workflows/claude.yml
+# on main) with two deliberate differences, both about ~90 repositories sharing
+# one credential: an effort ceiling, and no bypassPermissions. Both are
+# single-line knobs, documented at their site.
+# ---------------------------------------------------------------------------
+
+name: Claude
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  pull_request_review:
+    types: [submitted]
+
+# Serialize runs per issue/PR so a burst of comments queues instead of racing:
+# two concurrent runs pushing to the same branch is how work gets clobbered.
+# Not cancel-in-progress — a cancelled run can leave a half-finished edit.
+concurrency:
+  group: claude-${{ github.event.issue.number || github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  claude:
+    # Only wake up when someone actually addressed Claude. Without this guard
+    # every comment in the repo would start a billed run.
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+    runs-on: ubuntu-latest
+    # Bounds one run, not the semester. Student work is short; a run that needs
+    # more than half an hour has usually gone wrong rather than gone deep.
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read # lets Claude read this repo's CI results when a check fails
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # Copilot-style model selector: @claude+<model>[:<effort>]
+      # The FULL tag is passed to the action as its trigger phrase — required,
+      # because the action only accepts whitespace/punctuation after the phrase,
+      # not "+". Every decision this step makes is written to the job summary so
+      # a student can see which model answered them and why.
+      - name: Parse model selector tag
+        id: select
+        env:
+          # Read through env, never interpolated into the script body: comment
+          # text is untrusted input and ${{ }} inside run: is a shell injection.
+          TRIGGER_TEXT: ${{ github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body) }}
+          TRIGGER_USER: ${{ github.event.comment.user.login || github.event.issue.user.login || github.actor }}
+
+          # ---- the cost knobs -----------------------------------------------
+          # Bare "@claude" resolves to this. A FAMILY ALIAS, not a pinned id:
+          # the CLI resolves it to the latest Haiku at run time, so a new Haiku
+          # release is picked up without a commit — and, more importantly, a
+          # bare "@claude" and an explicit "@claude+haiku" can never drift onto
+          # different models. Haiku is the default on cost *and* on quality
+          # grounds: student pings are short, conversational and mostly
+          # explanatory, which is exactly what it is good at.
+          DEFAULT_MODEL: haiku
+          DEFAULT_EFFORT: medium
+          # Families a student may request. Opus is allowed, but only up to
+          # MAX_EFFORT — the cost multiplier that actually bites is effort, not
+          # tier. A TA who needs to narrow this for one repo edits it there.
+          ALLOWED_FAMILIES: "haiku sonnet opus"
+          # Families that accept an effort level at all. Sending --effort to a
+          # model without the parameter is at best ignored and at worst an
+          # error, so the flag is omitted rather than sent and hoped for.
+          # Haiku is deliberately absent: Haiku 4.5 has no effort parameter.
+          # Revisit if a future Haiku gains one.
+          EFFORT_FAMILIES: "opus sonnet fable"
+          # Effort ceiling. xhigh/max are for multi-hour course automation, not
+          # for "why does my beam deflection come out negative".
+          MAX_EFFORT: high
+          # -------------------------------------------------------------------
+        run: |
+          set -euo pipefail
+
+          # First tag in the text wins
+          TAG=$(grep -oiE '@claude(\+[a-z0-9.-]*[a-z0-9])?(:[a-z]+)?' <<<"$TRIGGER_TEXT" | head -n1 || true)
+          TAG=${TAG:-@claude}
+
+          tag_lc=$(tr '[:upper:]' '[:lower:]' <<<"$TAG")
+          rest=${tag_lc#@claude}
+          effort_req=""
+          if [[ "$rest" == *:* ]]; then
+            effort_req=${rest##*:}
+            rest=${rest%:*}
+          fi
+          model_req=${rest#+}
+          notes=()
+
+          # ---- model --------------------------------------------------------
+          if [[ -z "$model_req" ]]; then
+            model="$DEFAULT_MODEL"
+          elif [[ "$model_req" != *[0-9]* ]]; then
+            # Unversioned family name (haiku, sonnet, opus) -> pass through as a
+            # CLI alias, which resolves to the latest model of that family
+            model=${model_req#claude-}
+          else
+            model=${model_req//./-}
+            [[ "$model" == claude-* ]] || model="claude-$model"
+          fi
+
+          # "claude-haiku-4-5-20251001" -> "haiku"; "sonnet" -> "sonnet"
+          family_of() { local f=${1#claude-}; echo "${f%%-*}"; }
+          family=$(family_of "$model")
+
+          if [[ " $ALLOWED_FAMILIES " != *" $family "* ]]; then
+            notes+=("Model \`$family\` is not enabled for student repositories (allowed: $ALLOWED_FAMILIES) — answered with the default instead. A TA can widen \`ALLOWED_FAMILIES\` in \`.github/workflows/claude.yml\` if a task genuinely needs it.")
+            model="$DEFAULT_MODEL"
+            family=$(family_of "$model")   # derived, so DEFAULT_MODEL stays the only knob
+            effort_req=""   # don't leave "max" attached to the fallback
+          fi
+
+          # ---- effort -------------------------------------------------------
+          rank() { case "$1" in low) echo 1;; medium) echo 2;; high) echo 3;; xhigh) echo 4;; max) echo 5;; *) echo 0;; esac; }
+
+          if [[ -z "$effort_req" ]]; then
+            effort="$DEFAULT_EFFORT"
+          elif [[ "$(rank "$effort_req")" == 0 ]]; then
+            notes+=("Unknown effort level \`:$effort_req\` — used \`$DEFAULT_EFFORT\`. Valid levels: low, medium, high.")
+            effort="$DEFAULT_EFFORT"
+          elif (( $(rank "$effort_req") > $(rank "$MAX_EFFORT") )); then
+            notes+=("Effort \`$effort_req\` is above this course's ceiling — clamped to \`$MAX_EFFORT\`.")
+            effort="$MAX_EFFORT"
+          else
+            effort="$effort_req"
+          fi
+
+          # ---- assemble -----------------------------------------------------
+          # Only send --effort to a family that has the parameter. Haiku does
+          # not, so the default path is "--model haiku" with no effort flag.
+          args="--model $model"
+          if [[ " $EFFORT_FAMILIES " == *" $family "* ]]; then
+            args="$args --effort $effort"
+          else
+            if [[ -n "$effort_req" ]]; then
+              notes+=("\`$family\` has no effort setting, so \`:$effort_req\` was ignored. Ask for a model that does — e.g. \`@claude+sonnet:$effort_req\`.")
+            fi
+            effort="n/a"
+          fi
+
+          # ---- log the intermediate pieces ----------------------------------
+          echo "tag=$TAG  requested_model=${model_req:-<default>}  requested_effort=${effort_req:-<default>}"
+          echo "resolved: $args"
+
+          {
+            echo "### Claude run settings"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Tag | \`$TAG\` |"
+            echo "| Model | \`$model\` (latest of that family) |"
+            echo "| Effort | \`$effort\` |"
+            echo "| Triggered by | @$TRIGGER_USER |"
+            echo
+            for n in "${notes[@]}"; do echo "> [!NOTE]"; echo "> $n"; echo; done
+            echo "Ask for more with \`@claude+sonnet\`, \`@claude+opus\`, or \`@claude+sonnet:high\`; a bare \`@claude\` is Haiku, which is the right tool for most questions."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          {
+            echo "phrase=$TAG"
+            echo "model_args=$args"
+            echo "model=$model"
+            echo "effort=$effort"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run Claude
+        id: claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+          # The exact tag found in the trigger text (@claude, @claude+sonnet:high, ...)
+          trigger_phrase: ${{ steps.select.outputs.phrase }}
+
+          # Render a human-readable "Claude Code Report" in the job's Step
+          # Summary, and keep the full turn-by-turn JSON so a run can be
+          # reconstructed after the fact (uploaded as an artifact below).
+          display_report: true
+          show_full_output: true
+
+          # Let Claude read this repo's CI results when a student asks why a
+          # check is failing.
+          additional_permissions: |
+            actions: read
+
+          # --model / --effort come from the "Parse model selector tag" step.
+          #
+          # acceptEdits, NOT bypassPermissions (which is what the course repo
+          # uses): Claude may read and edit files and open commits/PRs without
+          # asking, but arbitrary shell stays gated. The course's shared
+          # CLAUDE_CODE_OAUTH_TOKEN is in this runner's environment, and one
+          # `env`-style command is all it takes to read it out — GitHub masks
+          # the literal secret in logs, not a transformed copy of it. In the
+          # course repo only the teaching team can comment; here anyone with
+          # access to the repo can. A TA who needs shell for one repo can add
+          # specific commands (e.g. --allowedTools 'Bash(python -m pytest:*)')
+          # rather than opening it wholesale.
+          claude_args: |
+            ${{ steps.select.outputs.model_args }}
+            --permission-mode acceptEdits
+
+      # Keeps the intermediate steps of a run around after the log view rolls
+      # off — useful when a student says "Claude did something weird".
+      # NOTE: this log contains the full conversation. Student repositories are
+      # private; if that ever changes, delete this step.
+      - name: Upload Claude execution log
+        if: always() && steps.claude.outputs.execution_file != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-log-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ steps.claude.outputs.execution_file }}
+          retention-days: 30
