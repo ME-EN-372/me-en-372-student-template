@@ -15,6 +15,8 @@
 *.lock
 *.err
 *.abt
+# .rst/.rth are Ansys *result* files (often gigabytes), not reStructuredText.
+# If you ever write documentation in .rst here, un-ignore it deliberately.
 *.rst
 *.rth
 ~$*
