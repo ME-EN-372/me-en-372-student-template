@@ -11,7 +11,7 @@ per problem plus a `figures/` folder for your sketches.
           hw01-p1-fbd.jpg
 
 Start from [`TEMPLATE-solution.md`](TEMPLATE-solution.md) every time. The
-template's headings are the rubric — a solution with a correct final answer and
+template's headings are the rubric, a solution with a correct final answer and
 no free-body diagram loses more points than one with a clear diagram and an
 arithmetic slip.
 

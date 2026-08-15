@@ -1,9 +1,9 @@
-# P4a — Showcase video (due Wed Dec 9, 5:00 pm · 10 pts)
+# P4a: Showcase video (due Wed Dec 9, 5:00 pm · 10 pts)
 
-**Team:** <names>  **Link:** <unlisted YouTube / Box / Drive link — check that
+**Team:** <names>  **Link:** <unlisted YouTube / Box / Drive link. Check that
 someone outside your team can open it>
 
-3–5 minutes. Graded on communication, not on new results: build it from your P3
+3-5 minutes. Graded on communication, not on new results: build it from your P3
 work plus preliminary FEA. It is deliberately **not** gated on finishing P4.
 
 ## Outline
@@ -17,4 +17,4 @@ work plus preliminary FEA. It is deliberately **not** gated on finishing P4.
 | So what | ~30 s | What you would change |
 
 Screened at Lab 14 (Thu Dec 10). Audible narration and legible figures are worth
-a point — check both on a phone speaker before you submit.
+a point. Check both on a phone speaker before you submit.

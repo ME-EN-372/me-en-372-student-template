@@ -1,4 +1,4 @@
-# P2 — Teardown documentation package (due Fri Oct 9, 5:00 pm · 20 pts)
+# P2: Teardown documentation package (due Fri Oct 9, 5:00 pm · 20 pts)
 
 **Team:** <names>
 
@@ -17,14 +17,14 @@ organised by subsystem with captions are worth all of them.
 
 ## Inventory
 
-Name every recognizable element — "spur pinion, 11 teeth, module ~0.8" beats
+Name every recognizable element, "spur pinion, 11 teeth, module ~0.8" beats
 "gear". Bag fasteners by subsystem and photograph the bags.
 
 ## Load-path FBDs
 
 One free-body diagram per operating state you identify (idle, normal use, jam or
 overload). Show where load enters, what carries it, and where it reacts out.
-Your system boundary is a choice — state it.
+Your system boundary is a choice, state it.
 
 ## Safety record
 

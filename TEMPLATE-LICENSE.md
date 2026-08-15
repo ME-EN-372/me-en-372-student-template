@@ -7,9 +7,9 @@ property you develop in your program of study.
 
 ## What these terms cover
 
-Only the *scaffolding* this repository ships with — the folder layout, the
+Only the *scaffolding* this repository ships with, the folder layout, the
 homework and lab-memo templates, `CLAUDE.md`, the GitHub Actions workflow, and
-the README text — which the ME EN 372 teaching team provides under the
+the README text, which the ME EN 372 teaching team provides under the
 **MIT License** (see the course repository's `LICENSE`):
 
 > Copyright (c) 2026 Brigham Young University and the ME EN 372 teaching team.
@@ -28,7 +28,7 @@ filename keeps them scoped to the scaffolding.
 ## Keep your repository private
 
 Graded work tied to your name is an education record, and a public repository
-also publishes next year's solutions. Course repositories are created private —
+also publishes next year's solutions. Course repositories are created private, 
 leave them that way unless your instructor says otherwise.
 
 ## Trademarks

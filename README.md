@@ -1,4 +1,4 @@
-# ME EN 372 — your course repository
+# ME EN 372: your course repository
 
 Welcome. This is your own copy of the ME EN 372 working repository. Everything
 you produce this semester that is not a Canvas quiz lives here: homework
@@ -29,7 +29,7 @@ is exactly as valid as asking it to write code.
 | `homework/` | One folder per problem set, `hw01/` … `hw13/` | `homework/TEMPLATE-solution.md` |
 | `labs/` | One memo per Thursday FEA lab | `labs/TEMPLATE-lab-memo.md` |
 | `project/` | Your team's DI teardown project, P1 → P4 | `project/` already has the five stubs |
-| `scratch/` | Anything half-finished. Nothing here is graded. | — |
+| `scratch/` | Anything half-finished. Nothing here is graded. |  |
 
 ## How to submit
 
@@ -48,7 +48,7 @@ course:
 - "I got n = 0.4 for this bracket. Is that plausible, and what would make it wrong?"
 - "Rewrite this paragraph of my lab memo to be clearer, keeping my numbers."
 
-**Works badly — and the failure is hard to see**
+**Works badly, and the failure is hard to see**
 - "Solve problem 3 for me." You get an answer that looks right and is often
   subtly wrong, and you learn nothing you can use on an exam.
 - Anything depending on a figure you have not described. It cannot see your
@@ -57,13 +57,13 @@ course:
 
 **If an answer feels thin, ask for a stronger model.** A bare `@claude` uses
 Haiku, which is fast, cheap, and right for most of what you will ask. For a
-harder question — "walk me through why my FEA and my hand calculation disagree"
-— tag it `@claude+sonnet`, or `@claude+sonnet:high` to have it think longer.
+harder question, "walk me through why my FEA and my hand calculation disagree"
+, tag it `@claude+sonnet`, or `@claude+sonnet:high` to have it think longer.
 `@claude+opus` is available for the genuinely hard ones. Reach for these when
 the first answer misses, not by default; the run summary on each job tells you
 which model actually replied.
 
-Note that `:high` only does something on models that have an effort setting —
+Note that `:high` only does something on models that have an effort setting, 
 Sonnet and Opus. On Haiku it is ignored, and the run summary says so.
 
 **The rule that keeps you safe:** you must be able to defend every number you
@@ -78,7 +78,7 @@ disclosed use is worth easy points. The full policy is on Canvas.
 
 ## Getting help
 
-- **Lab 1 (Thu Sep 3)** has dedicated setup time with TAs — the fastest fix for
+- **Lab 1 (Thu Sep 3)** has dedicated setup time with TAs, the fastest fix for
   anything account-related.
 - TA office hours, or the course discussion channel.
 - Almost every A0 problem is one of: two-factor-authentication prompts, a
@@ -87,7 +87,7 @@ disclosed use is worth easy points. The full policy is on Canvas.
 
 ## Licensing
 
-Your coursework is yours — nothing here claims any right over what you put in
+Your coursework is yours, nothing here claims any right over what you put in
 this repository. The template's scaffolding (folder layout, templates,
 `CLAUDE.md`, the workflow) is MIT-licensed. See
 [`TEMPLATE-LICENSE.md`](TEMPLATE-LICENSE.md), which also explains why it is not

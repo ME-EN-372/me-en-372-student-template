@@ -1,21 +1,21 @@
-# P4 — Final analysis package (due Fri Dec 11, 5:00 pm · 35 pts)
+# P4: Final analysis package (due Fri Dec 11, 5:00 pm · 35 pts)
 
 **Team:** <names>
 
 ## Abstract
 
-<150 words. What you analyzed, what you found, what it means.>
+<150 words, what you analyzed, what you found, what it means.>
 
-## Introduction — the engineering decision
+## Introduction: the engineering decision
 
-<What question this analysis answers. Not "we analyzed a bracket" but "can this
+<What question this analysis answers, not "we analyzed a bracket" but "can this
 bracket be made 30% thinner without dropping below n = 2?">
 
 ## FEA model
 
 <Geometry, material, boundary conditions, loads, mesh. Every choice justified.
 Keep it defensible: a shaft, bracket, carrier plate, bolted joint, or simple
-housing region with properties you can source. Not battery cells, commutators,
+housing region with properties you can source, not battery cells, commutators,
 gear-tooth contact, or unidentified glass-filled polymer.>
 
 ## Convergence
@@ -36,11 +36,11 @@ effect the closed-form solution cannot capture.>
 ## Engineering decision
 
 <What the FEA told you that the hand calculation could not, and what you would
-change about the component — with the recalculated margin, not just an opinion.>
+change about the component, with the recalculated margin, not just an opinion.>
 
 ## AI-use appendix
 
-<Per the course AI-use policy. What was used, for what, by whom. Graded on
+<Per the course AI-use policy, what was used, for what, by whom. Graded on
 completeness and honesty.>
 
 ## Individual contribution statements

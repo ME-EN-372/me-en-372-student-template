@@ -11,4 +11,4 @@ memos are an academic-honesty problem, not a time-saver.
 
 The lab sheets themselves, with the step-by-step FEA instructions, are on Canvas
 and on the course tutorial site. Several labs have a matching hands-on tutorial
-you can run before the session — the lab sheet links it.
+you can run before the session, the lab sheet links it.

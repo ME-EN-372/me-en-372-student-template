@@ -1,4 +1,4 @@
-# HW <n> — Problem <k>
+# HW <n>: Problem <k>
 
 > Copy this file to `homework/hw<nn>/problem-<k>.md` and fill it in. The
 > structure below **is** the grading rubric: most of the points live in the
@@ -7,7 +7,7 @@
 
 ## Given
 
-<What the problem states. Numbers with units. No interpretation yet.>
+<What the problem states. Numbers with units, no interpretation yet.>
 
 ## Find
 
@@ -15,7 +15,7 @@
 
 ## Sketch / free-body diagram
 
-<Insert your figure. A photo of a clear hand sketch is fine — this is not a
+<Insert your figure. A photo of a clear hand sketch is fine, this is not a
 CAD exercise.>
 
 ![FBD for problem <k>](figures/hw<nn>-p<k>-fbd.jpg)
@@ -34,7 +34,7 @@ usual reason two people get different answers.
 
 ## Solution
 
-**Step 1 — <what this step establishes>**
+**Step 1, <what this step establishes>**
 
 Symbolic form first:
 
@@ -45,7 +45,7 @@ Then substitute, carrying units:
     <equation with numbers and units>
     = <result with units>
 
-**Step 2 — <…>**
+**Step 2, <…>**
 
 <Repeat. One step, one idea. If a step needs a table value, name the table:
 "Shigley Table 6-2, machined surface: a = 4.51, b = -0.265".>
@@ -57,7 +57,7 @@ Then substitute, carrying units:
 ## Sanity check
 
 <Two or three sentences. Is the magnitude physically plausible? Does a limiting
-case behave right — does the answer go the way you expect if the load doubles,
+case behave right, does the answer go the way you expect if the load doubles,
 or if the section gets thicker? Is the factor of safety in a believable range?>
 
 ## AI use on this problem
