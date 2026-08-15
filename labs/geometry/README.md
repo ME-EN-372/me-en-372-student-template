@@ -1,0 +1,75 @@
+# FEA lab start geometry
+
+The start file for every Thursday FEA lab is already here, in your own
+repository. You do not have to download anything before lab: clone your repo
+(or open it in GitHub Desktop), and the file the lab sheet names is sitting in
+this folder.
+
+If you are on a lab machine and would rather grab one file directly, every file
+below is also downloadable from the course template repository:
+<https://github.com/ME-EN-372/me-en-372-student-template/tree/main/labs/geometry>
+
+## Which file goes with which lab
+
+| Lab | File | What it is |
+|---|---|---|
+| 1 | `lab01-onboarding-bracket.step` | 120 x 40 x 6 mm cantilever plate, 12 mm hole 30 mm from the fixed edge |
+| 2 | `lab02-truss.step` | 7-member planar truss, drawn as line bodies, in mm |
+| 3, 5 | `lab03-plate-hole.step` | 100 x 40 x 5 mm plate, 10 mm hole on center, solid |
+| 3, 5 | `lab03-plate-hole-surface.step` | the same plate as a flat surface body, for the 2D plane-stress run |
+| 6 | `lab06-beam-line.step` | 2000 mm line body |
+| 6 | `lab06-beam-solid.step` | the same beam as a solid, already split at the two bearing strips and the midspan load patch |
+| 7 | `lab07-post.step` | 40 mm diameter by 200 mm cantilever post |
+| 8 | `lab08-keyseat-shaft.step` | stepped 32 mm to 25 mm shaft with an end-milled keyseat and a 0.5 mm floor fillet |
+| 11 | `lab11-cylinder-axisym.step` | thick-walled cylinder, 2D axisymmetric half-section |
+| 11 | `lab11-pressfit-axisym.step` | press fit, 2D axisymmetric, with a 0.05 mm modelled overlap |
+| 11 | `lab11-cylinder-sector-3d.step` | 5 degree 3D wedge of the same cylinder |
+| 12 | `lab12-bolted-joint.step` | two plates plus an M10 bolt, as three separate bodies |
+| 13 | `lab13-column-straight.step` | 12 mm diameter by 1000 mm column |
+| 13 | `lab13-column-bowed.step` | the same column with a 2 mm midspan bow, about L/500 |
+
+`manifest.json` holds the same table in machine-readable form.
+
+## These files carry geometry only
+
+A STEP file stores shape. It does not store the material, the mesh, the
+supports, the loads, or the results. Each lab sheet prints a setup table in its
+section 2 listing exactly what to set, and building the model from that table is
+the graded skill: those four choices are what an FEA answer actually depends on.
+
+So the click path in every lab is the same:
+
+1. In Ansys Workbench, drop the analysis system the lab sheet names onto the
+   schematic.
+2. Right-click **Geometry**, then **Import Geometry**, then **Browse**, and pick
+   the STEP file from this folder.
+3. Work the schematic left to right, filling in each cell from the lab sheet's
+   section 2 table.
+
+## Two files that will mislead you if you rotate them
+
+**The axisymmetric sections must stay where they are.** Ansys 2D axisymmetric
+treats X as the radius and revolves about the Y axis, so
+`lab11-cylinder-axisym.step` and `lab11-pressfit-axisym.step` are drawn at
+X greater than or equal to zero with Y vertical. Turning one "so it looks right"
+in a viewer breaks the analysis.
+
+**The press-fit overlap is the physics, not a modelling error.** In
+`lab11-pressfit-axisym.step` the shaft is drawn at R = 25.05 mm and the hub bore
+at R = 25.00 mm. That 0.05 mm of overlap is the interference the lab measures.
+If contact detection is left on **Adjust to Touch**, Ansys quietly removes the
+interference and the model reports zero contact pressure.
+
+## If a file will not open
+
+Ansys reads STEP across versions, so a file that fails to import is usually a
+download problem rather than a version problem. Check the file size against the
+table in `manifest.json` first: a browser that saved an HTML error page under a
+`.step` name produces a file of a few hundred bytes. Re-clone or re-download,
+and if it still fails, raise a hand in lab rather than spending the session on
+it.
+
+You are welcome to edit these files or build your own geometry from the
+dimensions in the lab sheet. If you overwrite one and want the original back,
+`git checkout labs/geometry/<file>` restores it, or download it again from the
+template repository linked above.

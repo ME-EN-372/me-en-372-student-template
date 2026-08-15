@@ -1,0 +1,119 @@
+{
+  "generated_by": "labs/geometry/build_lab_geometry.py",
+  "format": "STEP AP214 (ISO 10303-21), millimetres",
+  "why_step_not_wbpz": "wbpz is Ansys-version-locked and cannot be regenerated or reviewed; STEP is ASCII, opens in Workbench/SpaceClaim/DesignModeler/SolidWorks, and is rebuilt from this script.",
+  "carries": "geometry only -- material, mesh, supports and loads come from each lab sheet's setup table",
+  "parts": [
+    {
+      "file": "lab01-onboarding-bracket.step",
+      "lab": "lab-01",
+      "description": "Flat cantilever bracket: 120 x 40 x 6 mm plate, O12 mm hole 30 mm from the fixed edge.",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "lab02-truss.step",
+      "lab": "lab-02",
+      "description": "Seven-member planar truss as line bodies; nodes A(0,0) B(3000,0) C(6000,0) D(1500,2000) E(4500,2000) mm.",
+      "kind": "wire",
+      "notes": [
+        "Assign the 20 x 20 mm square section in Mechanical: that assignment is the lesson."
+      ]
+    },
+    {
+      "file": "lab03-plate-hole.step",
+      "lab": "lab-03",
+      "description": "Plate with a central hole, solid: 100 x 40 x 5 mm, O10 mm centred.",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "lab03-plate-hole-surface.step",
+      "lab": "lab-03",
+      "description": "Same plate as a planar surface body for the 2D plane-stress model (thickness 5 mm set in Mechanical).",
+      "kind": "sheet",
+      "notes": []
+    },
+    {
+      "file": "lab06-beam-line.step",
+      "lab": "lab-06",
+      "description": "Simply supported beam as a single 2000 mm line body; section assigned in Mechanical.",
+      "kind": "wire",
+      "notes": []
+    },
+    {
+      "file": "lab06-beam-solid.step",
+      "lab": "lab-06",
+      "description": "Same beam as a solid, pre-split into five bodies at the two 20 mm bearing strips and the 20 mm midspan load patch.",
+      "kind": "assembly",
+      "notes": [
+        "Use Share Topology (SpaceClaim) or Form New Part (DesignModeler) so the segments mesh as one body."
+      ]
+    },
+    {
+      "file": "lab07-post.step",
+      "lab": "lab-07",
+      "description": "Cantilevered round post: O40 x 200 mm, axis along the length.",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "lab08-keyseat-shaft.step",
+      "lab": "lab-08",
+      "description": "Stepped shaft O32x50 -> O25x100 with a 2 mm shoulder fillet and an end-milled keyseat 8 wide x 4.0 deep x 32 long, bottom fillet r = 0.5 mm (r/d = 0.02).",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "lab11-cylinder-axisym.step",
+      "lab": "lab-11",
+      "description": "Thick-walled cylinder, 2D axisymmetric half-section: r 50-80 mm, 50 mm long.",
+      "kind": "sheet",
+      "notes": []
+    },
+    {
+      "file": "lab11-pressfit-axisym.step",
+      "lab": "lab-11",
+      "description": "Press fit, 2D axisymmetric: shaft drawn to R = 25.05 mm, hub bore 25.00 mm, hub OD 100 mm. The 0.05 mm overlap IS the interference.",
+      "kind": "sheet",
+      "notes": [
+        "Do not let contact 'adjust to touch' -- that deletes the interference this lab measures."
+      ]
+    },
+    {
+      "file": "lab11-cylinder-sector-3d.step",
+      "lab": "lab-11",
+      "description": "5 degree wedge of the same cylinder for pairs who prefer a 3D model.",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "lab12-bolted-joint.step",
+      "lab": "lab-12",
+      "description": "Preloaded bolted joint: two 100 x 60 x 12 mm plates with 11 mm clearance holes, M10 bolt as O10 shank with O16 x 8 head and nut.",
+      "kind": "assembly",
+      "notes": []
+    },
+    {
+      "file": "lab13-column-straight.step",
+      "lab": "lab-13",
+      "description": "Slender column: O12 x 1000 mm, perfectly straight (eigenvalue-buckling case).",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "lab13-column-bowed.step",
+      "lab": "lab-13",
+      "description": "Same column with a 2 mm half-sine midspan bow (~L/500) as the geometric imperfection for the large-deflection run.",
+      "kind": "solid",
+      "notes": []
+    },
+    {
+      "file": "exam3-column-template.step",
+      "lab": "exam-3",
+      "description": "Exam 3 SD column template: O25 x 1200 mm round column, the SB tie rod. Replaces the exam3_column_template.SLDPRT the paper named and the repo never had.",
+      "kind": "solid",
+      "notes": []
+    }
+  ]
+}
