@@ -1,62 +1,102 @@
-# P3: Component analysis plan, hand calculations + preliminary FEA (due Fri Nov 13, 5:00 pm · 29 pts)
+# P3: Analysis plan, hand calculations, preliminary FEA (due Fri Nov 13, 5:00 pm, 29 points)
 
 **Team:** <names>  **Component:** <what you are analyzing>
 
-> Use only methods taught by **L31 (Fri Nov 13)**. Buckling is taught at
-> L36-L38, *after* this is due, if your component is a slender compression
-> member, hypothesize buckling here and carry the Euler/Johnson calculation into
-> P4, where it earns credit under "what the FEA adds".
+Analyze **one** idealized load-bearing component: a bracket, lever, shaft, or
+housing rib, not the whole product.
 
-## Idealization
+> **Prerequisite limit.** P3 may use only methods taught by **L31 (Fri Nov 13)**.
+> Buckling is taught at L36 to L38, *after* this is due. If your component is a
+> slender compression member, hypothesize buckling here and carry the
+> Euler or Johnson calculation into P4, where it earns credit under "what the
+> FEA adds".
 
-<Geometry, supports, and load case. Every simplification stated explicitly, 
-"the fillet is modelled as a sharp corner for the hand calc", "the housing is
-treated as rigid". TA-approved at Lab 9.>
+## Idealization (5 points)
 
-## Failure-mode hypothesis
+<Geometry, supports, and load case. State every simplification explicitly:
+"the fillet is modelled as a sharp corner for the hand calculation", "the
+housing is treated as rigid". A TA signs this off at Lab 9 (Thu Oct 29), and the
+signed sheet is what earns these points.>
 
-<Which **static failure theory** applies, and separately which **fatigue
-criterion**, and why. These are different questions, distortion energy is not a
-fatigue criterion, and modified Goodman is not a static one.>
+## Failure-mode hypothesis (4 points)
 
-## Hand calculations
+<Name **at least two** failure modes your component can actually reach, and for
+each one name the criterion it is checked by and say why that mode is real for
+this component.
 
-<Full structured problem-solving format at the critical section. Symbolic first,
-then numbers with units. Same skeleton as your homework.>
+**Static yielding is always one of them.** The second is whichever of fatigue,
+buckling, joint separation, contact, or deflection your component's service
+loading makes real.
 
-## Preliminary FEA model
+**Ruling a mode out earns the same credit as checking one**, as long as the
+reason is specific to your component. "The load is applied once at assembly and
+never cycles, so fatigue is not a mode here" is a ruling-out. "Fatigue does not
+apply" is not.
 
-*Built at **Lab 10 (Thu Nov 5)** with TA support, a week before this is due, so
-the model exists before the last fortnight of the semester. It does not have to
-be converged and it does not have to agree with the hand calc; it has to run, be
-documented well enough that someone else could rebuild it, and be the same
-component the calculations above are about.*
+Keep the two questions separate: distortion energy is a static criterion and not
+a fatigue one, and modified Goodman is a fatigue criterion and not a static
+one.>
 
-| Item | Your model |
-|---|---|
-| Geometry as modelled (and what you removed) | <fillets kept? threads suppressed?> |
-| Material and where the property came from | <e.g. 6061-T6, MatWeb, E = 68.9 GPa> |
-| Loads | <magnitude, direction, where applied> |
-| Boundary conditions | <what is fixed, and why that is what the real part sees> |
-| Element type / mesh | <element count, element order, local refinement> |
-| First-pass result for the quantity of interest | <value + units + where on the part> |
+| Mode | Real or ruled out? | Criterion it is checked by | Why, specific to this component |
+|---|---|---|---|
+| Static yielding | | | |
+| | | | |
 
-**Agreement tolerance, declared in advance:** <e.g. "within 15% of the hand-calc
-peak stress">. Write this before you compare the two numbers. A tolerance
-chosen after seeing both is worth nothing.
+## Hand calculations (8 points)
 
-**Screenshot:** <mesh + result plot, captioned>
+<Full structured problem-solving format at the critical section: given, find,
+sketch, assumptions, symbolic equation, substitution with units, result, sanity
+check. Same skeleton as your homework, used throughout rather than only at the
+start.>
 
-## Checks performed
+## Checks performed (5 points)
+
+Fill in the rows your component's geometry and loading actually demand, and say
+in the third column why each one applies or does not.
 
 | Check | Result | Applies because |
 |---|---|---|
 | Static factor of safety | | |
-| Fatigue factor of safety / life | | |
+| Fatigue factor of safety or life | | |
 | Deflection | | |
-| Joint / bearing check | | |
+| Joint or bearing check | | |
 
-## Sanity, units, sensitivity
+## Sanity, units, sensitivity (3 points)
 
 <Which input you are least sure of, and what happens to the answer across its
-plausible range.>
+plausible range. Carry units through every substitution.>
+
+## Preliminary FEA model (4 points)
+
+*Built at **Lab 10 (Thu Nov 5)** with TA support, a week before this is due, so
+the model exists before the last fortnight of the semester. It does not have to
+be converged and it does not have to agree with the hand calculation. It has to
+run, be documented well enough that someone else could rebuild it, and be the
+same component the calculations above are about.*
+
+| Item | Your model |
+|---|---|
+| Geometry as modelled, and what you removed | <fillets kept? threads suppressed?> |
+| Material, and where the property came from | <e.g. 6061-T6, MatWeb, E = 68.9 GPa> |
+| Loads | <magnitude, direction, where applied> |
+| Boundary conditions | <what is fixed, and why that is what the real part sees> |
+| Element type and mesh, **with the element count** | <element count, element order, local refinement> |
+| First-pass result for the quantity of interest | <value, units, and where on the part> |
+
+**Agreement tolerance, declared in advance:** <for example, "within 15% of the
+hand-calc peak stress">
+
+Write that tolerance down **before** you compare the two numbers, and justify
+it. A tolerance chosen after seeing both is worth nothing. A first-pass number
+that disagrees is a finding, and diagnosing it is what P4 is for.
+
+**Screenshot:** <mesh plus result plot, captioned>
+
+---
+
+**Keep the model defensible.** Model a shaft, a bracket, a carrier plate, a
+bolted joint, or a simple housing region with properties you can source. Do not
+model battery cells, motor commutators, gear-tooth contact, or unidentified
+glass-filled polymers: those need material data and contact physics beyond this
+course. If your first choice turns out to be one of those, change components at
+Lab 9, not in December.

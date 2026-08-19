@@ -1,62 +1,71 @@
-# Lab <n> memo: <lab title>
+# Lab memo <n>: <lab title>
 
-**Name:** <yours, memos are individually written even when the work was shared>
-**Lab section:** <2:00 or 3:00>  **Date:** <Thursday's date>
+**Lab:** <lab number and date>  **Section:** <2:00 or 3:00>
+**Pair:** <both names>  **Submitted from:** <which partner's repository>
 
-> One to two pages. The memo is not a transcript of what you clicked; it is an
-> argument that your model can be believed. Copy this file to
-> `labs/lab<nn>-memo.md`.
+> Copy this file to `labs/lab-<NN>/memo.md`, where `<NN>` is the **lab** number,
+> not the memo number. Two pages maximum. The five headings below are the
+> rubric, so keep all five even when a section is short.
 
-## What I was trying to find out
+## Objective
 
-<One or two sentences. The question, not the procedure. "Does the fillet stress
-in the stepped shaft match the Kt I read off Shigley Fig. A-15-9?", not "I
-opened Ansys and made a mesh.">
+<One paragraph. What you modelled and why, phrased as the question the lab
+answers. "Does the fillet stress in the stepped shaft match the Kt read off
+Shigley Fig. A-15-9?", not "I opened Ansys and made a mesh.">
 
-## Model
+## Model summary
 
 | Choice | What I used | Why |
 |---|---|---|
-| Geometry / idealization | | |
+| Geometry and idealization | | |
 | Material | | |
+| Element type | | |
+| Mesh (element size and count at the reported result) | | |
 | Boundary conditions | | |
 | Loads | | |
-| Element type & mesh | | |
 
 The "why" column is where the points are. A boundary condition you cannot
 justify is the most common source of a wrong answer that looks right.
 
-## Convergence
+## Results
 
-<Which quantity you tracked, at which location, across at least three mesh
-refinements. A small table or plot. Say explicitly whether you evaluated it away
-from a singularity, a re-entrant corner or a fully fixed edge will happily
-diverge forever, and reporting that peak as "the stress" is the classic error.>
+<The key numbers, stated with units and with the location on the part they were
+read at.>
 
-| Mesh | Element size | <quantity> | Change from previous |
-|---|---|---|---|
-| 1 | | | n/a |
-| 2 | | | |
-| 3 | | | |
+![<what the figure shows>](figures/lab<NN>-result.png)
 
-## Hand check
+<One annotated result figure: contour or plot, with the quantity, the scale, and
+the location you read the number from marked on it. An unannotated screenshot
+does not count as annotated.>
 
-<The independent calculation. Symbolic form, then numbers with units. This is
-the whole point of the lab: two methods, one answer, or a reason why not.>
+If the lab sheet asks for extra items, such as a convergence table or a
+three-way comparison, put them here.
 
-## Comparison and diagnosis
+## Hand-calc comparison
 
-**FEA:** <value>  **Hand:** <value>  **Difference:** <%>
+**Pre-lab hand prediction:** <value with units, from the pre-lab you committed
+before the session. Do not revise it.>
+**FEA:** <value with units>  **Percent difference:** <%>
 
-<If they agree within the tolerance you set in advance, say what that tolerance
-was and why it is reasonable. If they do not, diagnose it: boundary condition,
-mesh, wrong formula, wrong material, or a genuine geometry effect the hand
-formula does not capture. "They disagreed" is not a conclusion.>
+<One paragraph reconciling the gap. Name the cause: boundary condition, mesh,
+the idealization the closed-form formula makes, wrong material, or a genuine
+geometry effect the formula does not capture. Say which one you think it is and
+what evidence points there. "They disagreed" is not a reconciliation, and
+neither is "FEA is more accurate".>
 
-## What I would do differently
+<If you evaluated the quantity away from a singularity, say so and say why. A
+re-entrant corner or a fully fixed edge diverges forever under refinement, and
+reporting that peak as "the stress" is the classic error.>
 
-<Two or three sentences. Honest.>
+## Conclusion
+
+<Two or three sentences. When can this model be trusted, and for what?>
+
+## Appendix: pre-lab predictions
+
+<Both partners' committed pre-lab sheets, or links to them in the repository.>
 
 ## AI use
 
-<What you asked, what you used. "None." is fine.>
+**Required, one line.** What you asked and what you used. "None." is a complete
+answer. It is never a violation to disclose.
