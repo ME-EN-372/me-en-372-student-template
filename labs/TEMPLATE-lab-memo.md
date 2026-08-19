@@ -47,6 +47,15 @@ three-way comparison, put them here.
 before the session. Do not revise it.>
 **FEA:** <value with units>  **Percent difference:** <%>
 
+<Every lab in this course defines the percent difference the same way, so the
+pooled class table adds up:>
+
+$$\Delta_\% = 100 \times \frac{Q_{FEA} - Q_{hand}}{|Q_{hand}|}$$
+
+<Write any equation you use in LaTeX between dollar signs, inline as
+`$\sigma = F/A$` or on its own line between double dollar signs, as above.
+GitHub typesets it. Define each symbol once, with its units.>
+
 <One paragraph reconciling the gap. Name the cause: boundary condition, mesh,
 the idealization the closed-form formula makes, wrong material, or a genuine
 geometry effect the formula does not capture. Say which one you think it is and

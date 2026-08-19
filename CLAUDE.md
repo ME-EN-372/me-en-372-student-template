@@ -66,6 +66,14 @@ equations in symbols, the substitution with units carried, the result with units
 and sensible significant figures, and a sanity check. Keep that skeleton when
 you help with a write-up. `homework/TEMPLATE-solution.md` has it.
 
+**Equations are LaTeX, not typed characters.** Write them between dollar signs,
+inline as `$\sigma = F/A$` and on their own line between double dollar signs.
+GitHub typesets both, so the grader reads an equation rather than a line of
+code. Do not fall back to `sigma = F/A`, to a monospace code block, or to a
+picture of an equation. Carry units inside the equation with `\mathrm{}`, and
+define every symbol the first time it appears, including its units. This holds
+for homework solutions, lab memos, and project deliverables alike.
+
 **Lab memos.** Nine memos, numbered 1 to 9 and mapped onto Labs 2, 3, 5, 6, 7,
 8, 11, 12 and 13. One per pair, two pages maximum, due Wednesday at 5:00 pm
 Mountain Time, with five sections: objective, model summary table, results with

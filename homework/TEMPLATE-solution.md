@@ -43,18 +43,26 @@ usual reason two people get different answers.
 equation needs a table value, name the table here: "Shigley Table 6-2, machined
 surface: a = 4.51, b = -0.265".>
 
-    <equation in symbols>
+<Write equations in LaTeX between dollar signs. GitHub typesets them, so your
+grader reads an equation rather than a line of code. Inline, `$\sigma = F/A$`
+gives $\sigma = F/A$. On its own line, put it between double dollar signs:>
+
+$$\sigma_{max} = \frac{M c}{I}$$
+
+<Define every symbol you use the first time it appears, including its units.
+An equation whose symbols are not defined is not yet an answer.>
 
 ## Solve
 
 **Step 1, <what this step establishes>**
 
-    <equation with numbers and units substituted>
-    = <result with units>
+$$\sigma = \frac{F}{A} = \frac{4500\ \mathrm{N}}{2.83\times10^{-5}\ \mathrm{m^2}} = 159\ \mathrm{MPa}$$
 
 **Step 2, <...>**
 
-<Repeat. One step, one idea. Carry units through every substitution.>
+<Repeat. One step, one idea. Carry units through every substitution: put them
+inside the equation with `\mathrm{}`, as above, so they are part of the work
+rather than a note beside it.>
 
 **Answer: <quantity> = <value> <units>**
 
