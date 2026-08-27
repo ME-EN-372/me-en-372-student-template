@@ -1,6 +1,6 @@
 # Deliberately short. This is a coursework repository, not a software project,
 # so the rule is: ignore what a tool generates, never ignore what you might
-# submit. Nothing here matches *.pdf, *.png, *.jpg, or *.md — your memos,
+# submit. Nothing here matches *.pdf, *.png, *.jpg, or *.md — your writeups,
 # figures, and exported reports are meant to be committed.
 
 # --- Ansys / CAD scratch --------------------------------------------------

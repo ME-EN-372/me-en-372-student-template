@@ -2,7 +2,7 @@
 
 Welcome. This is your own copy of the ME EN 372 working repository. Everything
 you produce this semester that is not a Canvas quiz lives here: homework
-write-ups, lab memos, and your team's teardown project.
+write-ups, Thursday lab writeups, and your team's teardown project.
 
 **You cannot break this repo.** Every change is tracked, and anything you delete
 can be recovered. Experiment.
@@ -43,7 +43,7 @@ put on a résumé. All three of these are **required** for A0:
 | Folder | What goes in it | Where to start |
 |---|---|---|
 | `homework/` | One folder per problem set, `hw01/` through `hw13/`, one file per problem | `homework/TEMPLATE-solution.md` |
-| `labs/` | One folder per FEA lab that has a memo, named `lab-02/` and so on. Nine memos in the semester, one per pair | `labs/TEMPLATE-lab-memo.md` |
+| `labs/` | One folder per FEA lab that produces a writeup, named `lab-02/` and so on. Nine writeups in the semester, one per pair | `labs/TEMPLATE-lab-writeup.md` |
 | `labs/geometry/` | The STEP start file for every FEA lab, already downloaded | `labs/geometry/README.md` |
 | `project/` | Your team's teardown project, five submissions from P1 to P4 | `project/README.md` |
 | `scratch/` | Anything half-finished. Nothing here is graded | |
@@ -57,7 +57,7 @@ recorded differently:
 
 - **Homework** is uploaded to the Canvas assignment. Work here, export the PDF,
   upload it. Due Fridays at 5:00 pm Mountain Time.
-- **Lab memos** are committed here, and then you complete that week's **Canvas
+- **Lab writeups** are committed here, and then you complete that week's **Canvas
   lab checkoff**, which asks for the link to the committed work. The checkoff is
   what gets graded, so the lab is not finished until it is submitted. Due
   Wednesdays at 5:00 pm Mountain Time.
@@ -72,7 +72,7 @@ course:
 - "Explain why my shear diagram jumps at the support."
 - "Check the units in this calculation and tell me where they stop balancing."
 - "I got n = 0.4 for this bracket. Is that plausible, and what would make it wrong?"
-- "Rewrite this paragraph of my lab memo to be clearer, keeping my numbers."
+- "Rewrite this paragraph of my lab writeup to be clearer, keeping my numbers."
 - "Work a problem like this one with different numbers, so I can follow it."
 
 **Works badly**
@@ -98,7 +98,7 @@ oral defense is live, and the project asks you to reconcile two independent
 analyses.
 
 **Disclosure is required and is worth points.** The AI-use appendix in the
-project, and the one-line note on homework and lab memos, are graded on honesty
+project, and the one-line note on homework and lab writeups, are graded on honesty
 and completeness rather than on how little AI you used. The full policy is on
 Canvas.
 

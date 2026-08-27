@@ -15,7 +15,7 @@
 |---|---|---|
 | Contains at least 3 distinct machine elements | | <name them> |
 | Disassemblable with hand tools | | <which tools> |
-| Costs $15 or less before tax | | <receipt attached> |
+| Costs \$15 or less before tax | | <receipt attached> |
 | Has a traceable load path | | <one sentence> |
 
 **Machine elements identified** (name each, do not just count). Three items from

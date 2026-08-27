@@ -17,7 +17,7 @@ equations written symbolically before numbers go in, and a boxed numerical
 answer with units.
 
 **Reference data used in this set:** AISI 1018 hot-rolled steel, yield strength
-Sy = 220 MPa (Shigley, Table A-20, the same values used on the exams).
+$S_y = 220\ \mathrm{MPa}$ (Shigley, Table A-20, the same values used on the exams).
 
 If a problem has you stuck for more than about fifteen minutes, open an issue
 and ask `@claude` to look at where your setup went wrong.

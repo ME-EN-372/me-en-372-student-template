@@ -17,6 +17,13 @@ exams are graded against as well.
 **Due Fridays at 5:00 pm Mountain Time**, submitted on Canvas. **Photographs of
 hand work are fine.** Legible beats typeset; nobody is grading your LaTeX.
 
+**Optional, only if you type your work in markdown.** GitHub renders an equation
+written between dollar signs, so `$\sigma = Mc/I$` shows as a real equation in
+your repository instead of as that line of code. Two dollar signs on their own
+line, `$$ ... $$`, centre it. The one thing worth knowing: a dollar sign of
+money has to be written `\$`, or everything between two prices is read as an
+equation. None of this is required and none of it is graded.
+
 ## You grade your own work
 
 Homework is formative. Its job is to build the problem-solving habit before it

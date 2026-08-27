@@ -1,11 +1,28 @@
-# Lab memo <n>: <lab title>
+# Lab <NN> writeup: <lab title>
 
 **Lab:** <lab number and date>  **Section:** <2:00 or 3:00>
 **Pair:** <both names>  **Submitted from:** <which partner's repository>
 
-> Copy this file to `labs/lab-<NN>/memo.md`, where `<NN>` is the **lab** number,
-> not the memo number. Two pages maximum. The five headings below are the
-> rubric, so keep all five even when a section is short.
+> Copy this file to `labs/lab-<NN>/writeup.md`, where `<NN>` is the lab number.
+> Three pages maximum. The headings below are the rubric, so keep all of them
+> even when a section is short.
+
+## Stage A: the demo from Wednesday, modeled
+
+<About half a page, and worth 3 of the 10 points.>
+
+**What the demo was:** <one sentence naming the class demonstration your sheet
+sends you back to, and the date it happened.>
+
+| Quantity | Hand value (pre-lab) | FEA value | % difference |
+|---|---:|---:|---:|
+| | | | |
+
+![<what the stage A figure shows>](figures/lab<NN>-stageA.png)
+
+<Two sentences reconciling the model with the demo. Does the model put the
+effect in the same place the demo put it, and does the size of it match? A
+sentence that only restates the numbers is not a reconciliation.>
 
 ## Objective
 
@@ -13,7 +30,7 @@
 answers. "Does the fillet stress in the stepped shaft match the Kt read off
 Shigley Fig. A-15-9?", not "I opened Ansys and made a mesh.">
 
-## Model summary
+## Stage B part 1: model summary
 
 | Choice | What I used | Why |
 |---|---|---|
@@ -47,15 +64,6 @@ three-way comparison, put them here.
 before the session. Do not revise it.>
 **FEA:** <value with units>  **Percent difference:** <%>
 
-<Every lab in this course defines the percent difference the same way, so the
-pooled class table adds up:>
-
-$$\Delta_\% = 100 \times \frac{Q_{FEA} - Q_{hand}}{|Q_{hand}|}$$
-
-<Write any equation you use in LaTeX between dollar signs, inline as
-`$\sigma = F/A$` or on its own line between double dollar signs, as above.
-GitHub typesets it. Define each symbol once, with its units.>
-
 <One paragraph reconciling the gap. Name the cause: boundary condition, mesh,
 the idealization the closed-form formula makes, wrong material, or a genuine
 geometry effect the formula does not capture. Say which one you think it is and
@@ -65,6 +73,14 @@ neither is "FEA is more accurate".>
 <If you evaluated the quantity away from a singularity, say so and say why. A
 re-entrant corner or a fully fixed edge diverges forever under refinement, and
 reporting that peak as "the stress" is the classic error.>
+
+## Stage B part 2: where you took it
+
+<Up to one page, and worth 2 of the 10 points. Name which of the two tasks on
+the sheet you chose, the curated case study or your own everyday example, and
+report it here under its own heading. If you did the other task as well, put it
+under a second heading; it is worth up to 2.5 points of extra credit and it is
+held to the same accuracy standard as the one you chose.>
 
 ## Conclusion
 

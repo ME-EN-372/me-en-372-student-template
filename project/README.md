@@ -44,12 +44,12 @@ Four criteria, all four required:
 |---|---|
 | At least **three distinct machine elements** | Three items from three different Shigley families, not three of the same thing. Four screws are one element family |
 | **Disassemblable with hand tools** | Welded, riveted, or ultrasonically welded housings end the project |
-| **$15 or less before tax** | That is what the department card covers. Anything above it is on you |
+| **\$15 or less before tax** | That is what the department card covers. Anything above it is on you |
 | An identifiable **load path** you can draw | You cannot analyze what you cannot trace |
 
 **Deseret Industries in Provo (1415 N State St) is the default**, because the
 stock is deep and cheap. Any source is fine as long as the product meets the
-criteria and the receipt total is $15 or less: another thrift store, Harbor
+criteria and the receipt total is \$15 or less: another thrift store, Harbor
 Freight, a free listing, or something already broken in your apartment. One
 member checks the department card out from the ME office and returns it the same
 day, so the seller has to be able to take a card. A private seller cannot, which

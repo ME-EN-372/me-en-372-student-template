@@ -1,14 +1,14 @@
 # Terms for this template
 
 **Your coursework is yours.** Nothing here claims any right over the homework,
-lab memos, code, figures, or project work you put in this repository. Under
+lab writeups, code, figures, or project work you put in this repository. Under
 BYU's Intellectual Property Policy you retain ownership of the intellectual
 property you develop in your program of study.
 
 ## What these terms cover
 
 Only the *scaffolding* this repository ships with: the folder layout, the
-homework and lab-memo templates, the project stubs, `CLAUDE.md`, the GitHub
+homework and lab-writeup templates, the project stubs, `CLAUDE.md`, the GitHub
 Actions workflow, and the README text. The ME EN 372 teaching team provides
 those under the **MIT License**, in full:
 
