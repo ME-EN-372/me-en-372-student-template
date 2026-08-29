@@ -21,6 +21,16 @@
       ]
     },
     {
+      "file": "lab02-stageA-beam.step",
+      "lab": "lab-02",
+      "description": "Stage A warm-up: 1.0 m simply supported beam as line bodies, split at midspan so the 50 N load has a vertex.",
+      "kind": "wire",
+      "notes": [
+        "Assign the 20 x 20 mm square section in DesignModeler, then Form New Part on both bodies.",
+        "Needs a Fixed Rotation (ROTX) as well as the simple supports: a straight beam can spin about its own axis."
+      ]
+    },
+    {
       "file": "lab03-plate-hole.step",
       "lab": "lab-03",
       "description": "Plate with a central hole, solid: 100 x 40 x 5 mm, O10 mm centred.",
@@ -37,9 +47,12 @@
     {
       "file": "lab06-beam-line.step",
       "lab": "lab-06",
-      "description": "Simply supported beam as a single 2000 mm line body; section assigned in Mechanical.",
+      "description": "Simply supported beam as a 2000 mm line body split at midspan so the 5 kN load has a vertex; section assigned in Mechanical.",
       "kind": "wire",
-      "notes": []
+      "notes": [
+        "Edit Geometry in DesignModeler and Generate before Mechanical: a STEP wireframe carries no section alignment.",
+        "Form New Part on both bodies, or the halves never weld at midspan."
+      ]
     },
     {
       "file": "lab06-beam-solid.step",

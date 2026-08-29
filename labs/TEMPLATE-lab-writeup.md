@@ -9,12 +9,12 @@
 
 ## Stage A: the demo from Wednesday, modeled
 
-<About half a page, and worth 4 of the 10 points. The hand value is yours to work, here.>
+<About half a page, and worth 3 of the 10 points.>
 
 **What the demo was:** <one sentence naming the class demonstration your sheet
 sends you back to, and the date it happened.>
 
-| Quantity | Hand value (your calculation) | FEA value | % difference |
+| Quantity | Hand value (pre-lab) | FEA value | % difference |
 |---|---:|---:|---:|
 | | | | |
 
@@ -60,9 +60,8 @@ three-way comparison, put them here.
 
 ## Hand-calc comparison
 
-**Hand calculation:** <value with units, worked here in the writeup.>
-**Committed prediction:** <the value each of you committed at the start of the
-session, before solving, with a link to the file. Do not revise it.>
+**Pre-lab hand prediction:** <value with units, from the pre-lab you committed
+before the session. Do not revise it.>
 **FEA:** <value with units>  **Percent difference:** <%>
 
 <One paragraph reconciling the gap. Name the cause: boundary condition, mesh,
@@ -87,10 +86,9 @@ held to the same accuracy standard as the one you chose.>
 
 <Two or three sentences. When can this model be trusted, and for what?>
 
-## Appendix: committed predictions
+## Appendix: pre-lab predictions
 
-<Links to both partners' `prediction-<netid>.md` files, committed in the
-session before the model ran.>
+<Both partners' committed pre-lab sheets, or links to them in the repository.>
 
 ## AI use
 

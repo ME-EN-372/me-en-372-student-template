@@ -26,18 +26,16 @@ this table, the sheet is the authority.
 
 The 50 minutes split the same way every week:
 
-- **Stage A (about 15 minutes, 4 points).** You rebuild, in Ansys, the
+- **Stage A (about 15 minutes, 3 points).** You rebuild, in Ansys, the
   demonstration the class saw at Wednesday's lecture. See the principle
   physically on Wednesday, make the software reproduce it on Thursday.
-- **Stage B (the rest, 6 points).** The week's FEA technique, verified against
+- **Stage B (the rest, 5 points).** The week's FEA technique, verified against
   hand calculations, closing with a choice of one exploration task: a curated
   real-world case study on the same principle, or an everyday example you pick
   yourself. You set it up in lab and finish it at home. Doing the other task
   as well earns up to **2.5 points of extra credit**.
-
-Nothing is due before a session. The hand calculations are part of the
-writeup, and the one thing each of you does alone is commit a quick
-prediction at the start of the session, before the model runs.
+- **The pre-lab is worth the other 2 points**, individually, and it has to be
+  in your repository before the session starts.
 
 ## Where the files go
 
@@ -45,7 +43,7 @@ One folder per lab, named after the lab number:
 
     labs/
       lab-02/
-        prediction-<your netid>.md  your committed prediction, from the session
+        prelab-<your netid>.pdf     your own pre-lab hand calculation
         writeup.md                  the pair's writeup
         figures/                    the stage A and stage B result figures
       lab-03/
@@ -54,19 +52,18 @@ One folder per lab, named after the lab number:
 Start every writeup from [`TEMPLATE-lab-writeup.md`](TEMPLATE-lab-writeup.md).
 The headings in that file are the rubric.
 
-## One writeup per pair, one prediction per person
+## One writeup per pair, one pre-lab per person
 
 **The writeup is a pair deliverable and earns one grade for the pair.** Decide
 with your partner which of your two repositories will hold it, put it there, and
 both of you paste that same link into the Canvas lab writeup submission.
 
-**The prediction is individual and is committed in the session, before you
-solve.** Each lab sheet marks one or two items as committed predictions: a
-guess at a ratio, a hand value, a location. Type yours into
-`labs/lab-NN/prediction-<netid>.md` in your own repository in the session's
-opening minutes, so the commit time shows it came before the model ran, and do
-not revise it afterwards. Quote both partners' predictions in the writeup with
-links to the files.
+**The pre-lab is individual and is required before your section starts.** Solve
+the lab's prediction problems by hand on your own, commit the scan or photo to
+your own repository as `labs/lab-NN/prelab-<netid>.pdf`, and do it before the
+session begins: commit timestamps are checked, and predictions are not revised
+after the model runs. Attach both partners' pre-labs to the writeup as an
+appendix.
 
 ## What a writeup has to contain
 
@@ -80,9 +77,8 @@ Three pages maximum:
    count at the result you report), boundary conditions, loads, material.
 4. **Results**, one annotated result figure (contour or plot) plus the key
    numbers. A bare screenshot with no annotation loses the communication point.
-5. **Hand-calc comparison**, your hand calculation next to the FEA value, the
-   percent difference, and one paragraph reconciling the gap. The hand
-   calculation is worked here, in the writeup.
+5. **Hand-calc comparison**, your pre-lab prediction next to the FEA value, the
+   percent difference, and one paragraph reconciling the gap.
 6. **Stage B part 2**, up to one page: the exploration task you chose, under its
    own heading. The optional second task goes under a second heading.
 7. **Conclusion**, two or three sentences on when this model can be trusted.
@@ -97,8 +93,8 @@ section, and the lab sheet says so.
 
 ## How to hand it in
 
-1. Commit the writeup and the figures to the repository you agreed on, with
-   links to both partners' committed prediction files.
+1. Commit the writeup, the figures, and both pre-labs to the repository you
+   agreed on.
 2. Open that week's **lab writeup submission** on Canvas and complete it. It
    asks for the link to the committed work, your stage A and stage B numbers,
    which part-2 task you chose, and an individual exit question.
@@ -110,12 +106,13 @@ it is submitted.
 
 | | Points |
 |---|---:|
-| Stage A: Wednesday's demonstration modeled correctly, with its hand value worked in the writeup, and reconciled with what the class saw | 4 |
-| Stage B: the week's technique verified against your hand calculation, your committed predictions quoted, plus the part-2 task you chose | 6 |
+| Pre-lab, uploaded before your section starts. This row is per person | 2 |
+| Stage A: Wednesday's demonstration modeled correctly and reconciled with what the class saw | 3 |
+| Stage B: the week's technique verified against your hand calculation, plus the part-2 task you chose | 5 |
 | **Extra credit:** the other part-2 task as well, to the same accuracy standard | +2.5 |
 
 Points are for **accuracy and thoroughness**, judged on merit against the
-table above and the rubric on the Canvas lab page, not for completion. The link box
+scoring rubric in section 8 of the lab sheet, not for completion. The link box
 and the exit question on the Canvas submission carry no points of their own; the
 link is how your work reaches the grader and the exit question is what completes
 the submission, so leaving either out costs you the rows that depend on it.

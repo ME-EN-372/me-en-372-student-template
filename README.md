@@ -29,9 +29,9 @@ is exactly as useful as asking it to write code.
 You keep this account after the course, so set it up like something you would
 put on a résumé. All three of these are **required** for A0:
 
-- **Username** someone can match to a person: `fmlast` or `first-last`, so
-  `sgbaird` or `sterling-baird`. If both are taken, add a number or your
-  discipline, as in `sbaird-me`.
+- **Username** in the form first-initial-middle-initial-last or first-last, so a
+  reader can tell who you are: `sgbaird`, or `sterling-baird`. If both are
+  taken, add a number or your discipline, as in `sbaird-me`.
 - **Your real first and last name**, under Settings, then Public profile, then
   Name. Grading and team assignment run through this repository, and a bare
   username is not enough to match you to the roster.
@@ -46,7 +46,7 @@ put on a résumé. All three of these are **required** for A0:
 | `labs/` | One folder per FEA lab that produces a writeup, named `lab-02/` and so on. Nine writeups in the semester, one per pair | `labs/TEMPLATE-lab-writeup.md` |
 | `labs/geometry/` | The STEP start file for every FEA lab, already downloaded | `labs/geometry/README.md` |
 | `project/` | Your team's teardown project, five submissions from P1 to P4 | `project/README.md` |
-| `scratch/` | Anything half-finished, plus `predictions.md` (a prediction you commit before a demonstration runs) and the worksheet files from the hands-on activities. Nothing here is graded for correctness; some activities check that the commit came before the demonstration | |
+| `scratch/` | Anything half-finished. Nothing here is graded | |
 
 Each folder's README says what its deadlines are and what its rubric asks for.
 
