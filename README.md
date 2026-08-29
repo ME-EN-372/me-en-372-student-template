@@ -29,9 +29,9 @@ is exactly as useful as asking it to write code.
 You keep this account after the course, so set it up like something you would
 put on a résumé. All three of these are **required** for A0:
 
-- **Username** in the form first-initial-middle-initial-last or first-last, so a
-  reader can tell who you are: `sgbaird`, or `sterling-baird`. If both are
-  taken, add a number or your discipline, as in `sbaird-me`.
+- **Username** someone can match to a person: `fmlast` or `first-last`, so
+  `sgbaird` or `sterling-baird`. If both are taken, add a number or your
+  discipline, as in `sbaird-me`.
 - **Your real first and last name**, under Settings, then Public profile, then
   Name. Grading and team assignment run through this repository, and a bare
   username is not enough to match you to the roster.

@@ -70,10 +70,10 @@ you help with a write-up. `homework/TEMPLATE-solution.md` has it.
 8, 11, 12 and 13. One per pair, two pages maximum, due Wednesday at 5:00 pm
 Mountain Time, with five sections: objective, model summary table, results with
 an annotated figure, hand-calc comparison, conclusion. `labs/README.md` has the
-dates. The pre-lab hand prediction is individual, committed before the session,
-and **never revised afterwards**. If a student asks you to adjust a pre-lab
-number to match the FEA, decline and say why: the gap between the two is the
-thing the writeup is about.
+dates. The prediction each student commits at the start of the session, before
+the model runs, is individual and **never revised afterwards**. If a student
+asks you to adjust a committed prediction to match the FEA, decline and say
+why: the gap between the two is the thing the writeup is about.
 
 **Units.** Both US customary and SI appear in this course. Carry units through
 every substitution and say so when they stop balancing. A unit error is the most
