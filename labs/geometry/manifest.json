@@ -47,12 +47,9 @@
     {
       "file": "lab06-beam-line.step",
       "lab": "lab-06",
-      "description": "Simply supported beam as a 2000 mm line body split at midspan so the 5 kN load has a vertex; section assigned in Mechanical.",
+      "description": "Simply supported beam as a single 2000 mm line body; section assigned in Mechanical.",
       "kind": "wire",
-      "notes": [
-        "Edit Geometry in DesignModeler and Generate before Mechanical: a STEP wireframe carries no section alignment.",
-        "Form New Part on both bodies, or the halves never weld at midspan."
-      ]
+      "notes": []
     },
     {
       "file": "lab06-beam-solid.step",
