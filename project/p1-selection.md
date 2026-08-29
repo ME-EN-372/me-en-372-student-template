@@ -2,11 +2,11 @@
 
 **Team:** <names>
 
-> P1 is two things: the printed **product-selection criteria sheet** and the
-> justification memo below. You get the printed sheet at Lab 1 (Thu Sep 3), and
-> the [criteria sheet page on Canvas](https://byu.instructure.com/courses/36965/pages/product-selection-criteria-sheet-teardown-project)
-> has the same content plus a PDF you can reprint. Fill the sheet in **at the
-> store**, not afterwards: it asks for the price tag, the fastener types you can
+> P1 is two things: the **product-selection criteria sheet** (the table below)
+> and the justification memo under it. The
+> [criteria sheet page on Canvas](https://byu.instructure.com/courses/36965/pages/product-selection-criteria-sheet-teardown-project)
+> explains each criterion, and has a one-page PDF if you want a checklist in
+> your pocket at the store. Fill the table in **at the store**, not afterwards: it asks for the price tag, the fastener types you can
 > see, and photographed evidence for each element you are claiming.
 
 ## Criteria sheet (4 points)
@@ -15,7 +15,7 @@
 |---|---|---|
 | Contains at least 3 distinct machine elements | | <name them> |
 | Disassemblable with hand tools | | <which tools> |
-| Costs \$15 or less before tax | | <receipt attached> |
+| Costs \$15 or less before tax | | <receipt photographed, committed beside this file> |
 | Has a traceable load path | | <one sentence> |
 
 **Machine elements identified** (name each, do not just count). Three items from
@@ -25,8 +25,9 @@ three different Shigley families:
 2.
 3.
 
-**Receipt:** <attach. The department card is checked out from the ME office and
-returned the same day>
+**Receipt:** <photograph it and commit it as `project/p1-receipt.jpg`; keep the
+paper one, the ME office may ask for it. The department card is checked out
+from the ME office and returned the same day>
 
 ## Why this product (3 points)
 

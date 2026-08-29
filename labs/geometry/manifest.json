@@ -31,26 +31,6 @@
       ]
     },
     {
-      "file": "lab03-stageA-cantilever.step",
-      "lab": "lab-03",
-      "description": "Stage A warm-up: 100 x 40 mm plane-stress surface with no hole, the foam-beam shear demo as a 2D cantilever.",
-      "kind": "sheet",
-      "notes": [
-        "Set the Geometry cell's Analysis Type to 2D before importing; plane stress, thickness 5 mm, in Mechanical.",
-        "Fix the left 40 mm edge, 1 kN in -y on the right edge; Shear XY down the mid-span line reads 7.5 MPa at mid-depth and about zero at the faces."
-      ]
-    },
-    {
-      "file": "lab05-stageA-beam.step",
-      "lab": "lab-05",
-      "description": "Stage A warm-up: the 600 mm dial-gauge beam as line bodies, split at midspan so the 20 N load has a vertex.",
-      "kind": "wire",
-      "notes": [
-        "Assign the 25 x 6 mm rectangular section in DesignModeler (6 mm along y), then Form New Part on both bodies.",
-        "Needs a Fixed Rotation (ROTX) as well as the simple supports: a straight beam can spin about its own axis."
-      ]
-    },
-    {
       "file": "lab03-plate-hole.step",
       "lab": "lab-03",
       "description": "Plate with a central hole, solid: 100 x 40 x 5 mm, O10 mm centred.",
