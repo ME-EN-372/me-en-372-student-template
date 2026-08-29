@@ -35,17 +35,17 @@ put on a résumé. All three of these are **required** for A0:
 - **Your real first and last name**, under Settings, then Public profile, then
   Name. Grading and team assignment run through this repository, and a bare
   username is not enough to match you to the roster.
-- **A profile picture.** Any clear photo of you. It is how teammates and TAs
-  recognize you in a thread.
+- **A profile picture.** Any clear photo of you. It is how teammates and
+  teaching assistants (TAs) recognize you in a thread.
 
 ## What is in here
 
 | Folder | What goes in it | Where to start |
 |---|---|---|
-| `homework/` | One folder per problem set, `hw01/` through `hw13/`, one file per problem | `homework/TEMPLATE-solution.md` |
-| `labs/` | One folder per FEA lab that produces a writeup, named `lab-02/` and so on. Nine writeups in the semester, one per pair | `labs/TEMPLATE-lab-writeup.md` |
-| `labs/geometry/` | The STEP start file for every FEA lab, already downloaded | `labs/geometry/README.md` |
-| `project/` | Your team's teardown project, five submissions from P1 to P4 | `project/README.md` |
+| `homework/` | One folder per problem set, `hw01/` through `hw13/`, one file per problem | [`homework/TEMPLATE-solution.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/homework/TEMPLATE-solution.md) |
+| `labs/` | One folder per finite element analysis (FEA) lab that produces a writeup, named `lab-02/` and so on. Nine writeups in the semester, one per pair | [`labs/TEMPLATE-lab-writeup.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/labs/TEMPLATE-lab-writeup.md) |
+| `labs/geometry/` | The STEP start file for every FEA lab, already downloaded | [`labs/geometry/README.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/labs/geometry/README.md) |
+| `project/` | Your team's teardown project, five submissions from P1 to P4 | [`project/README.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/project/README.md) |
 | `scratch/` | Anything half-finished. Nothing here is graded | |
 
 Each folder's README says what its deadlines are and what its rubric asks for.
@@ -55,13 +55,13 @@ Each folder's README says what its deadlines are and what its rubric asks for.
 Canvas is where submissions are *recorded*, and the three kinds of work are
 recorded differently:
 
-- **Homework** is uploaded to the Canvas assignment. Work here, export the PDF,
-  upload it. Due Fridays at 5:00 pm Mountain Time.
-- **Lab writeups** are committed here, and then you complete that week's **Canvas
-  lab checkoff**, which asks for the link to the committed work. The checkoff is
+- **Homework** must be uploaded to the Canvas assignment. Work here, export the
+  PDF, upload it. Due Fridays at 5:00 pm Mountain Time.
+- **Lab writeups** must be committed here, and then you complete that week's
+  **Canvas lab checkoff**, which asks for the link to the committed work. The checkoff is
   what gets graded, so the lab is not finished until it is submitted. Due
   Wednesdays at 5:00 pm Mountain Time.
-- **Project deliverables** are submitted on Canvas per the assignment page.
+- **Project deliverables** must be submitted on Canvas per the assignment page.
 
 ## Working with Claude well
 
@@ -117,6 +117,6 @@ Canvas.
 
 Your coursework is yours. Nothing here claims any right over what you put in
 this repository. The template's scaffolding (folder layout, templates,
-`CLAUDE.md`, the workflow) is MIT-licensed. See
+[`CLAUDE.md`](CLAUDE.md), the workflow) is MIT-licensed. See
 [`TEMPLATE-LICENSE.md`](TEMPLATE-LICENSE.md), which also explains why it is not
 named `LICENSE`, and why you should keep your repository private.

@@ -21,7 +21,7 @@ subsystem and photograph the bags.
 ## Teardown video (4 points)
 
 **Required.** It shows the documentation standard being followed: each subsystem
-photographed *before* it is opened. Put the link in `video-link.md`.
+photographed *before* it is opened. Put the link in [`video-link.md`](video-link.md).
 
 ## Load-path free-body diagrams (6 points)
 

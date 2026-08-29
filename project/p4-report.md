@@ -16,7 +16,7 @@
 <What question this analysis answers. Not "we analyzed a bracket" but "can this
 bracket be made 30% thinner without dropping below n = 2?">
 
-## FEA model (2 points)
+## Finite element analysis (FEA) model (2 points)
 
 <Geometry, material, boundary conditions, loads, mesh. Every choice justified.>
 

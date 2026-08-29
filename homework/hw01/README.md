@@ -7,7 +7,7 @@ circle (L2), and internal loads with shear and moment diagrams (L3). The problem
 statements and figures are on the Canvas assignment page.
 
 Copy [`../TEMPLATE-solution.md`](../TEMPLATE-solution.md) into this folder once
-per problem (`problem-1.md` through `problem-5.md`). Put sketches in
+per problem, as `problem-<k>.md` with k from 1 to 5. Put sketches in
 [`figures/`](figures/).
 
 **Format for this set:** work **Problem 5 in the full structured

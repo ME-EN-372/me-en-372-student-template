@@ -1,4 +1,4 @@
-# P3: Analysis plan, hand calculations, preliminary FEA (due Fri Nov 13, 5:00 pm, 29 points)
+# P3: Analysis plan, hand calculations, preliminary finite element analysis (FEA) model (due Fri Nov 13, 5:00 pm, 29 points)
 
 **Team:** <names>  **Component:** <what you are analyzing>
 
@@ -15,8 +15,8 @@ housing rib, not the whole product.
 
 <Geometry, supports, and load case. State every simplification explicitly:
 "the fillet is modelled as a sharp corner for the hand calculation", "the
-housing is treated as rigid". A TA signs this off at Lab 9 (Thu Oct 29), and the
-signed sheet is what earns these points.>
+housing is treated as rigid". A teaching assistant (TA) signs this off at Lab 9
+(Thu Oct 29), and the signed sheet is what earns these points.>
 
 ## Failure-mode hypothesis (4 points)
 
@@ -28,9 +28,9 @@ this component.
 buckling, joint separation, contact, or deflection your component's service
 loading makes real.
 
-**Ruling a mode out earns the same credit as checking one**, as long as the
+**Eliminating a mode earns the same credit as checking one**, as long as the
 reason is specific to your component. "The load is applied once at assembly and
-never cycles, so fatigue is not a mode here" is a ruling-out. "Fatigue does not
+never cycles, so fatigue is not a mode here" is a reason. "Fatigue does not
 apply" is not.
 
 Keep the two questions separate: distortion energy is a static criterion and not

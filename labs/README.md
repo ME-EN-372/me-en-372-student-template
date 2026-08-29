@@ -1,7 +1,7 @@
 # Thursday FEA labs
 
-There are 14 Thursday labs and **nine lab writeups**, one from each FEA lab
-after the first. Labs 1, 4, 9, 10 and 14 have no writeup: Lab 1 is the
+There are 14 Thursday labs and **nine lab writeups**, one from each
+finite element analysis (FEA) lab after the first. Labs 1, 4, 9, 10 and 14 have no writeup: Lab 1 is the
 software-setup checkoff, and Labs 4, 9, 10 and 14 are project labs whose work
 product goes into P2, P3 and P4 instead.
 

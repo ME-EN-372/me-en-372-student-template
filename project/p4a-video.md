@@ -5,8 +5,8 @@
 team can open it>
 
 3 to 5 minutes. Graded on communication, not on new results: build it from your
-P3 work plus your preliminary FEA. It is deliberately **not** gated on finishing
-P4, which is due two days later.
+P3 work plus your preliminary finite element analysis (FEA) model. It is
+deliberately **not** gated on finishing P4, which is due two days later.
 
 ## Outline
 

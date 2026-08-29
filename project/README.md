@@ -1,7 +1,8 @@
 # Teardown and component-analysis project
 
 Your team's semester project: buy a used product, take it apart, analyze one
-component by hand, model that same component in FEA, and reconcile the two.
+component by hand, model that same component in finite element analysis (FEA),
+and reconcile the two.
 **25% of your course grade**, plus a separate 10% for the oral defense.
 
 The full brief, the rubrics, and the timeline are on Canvas under "Final Design
@@ -23,8 +24,8 @@ Project". That page is the source of truth. This folder is where the work lives.
 Three lab sessions carry the project through the analysis phase, and the middle
 one is the reason P3 asks for a model:
 
-- **Lab 9 (Thu Oct 29), analysis studio.** You idealize the component and a TA
-  signs off on the scope. Attendance is required, and the signed sheet is worth
+- **Lab 9 (Thu Oct 29), analysis studio.** You idealize the component and a
+  teaching assistant (TA) signs off on the scope. Attendance is required, and the signed sheet is worth
   points in P3.
 - **Lab 10 (Thu Nov 5), FEA studio.** This is where you build the preliminary
   FEA model, with TA support, a week before P3 is due.

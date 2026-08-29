@@ -21,7 +21,7 @@
 ## Sketch
 
 <Insert your figure. A photograph of a clear hand sketch is fine, this is not a
-CAD exercise.>
+computer-aided design (CAD) exercise.>
 
 ![Free-body diagram for problem <k>](figures/hw<nn>-p<k>-fbd.jpg)
 

@@ -51,6 +51,6 @@ fallback product.>
 ---
 
 **Before you tear it down**, post a photo of the product and your element list
-to your team's channel and get a TA thumbs-up. If the product turns out to be
+to your team's channel and get a teaching assistant (TA) thumbs-up. If the product turns out to be
 sealed, stripped, or hazardous, tell your TA right away: a documented
 replacement within one week of the teardown window carries no penalty.

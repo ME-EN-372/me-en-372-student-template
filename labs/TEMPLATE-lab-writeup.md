@@ -14,7 +14,7 @@
 **What the demo was:** <one sentence naming the class demonstration your sheet
 sends you back to, and the date it happened.>
 
-| Quantity | Hand value (pre-lab) | FEA value | % difference |
+| Quantity | Hand value (pre-lab) | Finite element analysis (FEA) value | % difference |
 |---|---:|---:|---:|
 | | | | |
 

@@ -8,7 +8,7 @@ property you develop in your program of study.
 ## What these terms cover
 
 Only the *scaffolding* this repository ships with: the folder layout, the
-homework and lab-writeup templates, the project stubs, `CLAUDE.md`, the GitHub
+homework and lab-writeup templates, the project stubs, [`CLAUDE.md`](CLAUDE.md), the GitHub
 Actions workflow, and the README text. The ME EN 372 teaching team provides
 those under the **MIT License**, in full:
 
