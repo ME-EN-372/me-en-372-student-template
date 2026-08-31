@@ -73,3 +73,28 @@ You are welcome to edit these files or build your own geometry from the
 dimensions in the lab sheet. If you overwrite one and want the original back,
 `git checkout labs/geometry/<file>` restores it, or download it again from the
 template repository linked above.
+
+## Where these files come from, and what has changed
+
+Every file here is **generated**, not drawn by hand: the script
+`labs/geometry/build_lab_geometry.py` in the course repository
+(`ME-EN-372/me-en-372-machine-design-private`) builds each one with CadQuery and
+checks its volume and bounding box against the dimensions in the lab sheet. The
+copies you are reading were mirrored out of that repository, so **editing a file
+here changes only your copy** — the next mirror overwrites it. A fix belongs in
+the builder script; tell the instructor and it gets fixed for everyone.
+
+Revisions so far. Every one was found by actually solving the model on a
+licensed Ansys seat, not by looking at the file:
+
+| date | file(s) | what was wrong |
+|---|---|---|
+| 2026-08-26 | `lab02-truss.step` | Exported as seven separate products, so Ansys read seven free bars that touch but transmit nothing, and no support could hold the truss. Now one product. |
+| 2026-08-28 | `lab02-stageA-beam.step` | Added; Stage A had no start file. |
+| 2026-08-29 | `lab03-stageA-cantilever.step`, `lab05-stageA-beam.step` | Added Stage A start files for both labs. |
+| 2026-08-29 | `lab06-beam-solid.step`, `lab06-beam-line.step` | The solid was built on its side, so the 80 mm depth lay across the width and the second moment of area was wrong by 4x; the line body had no midspan vertex to hang the point load on. |
+| 2026-08-30 | `lab13-column-bowed.step` | The top end was **two half-disc faces** rather than one. A swept bow trimmed at its own end leaves the tilted end cap clipped in half, so clicking "the top face" selected a half disc whose centre sits 2.55 mm off the axis. The pinned support and the axial load then went through that point and the column showed a quarter of the deflection it should. |
+| 2026-08-31 | `lab12-bolted-joint.step` | Both plates now carry two imprinted rings on their outer faces, at the head/nut diameter and at 30 mm. Without them there was nowhere to apply the external load except a whole 6 000 mm² face, which is not where the theory introduces it, and the measured joint constant came out near 0.01 instead of Shigley's 0.21. |
+
+If a file here disagrees with what the lab sheet says, that is worth reporting:
+it means the generator and the sheet have drifted, and both are ours to fix.
