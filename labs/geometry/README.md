@@ -76,13 +76,12 @@ template repository linked above.
 
 ## Where these files come from, and what has changed
 
-Every file here is **generated**, not drawn by hand: the script
-`labs/geometry/build_lab_geometry.py` in the course repository
-(`ME-EN-372/me-en-372-machine-design-private`) builds each one with CadQuery and
-checks its volume and bounding box against the dimensions in the lab sheet. The
-copies you are reading were mirrored out of that repository, so **editing a file
-here changes only your copy** — the next mirror overwrites it. A fix belongs in
-the builder script; tell the instructor and it gets fixed for everyone.
+Every file here is **generated**, not drawn by hand: a CadQuery script in the
+course's own repository builds each one and checks its volume and bounding box
+against the dimensions in the lab sheet. The copies you are reading were
+mirrored out of there, so **editing a file here changes only your copy**. The
+next mirror overwrites it. A fix belongs in the generator, so tell the
+instructor and it gets fixed for everyone at once.
 
 Revisions so far. Every one was found by actually solving the model on a
 licensed Ansys seat, not by looking at the file:
