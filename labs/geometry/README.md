@@ -88,12 +88,12 @@ licensed Ansys seat, not by looking at the file:
 
 | date | file(s) | what was wrong |
 |---|---|---|
-| 2026-08-26 | `lab02-truss.step` | Exported as seven separate products, so Ansys read seven free bars that touch but transmit nothing, and no support could hold the truss. Now one product. |
-| 2026-08-28 | `lab02-stageA-beam.step` | Added; Stage A had no start file. |
-| 2026-08-29 | `lab03-stageA-cantilever.step`, `lab05-stageA-beam.step` | Added Stage A start files for both labs. |
-| 2026-08-29 | `lab06-beam-solid.step`, `lab06-beam-line.step` | The solid was built on its side, so the 80 mm depth lay across the width and the second moment of area was wrong by 4x; the line body had no midspan vertex to hang the point load on. |
-| 2026-08-30 | `lab13-column-bowed.step` | The top end was **two half-disc faces** rather than one. A swept bow trimmed at its own end leaves the tilted end cap clipped in half, so clicking "the top face" selected a half disc whose centre sits 2.55 mm off the axis. The pinned support and the axial load then went through that point and the column showed a quarter of the deflection it should. |
-| 2026-08-31 | `lab12-bolted-joint.step` | Both plates now carry two imprinted rings on their outer faces, at the head/nut diameter and at 30 mm. Without them there was nowhere to apply the external load except a whole 6 000 mm² face, which is not where the theory introduces it, and the measured joint constant came out near 0.01 instead of Shigley's 0.21. |
+| 2026-08-26 | [`lab02-truss.step`](lab02-truss.step) | Exported as seven separate products, so Ansys read seven free bars that touch but transmit nothing, and no support could hold the truss. Now one product. |
+| 2026-08-28 | [`lab02-stageA-beam.step`](lab02-stageA-beam.step) | Added; Stage A had no start file. |
+| 2026-08-29 | [`lab03-stageA-cantilever.step`](lab03-stageA-cantilever.step), [`lab05-stageA-beam.step`](lab05-stageA-beam.step) | Added Stage A start files for both labs. |
+| 2026-08-29 | [`lab06-beam-solid.step`](lab06-beam-solid.step), [`lab06-beam-line.step`](lab06-beam-line.step) | The solid was built on its side, so the 80 mm depth lay across the width and the second moment of area was wrong by 4x; the line body had no midspan vertex to hang the point load on. |
+| 2026-08-30 | [`lab13-column-bowed.step`](lab13-column-bowed.step) | The top end was **two half-disc faces** rather than one. A swept bow trimmed at its own end leaves the tilted end cap clipped in half, so clicking "the top face" selected a half disc whose centre sits 2.55 mm off the axis. The pinned support and the axial load then went through that point and the column showed a quarter of the deflection it should. |
+| 2026-08-31 | [`lab12-bolted-joint.step`](lab12-bolted-joint.step) | Both plates now carry two imprinted rings on their outer faces, at the head/nut diameter and at 30 mm. Without them there was nowhere to apply the external load except a whole 6 000 mm² face, which is not where the theory introduces it, and the measured joint constant came out near 0.01 instead of Shigley's 0.21. |
 
 If a file here disagrees with what the lab sheet says, that is worth reporting:
 it means the generator and the sheet have drifted, and both are ours to fix.
