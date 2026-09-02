@@ -88,6 +88,15 @@
       "notes": []
     },
     {
+      "file": "lab07-stageA-bar.step",
+      "lab": "lab-07",
+      "description": "Stage A chocolate bar: 96 x 20 x 6 mm, pre-split into five bodies at the two 4 mm bearing strips and the 4 mm midspan load patch.",
+      "kind": "assembly",
+      "notes": [
+        "Auto-detection turns the four coincident interfaces into 4 bonded contact regions. Keep them."
+      ]
+    },
+    {
       "file": "lab08-keyseat-shaft.step",
       "lab": "lab-08",
       "description": "Stepped shaft O32x50 -> O25x100 with a 2 mm shoulder fillet and an end-milled keyseat 8 wide x 4.0 deep x 32 long, bottom fillet r = 0.5 mm (r/d = 0.02).",
