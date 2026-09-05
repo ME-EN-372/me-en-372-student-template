@@ -27,8 +27,20 @@ below is also downloadable from the course template repository:
 | 12 | `lab12-bolted-joint.step` | two plates plus an M10 bolt, as three separate bodies |
 | 13 | `lab13-column-straight.step` | 12 mm diameter by 1000 mm column |
 | 13 | `lab13-column-bowed.step` | the same column with a 2 mm midspan bow, about L/500 |
+| 2 | `lab02-torsion-helicoid.js` | not geometry: a DesignModeler script that draws the 45 degree spiral fracture surface of a twisted 10 mm by 80 mm chalk bar (see below) |
 
 `manifest.json` holds the same table in machine-readable form.
+
+## One file is a script, not a part
+
+`lab02-torsion-helicoid.js` goes with the chalk-versus-Tootsie-Roll torsion demo.
+After you have modelled and solved the twisted chalk bar (10 mm diameter, 80 mm
+long, sketched on the XY plane and extruded along Z, with **Units set to Millimeter**),
+open the geometry in DesignModeler and use **File, then Run Script...** to run it. It
+sweeps a helicoid surface that meets the outside of the bar at 45 degrees everywhere:
+the shape a brittle bar breaks on. Right-click the solid body and **Hide Body** to see
+the surface on its own. Do not save that surface into your solved project; it would
+be meshed as a shell and change the model. Keep it in a scratch copy.
 
 ## These files carry geometry only
 
