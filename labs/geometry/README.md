@@ -22,7 +22,7 @@ below is also downloadable from the course template repository:
 | 7 | `lab07-post.step` | 40 mm diameter by 200 mm cantilever post |
 | 8 | `lab08-keyseat-shaft.step` | stepped 32 mm to 25 mm shaft with an end-milled keyseat and a 0.5 mm floor fillet |
 | 11 | `lab11-cylinder-axisym.step` | thick-walled cylinder, 2D axisymmetric half-section |
-| 11 | `lab11-pressfit-axisym.step` | press fit, 2D axisymmetric, with a 0.05 mm modelled overlap |
+| 11 | `lab11-pressfit-axisym.step` | press fit, 2D axisymmetric, with a 0.05 mm modeled overlap |
 | 11 | `lab11-cylinder-sector-3d.step` | 5 degree 3D wedge of the same cylinder |
 | 12 | `lab12-bolted-joint.step` | two plates plus an M10 bolt, as three separate bodies |
 | 13 | `lab13-column-straight.step` | 12 mm diameter by 1000 mm column |
@@ -34,7 +34,7 @@ below is also downloadable from the course template repository:
 ## One file is a script, not a part
 
 `lab02-torsion-helicoid.js` goes with the chalk-versus-Tootsie-Roll torsion demo.
-After you have modelled and solved the twisted chalk bar (10 mm diameter, 80 mm
+After you have modeled and solved the twisted chalk bar (10 mm diameter, 80 mm
 long, sketched on the XY plane and extruded along Z, with **Units set to Millimeter**),
 open the geometry in DesignModeler and use **File, then Run Script...** to run it. It
 sweeps a helicoid surface that meets the outside of the bar at 45 degrees everywhere:
@@ -66,7 +66,7 @@ treats X as the radius and revolves about the Y axis, so
 X greater than or equal to zero with Y vertical. Turning one "so it looks right"
 in a viewer breaks the analysis.
 
-**The press-fit overlap is the physics, not a modelling error.** In
+**The press-fit overlap is the physics, not a modeling error.** In
 `lab11-pressfit-axisym.step` the shaft is drawn at R = 25.05 mm and the hub bore
 at R = 25.00 mm. That 0.05 mm of overlap is the interference the lab measures.
 If contact detection is left on **Adjust to Touch**, Ansys quietly removes the
@@ -104,7 +104,7 @@ licensed Ansys seat, not by looking at the file:
 | 2026-08-28 | [`lab02-stageA-beam.step`](lab02-stageA-beam.step) | Added; Stage A had no start file. |
 | 2026-08-29 | [`lab03-stageA-cantilever.step`](lab03-stageA-cantilever.step), [`lab05-stageA-beam.step`](lab05-stageA-beam.step) | Added Stage A start files for both labs. |
 | 2026-08-29 | [`lab06-beam-solid.step`](lab06-beam-solid.step), [`lab06-beam-line.step`](lab06-beam-line.step) | The solid was built on its side, so the 80 mm depth lay across the width and the second moment of area was wrong by 4x; the line body had no midspan vertex to hang the point load on. |
-| 2026-08-30 | [`lab13-column-bowed.step`](lab13-column-bowed.step) | The top end was **two half-disc faces** rather than one. A swept bow trimmed at its own end leaves the tilted end cap clipped in half, so clicking "the top face" selected a half disc whose centre sits 2.55 mm off the axis. The pinned support and the axial load then went through that point and the column showed a quarter of the deflection it should. |
+| 2026-08-30 | [`lab13-column-bowed.step`](lab13-column-bowed.step) | The top end was **two half-disc faces** rather than one. A swept bow trimmed at its own end leaves the tilted end cap clipped in half, so clicking "the top face" selected a half disc whose center sits 2.55 mm off the axis. The pinned support and the axial load then went through that point and the column showed a quarter of the deflection it should. |
 | 2026-08-31 | [`lab12-bolted-joint.step`](lab12-bolted-joint.step) | Both plates now carry two imprinted rings on their outer faces, at the head/nut diameter and at 30 mm. Without them there was nowhere to apply the external load except a whole 6 000 mm² face, which is not where the theory introduces it, and the measured joint constant came out near 0.01 instead of Shigley's 0.21. |
 
 If a file here disagrees with what the lab sheet says, that is worth reporting:
