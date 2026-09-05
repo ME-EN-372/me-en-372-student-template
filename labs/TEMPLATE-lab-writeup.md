@@ -26,7 +26,7 @@ sentence that only restates the numbers is not a reconciliation.>
 
 ## Objective
 
-<One paragraph. What you modelled and why, phrased as the question the lab
+<One paragraph. What you modeled and why, phrased as the question the lab
 answers. "Does the fillet stress in the stepped shaft match the Kt read off
 Shigley Fig. A-15-9?", not "I opened Ansys and made a mesh.">
 
