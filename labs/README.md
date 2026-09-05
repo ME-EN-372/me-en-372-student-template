@@ -7,7 +7,7 @@ product goes into P2, P3 and P4 instead.
 
 | Writeup | Lab meets | Due, 5:00 pm Mountain Time |
 |---|---|---|
-| Lab 2, 2D truss | Thu Sep 10 | Wed Sep 16 |
+| Lab 2, chalk in torsion | Thu Sep 10 | Wed Sep 16 |
 | Lab 3, plate with a hole | Thu Sep 17 | Wed Sep 23 |
 | Lab 5, mesh convergence | Thu Oct 1 | Wed Oct 7 |
 | Lab 6, beam elements | Thu Oct 8 | Wed Oct 14 |
@@ -75,7 +75,7 @@ Three pages maximum:
 1. **Stage A**, about half a page: the result figure, the stage A data table,
    and two sentences reconciling the model against what the class demonstration
    actually showed.
-2. **Objective**, one paragraph: what you modelled in stage B and why.
+2. **Objective**, one paragraph: what you modeled in stage B and why.
 3. **Model summary**, as a table: geometry, element type, mesh (element size and
    count at the result you report), boundary conditions, loads, material.
 4. **Results**, one annotated result figure (contour or plot) plus the key
