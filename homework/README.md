@@ -20,7 +20,7 @@ hand work are fine.** Legible beats typeset; nobody is grading your LaTeX.
 **Optional, only if you type your work in markdown.** GitHub renders an equation
 written between dollar signs, so `$\sigma = Mc/I$` shows as a real equation in
 your repository instead of as that line of code. Two dollar signs on their own
-line, `$$ ... $$`, centre it. The one thing worth knowing: a dollar sign of
+line, `$$ ... $$`, center it. The one thing worth knowing: a dollar sign of
 money has to be written `\$`, or everything between two prices is read as an
 equation. None of this is required and none of it is graded.
 
@@ -39,8 +39,8 @@ a released key.
    independent: a correct final number with no visible setup earns the result
    row and not the setup rows.
 4. Classify your errors. Each problem's "Common errors" block names the mistakes
-   that are most likely, such as diameter versus radius or millimetres versus
-   metres. Note in the margin which class yours fell into. Rounding differences
+   that are most likely, such as diameter versus radius or millimeters versus
+   meters. Note in the margin which class yours fell into. Rounding differences
    are free; a factor of 2, 4, or a million is worth hunting down and naming.
 5. Total the score out of 100 and enter it on Canvas as directed.
 6. **If you score below 70**, rework the missed problems and bring the marked-up
