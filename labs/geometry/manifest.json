@@ -1,6 +1,6 @@
 {
   "generated_by": "labs/geometry/build_lab_geometry.py",
-  "format": "STEP AP214 (ISO 10303-21), millimetres",
+  "format": "STEP AP214 (ISO 10303-21), millimeters",
   "why_step_not_wbpz": "wbpz is Ansys-version-locked and cannot be regenerated or reviewed; STEP is ASCII, opens in Workbench/SpaceClaim/DesignModeler/SolidWorks, and is rebuilt from this script.",
   "carries": "geometry only -- material, mesh, supports and loads come from each lab sheet's setup table",
   "parts": [
@@ -53,7 +53,7 @@
     {
       "file": "lab03-plate-hole.step",
       "lab": "lab-03",
-      "description": "Plate with a central hole, solid: 100 x 40 x 5 mm, O10 mm centred.",
+      "description": "Plate with a central hole, solid: 100 x 40 x 5 mm, O10 mm centered.",
       "kind": "solid",
       "notes": []
     },
