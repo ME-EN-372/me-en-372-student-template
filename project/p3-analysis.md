@@ -14,7 +14,7 @@ housing rib, not the whole product.
 ## Idealization (5 points)
 
 <Geometry, supports, and load case. State every simplification explicitly:
-"the fillet is modelled as a sharp corner for the hand calculation", "the
+"the fillet is modeled as a sharp corner for the hand calculation", "the
 housing is treated as rigid". A teaching assistant (TA) signs this off at Lab 9
 (Thu Oct 29), and the signed sheet is what earns these points.>
 
@@ -76,7 +76,7 @@ same component the calculations above are about.*
 
 | Item | Your model |
 |---|---|
-| Geometry as modelled, and what you removed | <fillets kept? threads suppressed?> |
+| Geometry as modeled, and what you removed | <fillets kept? threads suppressed?> |
 | Material, and where the property came from | <e.g. 6061-T6, MatWeb, E = 68.9 GPa> |
 | Loads | <magnitude, direction, where applied> |
 | Boundary conditions | <what is fixed, and why that is what the real part sees> |
