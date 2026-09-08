@@ -19,25 +19,30 @@
 #
 # Edit this file here anyway. `scripts/sync_student_template.py` diffs this copy
 # against the template repository's on every run, fails if they differ, and
-# prints the one `gh api` command that applies it.
+# prints the one `gh api` command that applies it. For the repositories that
+# already exist, `scripts/solutions/distribute_to_student_repos.py
+# --with-workflow` pushes it from a staff `gh auth` session, printing the diff
+# first. Students cannot change it: a push ruleset on each repository refuses
+# any push touching .github/**, CLAUDE.md, homework/solutions/** or course/**
+# from anyone but staff (docs/solution-guides-in-student-repos.md).
 # ---------------------------------------------------------------------------
 #
 # ---------------------------------------------------------------------------
 # Model selection, in one paragraph
 #
-#   @claude                     -> Haiku    (the default, and the right answer
-#                                  for almost every student ping)
-#   @claude+sonnet              -> Sonnet
+#   @claude                     -> Sonnet   (the default since 2026-09-08)
+#   @claude+haiku               -> Haiku    (cheapest; fine for a question that
+#                                  does not touch a homework problem)
 #   @claude+opus                -> Opus
 #   @claude+sonnet:high         -> Sonnet at high effort
 #
-# Model names are FAMILY ALIASES, not pinned ids: `haiku` resolves to the
-# latest Haiku at run time, so the course never has to ship a commit to pick up
+# Model names are FAMILY ALIASES, not pinned ids: `sonnet` resolves to the
+# latest Sonnet at run time, so the course never has to ship a commit to pick up
 # a new release. (`claude --help`: "Provide an alias for the latest model".)
 #
 # Effort is only sent to families that accept it, see EFFORT_FAMILIES below.
-# A bare `@claude` therefore carries no effort flag at all, which is correct:
-# Haiku has no effort parameter.
+# A bare `@claude` runs Sonnet at DEFAULT_EFFORT; `@claude+haiku` carries no
+# effort flag at all, which is correct: Haiku has no effort parameter.
 #
 # Anything outside ALLOWED_FAMILIES falls back to the default and says so in
 # the job summary rather than failing, because a student should get an answer,
@@ -107,13 +112,16 @@ jobs:
 
           # ---- the cost knobs -----------------------------------------------
           # Bare "@claude" resolves to this. A FAMILY ALIAS, not a pinned id:
-          # the CLI resolves it to the latest Haiku at run time, so a new Haiku
+          # the CLI resolves it to the latest Sonnet at run time, so a new
           # release is picked up without a commit, and, more importantly, a
-          # bare "@claude" and an explicit "@claude+haiku" can never drift onto
-          # different models. Haiku is the default on cost *and* on quality
-          # grounds: student pings are short, conversational and mostly
-          # explanatory, which is exactly what it is good at.
-          DEFAULT_MODEL: haiku
+          # bare "@claude" and an explicit "@claude+sonnet" can never drift
+          # onto different models. Sonnet replaced Haiku as the default on
+          # 2026-09-08 after the solution-guide pilot: given the same CLAUDE.md
+          # rules and the same near-correct student work, Sonnet asked the
+          # student to check the sign of a given stress, while Haiku wrote the
+          # sign and the resulting intermediate value out of the guide. Roughly
+          # twice the cost per ping, accepted for that reason.
+          DEFAULT_MODEL: sonnet
           DEFAULT_EFFORT: medium
           # Families a student may request. Opus is allowed, but only up to
           # MAX_EFFORT, because the cost multiplier that actually bites is
@@ -222,20 +230,93 @@ jobs:
             echo "effort=$effort"
           } >> "$GITHUB_OUTPUT"
 
+      # ---------------------------------------------------------------------
+      # Homework solution guides.
+      #
+      # homework/solutions/hwNN-solution-guide.pdf is the course's solution
+      # guide for each set, encrypted with AES-256. The password for each is a
+      # repository secret, HWNN_SOLUTIONS_PASSWORD, set by the course from its
+      # keystore. This step opens every guide whose secret is present and
+      # writes the markdown source attached inside it to the runner's temp
+      # directory, OUTSIDE the checkout, so nothing decrypted can be committed
+      # or pushed by a later step. It prints a count and nothing else: no
+      # password, no line of a guide. CLAUDE.md tells Claude how it may use
+      # the guides (check the student's work against them; never state an
+      # answer before the guide's release date; never reveal a guide or a
+      # password). continue-on-error so that a broken unlock still leaves the
+      # student with an answer, just one without the guide.
+      # ---------------------------------------------------------------------
+      - name: Unlock the solution guides
+        continue-on-error: true
+        env:
+          HW01_SOLUTIONS_PASSWORD: ${{ secrets.HW01_SOLUTIONS_PASSWORD }}
+          HW02_SOLUTIONS_PASSWORD: ${{ secrets.HW02_SOLUTIONS_PASSWORD }}
+          HW03_SOLUTIONS_PASSWORD: ${{ secrets.HW03_SOLUTIONS_PASSWORD }}
+          HW04_SOLUTIONS_PASSWORD: ${{ secrets.HW04_SOLUTIONS_PASSWORD }}
+          HW05_SOLUTIONS_PASSWORD: ${{ secrets.HW05_SOLUTIONS_PASSWORD }}
+          HW06_SOLUTIONS_PASSWORD: ${{ secrets.HW06_SOLUTIONS_PASSWORD }}
+          HW07_SOLUTIONS_PASSWORD: ${{ secrets.HW07_SOLUTIONS_PASSWORD }}
+          HW08_SOLUTIONS_PASSWORD: ${{ secrets.HW08_SOLUTIONS_PASSWORD }}
+          HW09_SOLUTIONS_PASSWORD: ${{ secrets.HW09_SOLUTIONS_PASSWORD }}
+          HW10_SOLUTIONS_PASSWORD: ${{ secrets.HW10_SOLUTIONS_PASSWORD }}
+          HW11_SOLUTIONS_PASSWORD: ${{ secrets.HW11_SOLUTIONS_PASSWORD }}
+          HW12_SOLUTIONS_PASSWORD: ${{ secrets.HW12_SOLUTIONS_PASSWORD }}
+          HW13_SOLUTIONS_PASSWORD: ${{ secrets.HW13_SOLUTIONS_PASSWORD }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check pypdf cryptography
+          python3 - <<'EOF'
+          import os
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          out = Path(os.environ["RUNNER_TEMP"]) / "solution-guides"
+          out.mkdir(parents=True, exist_ok=True)
+          unlocked, failed = 0, []
+          for n in range(1, 14):
+              password = os.environ.get(f"HW{n:02d}_SOLUTIONS_PASSWORD", "")
+              src = Path(f"homework/solutions/hw{n:02d}-solution-guide.pdf")
+              if not password or not src.exists():
+                  continue
+              reader = PdfReader(str(src))
+              if not reader.decrypt(password):
+                  failed.append(f"hw{n:02d}")
+                  continue
+              written = False
+              for name, data in reader.attachments.items():   # the markdown source, attached at build time
+                  if name.endswith(".md"):
+                      (out / name).write_bytes(data[0] if isinstance(data, list) else data)
+                      written = True
+              if not written:   # older guide with no attachment: fall back to the page text
+                  text = "\n".join((p.extract_text() or "") for p in reader.pages)
+                  (out / f"hw{n:02d}-solution-guide.md").write_text(text, encoding="utf-8")
+              unlocked += 1
+          print(f"unlocked {unlocked} of 13")
+          if failed:
+              print("could not open: " + ", ".join(failed))
+          EOF
+
       - name: Run Claude
         id: claude
         uses: anthropics/claude-code-action@v1
+        env:
+          # Where the step above put the unlocked guides. Outside the checkout;
+          # CLAUDE.md names the same path.
+          SOLUTION_GUIDES_DIR: ${{ runner.temp }}/solution-guides
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
           # The exact tag found in the trigger text (@claude, @claude+sonnet:high, ...)
           trigger_phrase: ${{ steps.select.outputs.phrase }}
 
-          # Render a human-readable "Claude Code Report" in the job's Step
-          # Summary, and keep the full turn-by-turn JSON so a run can be
-          # reconstructed after the fact (uploaded as an artifact below).
-          display_report: true
-          show_full_output: true
+          # Both off, deliberately. Claude reads the unlocked solution guides
+          # during a run, so its tool calls and tool results carry guide text.
+          # show_full_output would print every turn, including those results,
+          # into the job log, and display_report renders the turns into the
+          # step summary; a student can read both. What the student sees is
+          # the reply Claude posts, plus the selector step's summary above.
+          display_report: false
+          show_full_output: false
 
           # Let Claude read this repo's CI results when a student asks why a
           # check is failing.
@@ -258,14 +339,9 @@ jobs:
             ${{ steps.select.outputs.model_args }}
             --permission-mode acceptEdits
 
-      # Keeps the intermediate steps of a run around after the log view rolls
-      # off, which is useful when a student says "Claude did something weird".
-      # NOTE: this log contains the full conversation. Student repositories are
-      # private; if that ever changes, delete this step.
-      - name: Upload Claude execution log
-        if: always() && steps.claude.outputs.execution_file != ''
-        uses: actions/upload-artifact@v4
-        with:
-          name: claude-execution-log-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ steps.claude.outputs.execution_file }}
-          retention-days: 30
+      # There is no longer an "Upload Claude execution log" step. That artifact
+      # was the full turn-by-turn JSON of the run, tool results included, which
+      # now means the text of the solution guides; a student can download any
+      # artifact on their own repository. When a run needs reconstructing, a
+      # TA re-runs the ping with show_full_output turned on in a copy of this
+      # file on a branch, then removes it.
