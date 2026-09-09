@@ -194,7 +194,8 @@ jobs:
 
           # ---- assemble -----------------------------------------------------
           # Only send --effort to a family that has the parameter. Haiku does
-          # not, so the default path is "--model haiku" with no effort flag.
+          # not, so "@claude+haiku" gets "--model haiku" with no effort flag,
+          # while the default path is "--model sonnet --effort medium".
           args="--model $model"
           if [[ " $EFFORT_FAMILIES " == *" $family "* ]]; then
             args="$args --effort $effort"
@@ -220,7 +221,7 @@ jobs:
             echo "| Triggered by | @$TRIGGER_USER |"
             echo
             for n in "${notes[@]}"; do echo "> [!NOTE]"; echo "> $n"; echo; done
-            echo "Ask for more with \`@claude+sonnet\`, \`@claude+opus\`, or \`@claude+sonnet:high\`; a bare \`@claude\` is Haiku, which is the right tool for most questions."
+            echo "Ask for more with \`@claude+sonnet:high\` or \`@claude+opus\`, or less with \`@claude+haiku\`; a bare \`@claude\` is Sonnet, which is the right tool for most questions."
           } >> "$GITHUB_STEP_SUMMARY"
 
           {
