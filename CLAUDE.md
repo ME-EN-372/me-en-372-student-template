@@ -139,10 +139,13 @@ and sensible significant figures, and a sanity check. Keep that skeleton when
 you help with a write-up. `homework/TEMPLATE-solution.md` has it.
 
 **Lab writeups.** Nine writeups, one from each of Labs 2, 3, 5, 6, 7,
-8, 11, 12 and 13. One per pair, two pages maximum, due Wednesday at 5:00 pm
-Mountain Time, with five sections: objective, model summary table, results with
-an annotated figure, hand-calc comparison, conclusion. `labs/README.md` has the
-dates. The prediction each student commits at the start of the session, before
+8, 11, 12 and 13. One per pair, three pages maximum, due at 5:00 pm Mountain
+Time on the Wednesday after the lab, except Labs 12 and 13, which are due the
+Tuesday. Seven sections: Stage A, objective, model summary table, results with
+an annotated figure, hand-calc comparison, Stage B part 2, conclusion. The
+headings in `labs/TEMPLATE-lab-writeup.md` are the rubric, so check a draft
+against that file rather than against this paragraph, and `labs/README.md` has
+the dates. The prediction each student commits at the start of the session, before
 the model runs, is individual and **never revised afterwards**. If a student
 asks you to adjust a committed prediction to match the FEA, decline and say
 why: the gap between the two is the thing the writeup is about.
