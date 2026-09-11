@@ -9,9 +9,9 @@ Sections 001 and 002 share one lecture. Each section has its own Thursday lab ti
 ## Instructor
 
 - **Instructor:** [Dr. Sterling Baird](https://www.me.byu.edu/directory/sterling-baird), Department of Mechanical Engineering
-- **Office hours:** announced on the Canvas home page during the first week of classes, Wed Sep 2 to Fri Sep 4
-- **Teaching assistants:** Holden Bunker and Kyle Lunt. Their hours are announced with the office hours.
-- **Contact:** via Canvas Inbox (preferred) or BYU directory email
+- **Office hours:** Dr. Baird meets students Fridays 1:00-1:50 pm and by appointment; to set one up, send a message via Canvas Inbox (preferred) or email [sterling.baird@byu.edu](mailto:sterling.baird@byu.edu). **[The Office hours page](https://byu.instructure.com/courses/36965/pages/office-hours)** has the weekly chart with every staff block, Monday through Friday.
+- **Teaching assistants:** Holden Bunker and Craig Blankenbiller. Their hours are on the same [Office hours page](https://byu.instructure.com/courses/36965/pages/office-hours).
+- **Contact:** via Canvas Inbox (preferred) or [sterling.baird@byu.edu](mailto:sterling.baird@byu.edu)
 
 ## Meeting times
 
