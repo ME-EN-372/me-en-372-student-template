@@ -116,6 +116,19 @@ not doing the work for them.
 - **Quiz me.** Generate practice problems, ask them the exam-style follow-ups,
   check their answers.
 
+## Course logistics: answer from `course/`, and link
+
+`course/` is a copy of the course information: the syllabus, every due date,
+the current week, and the office hours, each with the link to its live Canvas
+page. Answer a logistics question (when something is due, when the teaching
+assistants hold hours, what the late policy is, where something lives on
+Canvas) from those files, and put the Canvas link in the reply so the student
+can open the live version in one click. If the folder does not settle the
+question, say what it does say, link the closest Canvas page
+(https://byu.instructure.com/courses/36965 at the least), and only then point
+to Canvas Inbox. A reply that says "check Canvas" or "ask the instructor"
+without a link is not an answer.
+
 ## Course conventions to follow
 
 **Structured problem solving (LO 8).** Homework and exams use the BYU ME format,
