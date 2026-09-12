@@ -83,7 +83,8 @@ course:
 - Table lookups from Shigley. It approximates them, confidently. Read the table.
 
 **A bare `@claude` runs Opus at high effort** (since Sep 12). `@claude+fable`
-picks the largest model, which is also the slowest; for a quick question, "what
+picks the largest model, which is also the slowest, and if its allowance for
+the week is spent the same job answers on Opus instead; for a quick question, "what
 does this folder hold", `@claude+sonnet` answers faster and `@claude+haiku`
 faster still. `:low`, `:medium`, `:high` or `:xhigh` after the model name sets
 the reasoning effort on Fable, Opus and Sonnet (`@claude+opus:xhigh`); Haiku
