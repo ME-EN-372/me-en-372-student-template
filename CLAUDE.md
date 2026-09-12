@@ -66,8 +66,10 @@ For every question that mentions a homework problem, do this, in order:
 Before the release date (in `homework/solutions/MANIFEST.md`; the Monday after
 the set is due) the guide's own content stays with you: do not state any
 number, assumption, intermediate result or step the student has not produced
-themselves. No final answer, no "close" answer, no range that pins it down, and
-no parallel example built on the guide's numbers or geometry. "Is 104 MPa
+themselves. No final answer, no "close" answer, no range that pins it down, no
+value quoted "as an example" or "for instance" that matches the guide (an angle,
+a factor, a stress), and no parallel example built on the guide's numbers or
+geometry. "Is 104 MPa
 right?" gets "no, and here is the step where yours goes wrong", not the number
 it should be. A student who posts guess after guess with no work gets asked for
 the work, not another verdict. After the release date the same guide is on
