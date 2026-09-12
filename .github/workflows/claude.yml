@@ -30,18 +30,18 @@
 # ---------------------------------------------------------------------------
 # Model selection, in one paragraph
 #
-#   @claude                     -> Sonnet   (the default since 2026-09-08)
+#   @claude                     -> Opus at high effort (the default since 2026-09-12)
+#   @claude+sonnet              -> Sonnet   (faster; fine for most questions)
 #   @claude+haiku               -> Haiku    (cheapest; fine for a question that
 #                                  does not touch a homework problem)
-#   @claude+opus                -> Opus
-#   @claude+sonnet:high         -> Sonnet at high effort
+#   @claude+opus:medium         -> Opus at medium effort
 #
-# Model names are FAMILY ALIASES, not pinned ids: `sonnet` resolves to the
-# latest Sonnet at run time, so the course never has to ship a commit to pick up
+# Model names are FAMILY ALIASES, not pinned ids: `opus` resolves to the
+# latest Opus at run time, so the course never has to ship a commit to pick up
 # a new release. (`claude --help`: "Provide an alias for the latest model".)
 #
 # Effort is only sent to families that accept it, see EFFORT_FAMILIES below.
-# A bare `@claude` runs Sonnet at DEFAULT_EFFORT; `@claude+haiku` carries no
+# A bare `@claude` runs Opus at DEFAULT_EFFORT; `@claude+haiku` carries no
 # effort flag at all, which is correct: Haiku has no effort parameter.
 #
 # Anything outside ALLOWED_FAMILIES falls back to the default and says so in
@@ -112,17 +112,27 @@ jobs:
 
           # ---- the cost knobs -----------------------------------------------
           # Bare "@claude" resolves to this. A FAMILY ALIAS, not a pinned id:
-          # the CLI resolves it to the latest Sonnet at run time, so a new
+          # the CLI resolves it to the latest Opus at run time, so a new
           # release is picked up without a commit, and, more importantly, a
-          # bare "@claude" and an explicit "@claude+sonnet" can never drift
-          # onto different models. Sonnet replaced Haiku as the default on
-          # 2026-09-08 after the solution-guide pilot: given the same CLAUDE.md
-          # rules and the same near-correct student work, Sonnet asked the
-          # student to check the sign of a given stress, while Haiku wrote the
-          # sign and the resulting intermediate value out of the guide. Roughly
-          # twice the cost per ping, accepted for that reason.
-          DEFAULT_MODEL: sonnet
-          DEFAULT_EFFORT: medium
+          # bare "@claude" and an explicit "@claude+opus" can never drift
+          # onto different models. Opus replaced Sonnet as the default on
+          # 2026-09-12 (Sonnet had replaced Haiku on 2026-09-08): ten days of
+          # student traffic, 236 runs across 83 repositories with 4 of them
+          # tagged, sat far below the subscription's allowance, and in the
+          # 2026-09-12 pilot Opus at high effort found the same sign error
+          # Sonnet had, added a check Sonnet did not (both given faces must
+          # lie on the circle), and quoted nothing from the guide. About 2.5x
+          # Sonnet's cost per ping at list price and roughly double the run
+          # time (2 to 3 minutes against 1), which a student reading an issue
+          # comment does not notice. docs/solution-guides-in-student-repos.md
+          # has both pilots.
+          DEFAULT_MODEL: opus
+          # high, not medium: in the same pilot Opus at medium quoted "13
+          # degrees" as an example of a bare answer, and that is the guide's
+          # principal angle to the degree. One sample, but it is the failure
+          # the guide rules exist to prevent, and at this traffic the token
+          # cost of high over medium is noise.
+          DEFAULT_EFFORT: high
           # Families a student may request. Opus is allowed, but only up to
           # MAX_EFFORT, because the cost multiplier that actually bites is
           # effort, not tier. A TA who needs to narrow this edits it here.
@@ -195,7 +205,7 @@ jobs:
           # ---- assemble -----------------------------------------------------
           # Only send --effort to a family that has the parameter. Haiku does
           # not, so "@claude+haiku" gets "--model haiku" with no effort flag,
-          # while the default path is "--model sonnet --effort medium".
+          # while the default path is "--model opus --effort high".
           args="--model $model"
           if [[ " $EFFORT_FAMILIES " == *" $family "* ]]; then
             args="$args --effort $effort"
@@ -221,7 +231,7 @@ jobs:
             echo "| Triggered by | @$TRIGGER_USER |"
             echo
             for n in "${notes[@]}"; do echo "> [!NOTE]"; echo "> $n"; echo; done
-            echo "Ask for more with \`@claude+sonnet:high\` or \`@claude+opus\`, or less with \`@claude+haiku\`; a bare \`@claude\` is Sonnet, which is the right tool for most questions."
+            echo "A bare \`@claude\` is Opus at high effort, the strongest setting this course offers. For a quick question, \`@claude+sonnet\` is faster and \`@claude+haiku\` faster still."
           } >> "$GITHUB_STEP_SUMMARY"
 
           {
