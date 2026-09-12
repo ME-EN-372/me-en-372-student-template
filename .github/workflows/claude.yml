@@ -35,7 +35,8 @@
 #
 #   @claude                     -> Opus at high effort (the default since 2026-09-12)
 #   @claude+fable               -> Fable, the largest model (5.1 today; slowest,
-#                                  and it shares the course's own Fable allowance)
+#                                  and it shares the course's own Fable allowance;
+#                                  when that is spent the job retries on Opus)
 #   @claude+sonnet              -> Sonnet   (faster; fine for most questions)
 #   @claude+haiku               -> Haiku    (cheapest; fine for a question that
 #                                  does not touch a homework problem)
@@ -90,6 +91,12 @@ jobs:
     # Bounds one run, not the semester. Student work is short; a run that needs
     # more than half an hour has usually gone wrong rather than gone deep.
     timeout-minutes: 30
+    env:
+      # Retry on the fallback model after ANY failure, not only a spent
+      # allowance. Off in production. "true" is how the retry path was
+      # exercised on the scratch repository (a nonexistent model as the
+      # primary fails in seconds and the retry then runs for real).
+      RETRY_ON_ANY_FAILURE: "false"
     permissions:
       contents: write
       pull-requests: write
@@ -141,11 +148,18 @@ jobs:
           # Families a student may request. Fable (5.1 as of 2026-09-12; the
           # alias tracks the newest release, and @claude+fable-5.1 pins it) is
           # allowed at the instructor's direction (issue 99). It draws on the
-          # same Fable allowance the course's own automation uses, and this
-          # workflow has no fallback, so a ping that lands on that cap fails
-          # rather than answering on Opus. A TA who needs to narrow this edits
-          # it here.
+          # same Fable allowance the course's own automation uses; when that
+          # is spent the job retries on FALLBACK_MODEL, below. A TA who needs
+          # to narrow this edits it here.
           ALLOWED_FAMILIES: "haiku sonnet opus fable"
+          # Second attempt when the first dies of a spent allowance, the same
+          # design as the course repo's workflow (docs/claude-yml-model-fallback.md
+          # there). A family alias. Dropped when the primary is the same
+          # family, since the allowance that ran out is the one the retry
+          # would use: a bare "@claude" and "@claude+opus" never retry;
+          # "@claude+fable", "@claude+sonnet" and "@claude+haiku" retry on
+          # Opus. Empty string switches the retry off.
+          FALLBACK_MODEL: opus
           # Families that accept an effort level at all. Sending --effort to a
           # model without the parameter is at best ignored and at worst an
           # error, so the flag is omitted rather than sent and hoped for.
@@ -225,9 +239,29 @@ jobs:
             effort="n/a"
           fi
 
+          # ---- fallback -----------------------------------------------------
+          # The retry carries the requested effort, or DEFAULT_EFFORT when the
+          # primary had none (Haiku). --fallback-model is the CLI's own
+          # in-session switch for an overloaded model; the job-level retry
+          # below is for a spent allowance, which the CLI does not cover.
+          fallback="$FALLBACK_MODEL"
+          fallback_args=""
+          if [[ -n "$fallback" && "$(family_of "$fallback")" == "$family" ]]; then
+            fallback=""
+          fi
+          if [[ -n "$fallback" ]]; then
+            fb_effort=$effort
+            [[ "$(rank "$fb_effort")" == 0 ]] && fb_effort=$DEFAULT_EFFORT
+            fallback_args="--model $fallback --effort $fb_effort"
+            args="$args --fallback-model $fallback"
+          fi
+
           # ---- log the intermediate pieces ----------------------------------
           echo "tag=$TAG  requested_model=${model_req:-<default>}  requested_effort=${effort_req:-<default>}"
           echo "resolved: $args"
+          if [[ -n "$fallback" ]]; then
+            echo "if the allowance for $model is spent, the job retries with: $fallback_args"
+          fi
 
           {
             echo "### Claude run settings"
@@ -238,6 +272,7 @@ jobs:
             echo "| Model | \`$model\` (latest of that family) |"
             echo "| Effort | \`$effort\` |"
             echo "| Triggered by | @$TRIGGER_USER |"
+            echo "| If the allowance is spent | ${fallback:+retry on \`$fallback\`}${fallback:-no retry (same model)} |"
             echo
             for n in "${notes[@]}"; do echo "> [!NOTE]"; echo "> $n"; echo; done
             echo "A bare \`@claude\` is Opus at high effort. \`@claude+fable\` is the largest model and the slowest; \`@claude+sonnet\` and \`@claude+haiku\` are faster for a quick question. \`:low\`, \`:medium\`, \`:high\` or \`:xhigh\` after a model name sets its effort (Haiku has none)."
@@ -248,6 +283,8 @@ jobs:
             echo "model_args=$args"
             echo "model=$model"
             echo "effort=$effort"
+            echo "fallback_model=$fallback"
+            echo "fallback_args=$fallback_args"
           } >> "$GITHUB_OUTPUT"
 
       # ---------------------------------------------------------------------
@@ -318,10 +355,15 @@ jobs:
 
       - name: Run Claude
         id: claude
+        # The job decides what to do with a failure in the steps below, so
+        # this one must not end the job by itself.
+        continue-on-error: true
         uses: anthropics/claude-code-action@v1
         env:
-          # Where the step above put the unlocked guides. Outside the checkout;
-          # CLAUDE.md names the same path.
+          # Where the unlock step put the guides. Outside the checkout;
+          # CLAUDE.md names the same path. Step level, not job level: the
+          # runner context is not available in a job-level env, and GitHub
+          # refuses the whole file when it sees it there.
           SOLUTION_GUIDES_DIR: ${{ runner.temp }}/solution-guides
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -358,6 +400,225 @@ jobs:
           claude_args: |
             ${{ steps.select.outputs.model_args }}
             --permission-mode acceptEdits
+
+      # ---------------------------------------------------------------------
+      # Fallback: the same design as the course repo's workflow. Did the first
+      # attempt die because its allowance was spent, or for some ordinary
+      # reason? A failed run still writes its execution JSON and still sets
+      # the execution_file output, and the answer is in the run's own error
+      # records: an "api_error" result carrying HTTP 429, and a
+      # rate_limit_event whose status is "rejected". Only those error records
+      # are searched, never the transcript (which here also carries solution
+      # guide text), so a comment that happens to discuss usage limits cannot
+      # trigger a retry, and nothing from the transcript is printed. The step
+      # emits "note": one line for the next step to append to the first
+      # attempt's comment; empty means the comment is left alone.
+      # ---------------------------------------------------------------------
+      - name: Check whether the model ran out of credits
+        id: billing
+        if: ${{ !cancelled() && steps.claude.outcome == 'failure' }}
+        env:
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+          PRIMARY_MODEL_RESOLVED: ${{ steps.select.outputs.model }}
+          FALLBACK_MODEL_RESOLVED: ${{ steps.select.outputs.fallback_model }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+
+          path = os.environ.get("EXECUTION_FILE", "")
+          primary = os.environ.get("PRIMARY_MODEL_RESOLVED", "") or "the primary model"
+          fallback = os.environ.get("FALLBACK_MODEL_RESOLVED", "")
+          retry_any = os.environ.get("RETRY_ON_ANY_FAILURE", "false").lower() == "true"
+
+          # The CLI's own wording for a spent allowance, plus the API's
+          # credit-balance wording.
+          BILLING = re.compile(
+              r"out of (usage |extra )?credits|out of extra usage"
+              r"|credit balance (is )?too low|(reached|hit) your .{0,40}limit"
+              r"|usage limit reached|requires usage credits|out of usage"
+              r"|seat type doesn.t include usage|usage allocation has been disabled"
+              r"|monthly spend limit",
+              re.I,
+          )
+
+          messages = []
+          if path and os.path.isfile(path):
+              try:
+                  messages = json.load(open(path))
+              except Exception as exc:
+                  print(f"Could not parse the execution file: {exc}")
+          else:
+              print(f"No execution file to inspect (execution_file={path!r})")
+
+          billing = False
+          reason = "the failure does not look like a spent allowance"
+
+          for m in messages:
+              if m.get("type") == "rate_limit_event":
+                  info = m.get("rate_limit_info") or {}
+                  if info.get("status") == "rejected":
+                      billing = True
+                      reason = (
+                          f"rate_limit_event rejected: {info.get('rateLimitType')}"
+                          f" (overage {info.get('overageStatus')}"
+                          f"/{info.get('overageDisabledReason')})"
+                      )
+
+          results = [m for m in messages if m.get("type") == "result"]
+          if results and results[-1].get("is_error"):
+              last = results[-1]
+              text = " ".join(str(last.get(k, "")) for k in ("result", "errors"))
+              status = last.get("api_error_status")
+              if status in (402, 429) or BILLING.search(text):
+                  billing = True
+                  reason = f"HTTP {status}: {last.get('result') or last.get('errors')}"
+
+          if not messages:
+              reason = "no execution file, so the cause is unknown"
+
+          retry = bool(fallback) and (billing or retry_any)
+          if not fallback:
+              reason += "; no fallback model is configured"
+          elif retry_any and not billing:
+              reason += "; retrying anyway because RETRY_ON_ANY_FAILURE is true"
+
+          if billing and retry:
+              note = (f"Out of usage credits for `{primary}`. Retrying with"
+                      f" `{fallback}` in this same job; the retry posts its own"
+                      " progress comment in this thread.")
+          elif billing:
+              note = (f"Out of usage credits for `{primary}`, and no different"
+                      " fallback model is configured, so there is no retry.")
+          elif retry:
+              note = (f"The `{primary}` attempt failed with something other"
+                      f" than a spent allowance. Retrying with `{fallback}` in"
+                      " this same job (RETRY_ON_ANY_FAILURE is on); the retry"
+                      " posts its own progress comment in this thread.")
+          else:
+              note = ""
+
+          reason = re.sub(r"\s+", " ", reason).strip()[:300]
+          note = re.sub(r"\s+", " ", note).strip()
+          print(f"Allowance spent: {billing}")
+          print(f"Retry with {fallback or '(none)'}: {retry}")
+          print(f"Reason: {reason}")
+          print(f"Note: {note or '(none)'}")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"retry={'true' if retry else 'false'}\n")
+              fh.write(f"reason={reason}\n")
+              fh.write(f"note={note}\n")
+          PY
+
+      # The first attempt's comment currently ends at "Claude encountered an
+      # error". Append one line saying why and what the job is doing about it,
+      # so the thread explains itself while the retry spins up. The comment is
+      # found by the run link it carries: at this point only the first attempt
+      # has posted a comment holding this run's id. On
+      # pull_request_review_comment events the tracking comment is a reply in
+      # the review thread, which lives on a different endpoint than issue and
+      # PR conversation comments. Editing either needs the write permissions
+      # declared at the top of the job.
+      - name: Explain the failure on the first attempt's comment
+        if: ${{ !cancelled() && steps.billing.outputs.note != '' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOTE: ${{ steps.billing.outputs.note }}
+          RUN_MARK: /actions/runs/${{ github.run_id }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request_review_comment" ]]; then
+            number=$(jq -r '.pull_request.number' "$GITHUB_EVENT_PATH")
+            list="repos/$GITHUB_REPOSITORY/pulls/$number/comments"
+            edit="repos/$GITHUB_REPOSITORY/pulls/comments"
+          else
+            number=$(jq -r '.issue.number // .pull_request.number' "$GITHUB_EVENT_PATH")
+            list="repos/$GITHUB_REPOSITORY/issues/$number/comments"
+            edit="repos/$GITHUB_REPOSITORY/issues/comments"
+          fi
+          comment_id=$(gh api --paginate "$list" \
+            --jq '.[] | select(.user.type == "Bot") | select(.body | contains(env.RUN_MARK)) | .id' \
+            | head -n1)
+          if [[ -z "$comment_id" ]]; then
+            echo "No comment from this run found under $list, so there is nothing to annotate."
+            exit 0
+          fi
+          body=$(gh api "$edit/$comment_id" --jq .body)
+          printf -v new_body '%s\n\n> [!WARNING]\n> %s' "$body" "$NOTE"
+          gh api -X PATCH "$edit/$comment_id" -f body="$new_body" --jq .id >/dev/null
+          echo "Annotated comment $comment_id: $NOTE"
+
+      # The first attempt strips checkout's auth header and bakes its own app
+      # token into origin's URL, and the action revokes that token on step
+      # exit, so the retry's first git fetch would fail with "Invalid username
+      # or token". Point origin back at the workflow token before the retry
+      # (the fifth live firing in docs/claude-yml-model-fallback.md).
+      - name: Restore git credentials for the retry
+        if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
+        env:
+          WORKFLOW_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          server=${GITHUB_SERVER_URL#https://}
+          git remote set-url origin \
+            "https://x-access-token:$WORKFLOW_TOKEN@$server/$GITHUB_REPOSITORY.git"
+          if git ls-remote origin HEAD >/dev/null 2>&1; then
+            echo "origin authenticates again, so the retry can fetch."
+          else
+            echo "origin still cannot authenticate, so the retry will fail in branch setup."
+          fi
+
+      # Second attempt, on the fallback model. A fresh session: it posts its
+      # own tracking comment and reads the task from the triggering comment
+      # again, so the note below tells it to look at what the first attempt
+      # already posted. Same inputs as the first attempt except the model,
+      # which the parse step resolved; same acceptEdits, same guides, same
+      # hidden output.
+      - name: Run Claude on the fallback model
+        id: fallback
+        if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
+        uses: anthropics/claude-code-action@v1
+        env:
+          SOLUTION_GUIDES_DIR: ${{ runner.temp }}/solution-guides
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          trigger_phrase: ${{ steps.select.outputs.phrase }}
+          # Without this line, the prompt below would switch the action into
+          # automation ("agent") mode: no tracking comment, no thread context,
+          # and the note below would become the entire task. track_progress
+          # forces tag mode, which posts the tracking comment, reads the task
+          # from the comment that triggered the run, and delivers the note
+          # below as <custom_instructions>. It must sit HERE, on the step that
+          # has prompt:, not on the first attempt, where it is a no-op.
+          track_progress: true
+          display_report: false
+          show_full_output: false
+          additional_permissions: |
+            actions: read
+          # The two attempts share one workspace, and the generated branch
+          # name has minute resolution, so a retry that starts in the same
+          # minute as the first attempt would regenerate the branch the first
+          # attempt already created and die in branch setup. A disjoint prefix
+          # removes the collision by construction.
+          branch_prefix: claude/retry-
+          prompt: |
+            An earlier attempt at this same request ran on ${{ steps.select.outputs.model }} and stopped when that model's allowance ran out. You are the retry, running on ${{ steps.select.outputs.fallback_model }}. Read this thread first: if the earlier attempt already posted part of an answer, continue from it rather than starting over. Its progress comment is the one above yours that reports an error.
+          claude_args: |
+            ${{ steps.select.outputs.fallback_args }}
+            --permission-mode acceptEdits
+
+      # continue-on-error above hides the first attempt's failure from the job
+      # status, so put it back when nothing succeeded.
+      - name: Fail if no attempt succeeded
+        if: ${{ !cancelled() && steps.claude.outcome == 'failure' && steps.fallback.outcome != 'success' }}
+        env:
+          REASON: ${{ steps.billing.outputs.reason }}
+          RETRIED: ${{ steps.billing.outputs.retry }}
+        run: |
+          echo "First attempt (${{ steps.select.outputs.model }}) failed: $REASON"
+          if [[ "$RETRIED" == "true" ]]; then
+            echo "Retry on ${{ steps.select.outputs.fallback_model }} also failed."
+          fi
+          exit 1
 
       # There is no longer an "Upload Claude execution log" step. That artifact
       # was the full turn-by-turn JSON of the run, tool results included, which
