@@ -1,11 +1,14 @@
 # Lets students summon Claude by writing "@claude ..." in an issue, an issue
 # comment, a pull-request comment, or a PR review comment.
 #
-# Requires one organization secret, CLAUDE_CODE_OAUTH_TOKEN, shared to every
-# student repository. That token comes from the course's Claude subscription
-# (`claude setup-token`), with "API credits overflow" enabled in claude.ai
-# settings so runs keep working past the subscription's included usage. There
-# is no separate Anthropic API key to mint or rotate.
+# Requires one repository secret, CLAUDE_CODE_OAUTH_TOKEN, set on every
+# student repository (there is no organization secret; the course repo holds
+# its own copy of the same token). It comes from the course's Claude
+# subscription (`claude setup-token`). Extra usage past the subscription's
+# allowance is NOT enabled at the organization level as of 2026-09-12: every
+# rate-limit record says overage rejected, org_level_disabled, so the five
+# hour and seven day windows are hard walls and a ping that lands on one fails
+# until the reset. There is no separate Anthropic API key to mint or rotate.
 # See ../../SETUP.md for how the course instantiates this.
 #
 # ---------------------------------------------------------------------------
@@ -31,10 +34,12 @@
 # Model selection, in one paragraph
 #
 #   @claude                     -> Opus at high effort (the default since 2026-09-12)
+#   @claude+fable               -> Fable, the largest model (5.1 today; slowest,
+#                                  and it shares the course's own Fable allowance)
 #   @claude+sonnet              -> Sonnet   (faster; fine for most questions)
 #   @claude+haiku               -> Haiku    (cheapest; fine for a question that
 #                                  does not touch a homework problem)
-#   @claude+opus:medium         -> Opus at medium effort
+#   @claude+opus:xhigh          -> Opus at the highest effort a student can ask for
 #
 # Model names are FAMILY ALIASES, not pinned ids: `opus` resolves to the
 # latest Opus at run time, so the course never has to ship a commit to pick up
@@ -133,19 +138,23 @@ jobs:
           # the guide rules exist to prevent, and at this traffic the token
           # cost of high over medium is noise.
           DEFAULT_EFFORT: high
-          # Families a student may request. Opus is allowed, but only up to
-          # MAX_EFFORT, because the cost multiplier that actually bites is
-          # effort, not tier. A TA who needs to narrow this edits it here.
-          ALLOWED_FAMILIES: "haiku sonnet opus"
+          # Families a student may request. Fable (5.1 as of 2026-09-12; the
+          # alias tracks the newest release, and @claude+fable-5.1 pins it) is
+          # allowed at the instructor's direction (issue 99). It draws on the
+          # same Fable allowance the course's own automation uses, and this
+          # workflow has no fallback, so a ping that lands on that cap fails
+          # rather than answering on Opus. A TA who needs to narrow this edits
+          # it here.
+          ALLOWED_FAMILIES: "haiku sonnet opus fable"
           # Families that accept an effort level at all. Sending --effort to a
           # model without the parameter is at best ignored and at worst an
           # error, so the flag is omitted rather than sent and hoped for.
           # Haiku is deliberately absent: Haiku 4.5 has no effort parameter.
           # Revisit if a future Haiku gains one.
           EFFORT_FAMILIES: "opus sonnet fable"
-          # Effort ceiling. xhigh and max are for multi-hour course automation,
-          # not for "why does my beam deflection come out negative".
-          MAX_EFFORT: high
+          # Effort ceiling: xhigh is open to students (instructor, 2026-09-12);
+          # max stays for multi-hour course automation.
+          MAX_EFFORT: xhigh
           # -------------------------------------------------------------------
         run: |
           set -euo pipefail
@@ -193,7 +202,7 @@ jobs:
           if [[ -z "$effort_req" ]]; then
             effort="$DEFAULT_EFFORT"
           elif [[ "$(rank "$effort_req")" == 0 ]]; then
-            notes+=("Unknown effort level \`:$effort_req\`, so \`$DEFAULT_EFFORT\` was used. Valid levels: low, medium, high.")
+            notes+=("Unknown effort level \`:$effort_req\`, so \`$DEFAULT_EFFORT\` was used. Valid levels: low, medium, high, xhigh.")
             effort="$DEFAULT_EFFORT"
           elif (( $(rank "$effort_req") > $(rank "$MAX_EFFORT") )); then
             notes+=("Effort \`$effort_req\` is above this course's ceiling, so it was clamped to \`$MAX_EFFORT\`.")
@@ -231,7 +240,7 @@ jobs:
             echo "| Triggered by | @$TRIGGER_USER |"
             echo
             for n in "${notes[@]}"; do echo "> [!NOTE]"; echo "> $n"; echo; done
-            echo "A bare \`@claude\` is Opus at high effort, the strongest setting this course offers. For a quick question, \`@claude+sonnet\` is faster and \`@claude+haiku\` faster still."
+            echo "A bare \`@claude\` is Opus at high effort. \`@claude+fable\` is the largest model and the slowest; \`@claude+sonnet\` and \`@claude+haiku\` are faster for a quick question. \`:low\`, \`:medium\`, \`:high\` or \`:xhigh\` after a model name sets its effort (Haiku has none)."
           } >> "$GITHUB_STEP_SUMMARY"
 
           {
