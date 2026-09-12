@@ -82,16 +82,13 @@ course:
   sketch.
 - Table lookups from Shigley. It approximates them, confidently. Read the table.
 
-**If an answer feels thin, ask for a stronger model.** A bare `@claude` uses
-Haiku, which is fast, cheap, and right for most of what you will ask. For a
-harder question, "walk me through why my FEA and my hand calculation disagree",
-tag it `@claude+sonnet`, or `@claude+sonnet:high` to have it think longer.
-`@claude+opus` is available for the genuinely hard ones. Reach for these when
-the first answer misses, not by default. The run summary on each job says which
-model actually replied.
-
-`:high` only does something on models that have an effort setting, which is
-Sonnet and Opus. On Haiku it is ignored, and the run summary says so.
+**A bare `@claude` is the strongest setting this course offers**: Opus at high
+effort, since Sep 12. There is nothing to add for a hard question. For a quick
+one, "what does this folder hold", `@claude+sonnet` answers faster and
+`@claude+haiku` faster still. `:low`, `:medium` and `:high` set the effort on
+Sonnet and Opus (`@claude+opus:medium`); Haiku has no effort setting, so a
+`:high` on it is ignored and the run summary says so. The run summary on each
+job says which model actually replied.
 
 **Be able to defend every number you submit.** The exams are closed to AI, the
 oral defense is live, and the project asks you to reconcile two independent
