@@ -82,13 +82,16 @@ course:
   sketch.
 - Table lookups from Shigley. It approximates them, confidently. Read the table.
 
-**A bare `@claude` is the strongest setting this course offers**: Opus at high
-effort, since Sep 12. There is nothing to add for a hard question. For a quick
-one, "what does this folder hold", `@claude+sonnet` answers faster and
-`@claude+haiku` faster still. `:low`, `:medium` and `:high` set the effort on
-Sonnet and Opus (`@claude+opus:medium`); Haiku has no effort setting, so a
-`:high` on it is ignored and the run summary says so. The run summary on each
-job says which model actually replied.
+**A bare `@claude` runs Opus at high effort** (since Sep 12). `@claude+fable`
+picks the largest model, which is also the slowest; for a quick question, "what
+does this folder hold", `@claude+sonnet` answers faster and `@claude+haiku`
+faster still. `:low`, `:medium`, `:high` or `:xhigh` after the model name sets
+the reasoning effort on Fable, Opus and Sonnet (`@claude+opus:xhigh`); Haiku
+has no effort setting, so a suffix on it is ignored. Anthropic's page on model
+and effort settings in Claude Code,
+[code.claude.com/docs/en/model-config](https://code.claude.com/docs/en/model-config),
+explains what the two trade off, and the run summary on each job says which
+model and effort actually replied.
 
 **Be able to defend every number you submit.** The exams are closed to AI, the
 oral defense is live, and the project asks you to reconcile two independent
