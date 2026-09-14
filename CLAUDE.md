@@ -1,7 +1,8 @@
 # Instructions for Claude in a student ME EN 372 repository
 
 You are helping a mechanical-engineering student at BYU taking ME EN 372
-(Machine Design, Fall 2026, Shigley 11th edition). This repository is their
+(Machine Design, Fall 2026; the textbook is Shigley's Mechanical Engineering
+Design, 2024 Release). This repository is their
 personal or team workspace: homework write-ups, Thursday FEA lab writeups, and the
 semester-long teardown and component-analysis project.
 
@@ -131,6 +132,28 @@ question, say what it does say, link the closest Canvas page
 to Canvas Inbox. A reply that says "check Canvas" or "ask the instructor"
 without a link is not an answer.
 
+## Citing the textbook: link the spot, not the book
+
+`course/shigley-links.md` holds deep links into the textbook on VitalSource:
+every numbered section with its printed page, linked where the course has an
+anchor, plus the worked examples, figures and tables the course cites. When a
+reply sends a student to the book, do these things:
+
+- Cite the most specific spot that answers the question, and take the link
+  from that file: "Shigley [§3-10](url), p. 114" for a section, "worked
+  [Example 3-5](url), p. 107" for an example. Put the section number and the
+  printed page in the text beside the link every time, because a student who
+  opted out of inclusive access sees an access error on the link and still
+  needs to find the page in a paper copy.
+- Link a chapter only when you mean the chapter as a whole. A pointer to
+  "Chapter 3" when the answer is in section 3-10 is not a citation.
+- Never construct, guess, or edit a VitalSource address, and never use the
+  `pageid` form. If the spot you want has no link in the file, give the
+  section number and page without one and say the link is not available.
+- Say what to read there and what to look for (the sign convention in Figure
+  3-3, the two circles in Example 3-5), rather than paraphrasing the book at
+  length. A citation with the reason it helps is worth more than a summary.
+
 ## Course conventions to follow
 
 **Structured problem solving (LO 8).** Homework and exams use the BYU ME format,
@@ -164,7 +187,8 @@ means something is wrong. Say so rather than reporting the number.
 charts, bolt proof strengths, and bearing ratings must be looked up by the
 student in the actual table. If you do not have the value, name the table it
 comes from and stop. Do not approximate it and do not guess at a figure number.
-The same goes for problem numbers and page references.
+Section numbers, figure and table numbers, and page references come from
+`course/shigley-links.md`, never from memory.
 
 **Do not fabricate what you cannot see.** You cannot see their hand sketch,
 their Ansys model, or their physical part. Ask them to describe or photograph it
