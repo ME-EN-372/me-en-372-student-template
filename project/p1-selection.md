@@ -6,8 +6,8 @@
 > and the justification memo under it. The
 > [criteria sheet page on Canvas](https://byu.instructure.com/courses/36965/pages/product-selection-criteria-sheet-teardown-project)
 > explains each criterion, and has a one-page PDF if you want a checklist in
-> your pocket at the store. Fill the table in **at the store**, not afterwards: it asks for the price tag, the fastener types you can
-> see, and photographed evidence for each element you are claiming.
+> your pocket at the store. You cannot open the product before you buy it, so
+> the elements and the load path are your best guess from what you can see.
 
 ## Criteria sheet (4 points)
 
@@ -41,7 +41,9 @@ no comparison of rejected products is required.>
 
 <Which single component you expect to take through the full analysis cycle, and
 your first guess at its load path: where load enters, what carries it, where it
-reacts out.>
+reacts out. For a hand mixer: the food resists the beaters, the beaters twist
+their shafts, the shafts load the gears and the motor, and the housing carries
+that back to your hand. One or two sentences like that are enough.>
 
 ## Risk (1 point)
 
