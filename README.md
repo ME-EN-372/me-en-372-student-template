@@ -43,7 +43,7 @@ put on a résumé. All three of these are **required** for A0:
 | Folder | What goes in it | Where to start |
 |---|---|---|
 | `homework/` | One folder per problem set, `hw01/` through `hw13/`, one file per problem | [`homework/TEMPLATE-solution.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/homework/TEMPLATE-solution.md) |
-| `labs/` | One folder per finite element analysis (FEA) lab that produces a writeup, named `lab-02/` and so on. Nine writeups in the semester, one per pair | [`labs/TEMPLATE-lab-writeup.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/labs/TEMPLATE-lab-writeup.md) |
+| `labs/` | One folder per finite element analysis (FEA) lab that produces a writeup, named `lab-02/` and so on. Eight writeups in the semester, one per pair | [`labs/TEMPLATE-lab-writeup.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/labs/TEMPLATE-lab-writeup.md) |
 | `labs/geometry/` | The STEP start file for every FEA lab, already downloaded | [`labs/geometry/README.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/labs/geometry/README.md) |
 | `project/` | Your team's teardown project, five submissions from P1 to P4 | [`project/README.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/project/README.md) |
 | `scratch/` | Anything half-finished, plus [`predictions.md`](https://github.com/ME-EN-372/me-en-372-student-template/blob/main/scratch/predictions.md) (a prediction you commit before a demonstration runs) and the worksheet files from the hands-on activities. Nothing here is graded for correctness; some activities check that the commit came before the demonstration | |
@@ -82,7 +82,7 @@ course:
   sketch.
 - Table lookups from Shigley. It approximates them, confidently. Read the table.
 
-**A bare `@claude` runs Opus at high effort** (since Sep 12). `@claude+fable`
+**A bare `@claude` runs Opus 5.5 at high effort** (since Sep 25). `@claude+fable`
 picks the largest model, which is also the slowest, and if its allowance for
 the week is spent the same job answers on Opus instead; for a quick question, "what
 does this folder hold", `@claude+sonnet` answers faster and `@claude+haiku`

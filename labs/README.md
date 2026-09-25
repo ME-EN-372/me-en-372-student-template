@@ -1,16 +1,16 @@
 # Thursday FEA labs
 
-There are 14 Thursday labs and **nine lab writeups**, one from each
+There are 13 Thursday labs and **eight lab writeups**, one from each
 finite element analysis (FEA) lab after the first. Labs 1, 4, 9, 10 and 14 have no writeup: Lab 1 is the
 software-setup checkoff, and Labs 4, 9, 10 and 14 are project labs whose work
-product goes into P2, P3 and P4 instead.
+product goes into P2, P3 and P4 instead. There is no Lab 6: Thursday, October 8
+is Part 1 of Exam 1, in the same room and time slot.
 
 | Writeup | Lab meets | Due, 5:00 pm Mountain Time |
 |---|---|---|
 | Lab 2, chalk in torsion | Thu Sep 10 | Wed Sep 16 |
-| Lab 3, plate with a hole | Thu Sep 17 | Wed Sep 23 |
+| Lab 3, shear versus bending along a beam | Thu Sep 17 | Wed Sep 23 |
 | Lab 5, mesh convergence | Thu Oct 1 | Wed Oct 7 |
-| Lab 6, beam elements | Thu Oct 8 | Wed Oct 14 |
 | Lab 7, combined loading | Thu Oct 15 | Wed Oct 21 |
 | Lab 8, shaft with a keyseat | Thu Oct 22 | Wed Oct 28 |
 | Lab 11, pressure vessel and press fit | Thu Nov 12 | Wed Nov 18 |
@@ -91,9 +91,8 @@ The reconciliation paragraph is graded on the **explanation, not the
 agreement**. A 30% difference with a correct diagnosis earns full credit; a 2%
 match with no diagnosis does not.
 
-Some lab sheets ask for extra items, such as the mesh-convergence table in Lab 5
-or the three-way deflection comparison in Lab 6. Those fold into the Results
-section, and the lab sheet says so.
+Some lab sheets ask for extra items, such as the mesh-convergence table in Lab 5.
+Those fold into the Results section, and the lab sheet says so.
 
 ## How to hand it in
 
@@ -124,7 +123,9 @@ the submission, so leaving either out costs you the rows that depend on it.
 
 The STEP file for every FEA lab is already in [`geometry/`](geometry/), so there
 is nothing to download before lab. That folder's README says which file goes
-with which lab.
+with which lab. Lab 3 is the one exception: its three beam files are yours
+alone, picked so that your section covers the whole range of lengths, and they
+are pushed into `lab-03/` in your repository with a README naming them.
 
 ## The lab sheets themselves
 

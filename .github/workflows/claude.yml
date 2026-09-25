@@ -33,7 +33,8 @@
 # ---------------------------------------------------------------------------
 # Model selection, in one paragraph
 #
-#   @claude                     -> Opus at high effort (the default since 2026-09-12)
+#   @claude                     -> Opus 5.5 at high effort (claude-opus-5-5, pinned 2026-09-25;
+#                                  Opus by alias since 2026-09-12)
 #   @claude+fable               -> Fable, the largest model (5.1 today; slowest,
 #                                  and it shares the course's own Fable allowance;
 #                                  when that is spent the job retries on Opus)
@@ -42,9 +43,12 @@
 #                                  does not touch a homework problem)
 #   @claude+opus:xhigh          -> Opus at the highest effort a student can ask for
 #
-# Model names are FAMILY ALIASES, not pinned ids: `opus` resolves to the
-# latest Opus at run time, so the course never has to ship a commit to pick up
-# a new release. (`claude --help`: "Provide an alias for the latest model".)
+# A model a student names by family (`@claude+opus`, `@claude+sonnet`) is a
+# FAMILY ALIAS: the CLI resolves it to the latest model of that family at run
+# time (`claude --help`: "Provide an alias for the latest model"). The DEFAULT
+# is pinned instead: DEFAULT_MODEL names claude-opus-5-5 exactly (instructor,
+# 2026-09-25), so a new release reaches a bare `@claude` only by editing that
+# one line.
 #
 # Effort is only sent to families that accept it, see EFFORT_FAMILIES below.
 # A bare `@claude` runs Opus at DEFAULT_EFFORT; `@claude+haiku` carries no
@@ -123,11 +127,12 @@ jobs:
           TRIGGER_USER: ${{ github.event.comment.user.login || github.event.issue.user.login || github.actor }}
 
           # ---- the cost knobs -----------------------------------------------
-          # Bare "@claude" resolves to this. A FAMILY ALIAS, not a pinned id:
-          # the CLI resolves it to the latest Opus at run time, so a new
-          # release is picked up without a commit, and, more importantly, a
-          # bare "@claude" and an explicit "@claude+opus" can never drift
-          # onto different models. Opus replaced Sonnet as the default on
+          # Bare "@claude" resolves to this. A PINNED id since 2026-09-25 (it
+          # was the `opus` family alias before): a new Opus release reaches a
+          # bare "@claude" only when this line is edited, while an explicit
+          # "@claude+opus" still takes the alias and so the latest Opus. The
+          # two can therefore differ for a while after a release; that is the
+          # cost of the pin. Opus replaced Sonnet as the default on
           # 2026-09-12 (Sonnet had replaced Haiku on 2026-09-08): ten days of
           # student traffic, 236 runs across 83 repositories with 4 of them
           # tagged, sat far below the subscription's allowance, and in the
@@ -138,7 +143,11 @@ jobs:
           # time (2 to 3 minutes against 1), which a student reading an issue
           # comment does not notice. docs/solution-guides-in-student-repos.md
           # has both pilots.
-          DEFAULT_MODEL: opus
+          # Pinned to Opus 5.5 on 2026-09-25 at the instructor's direction (it
+          # was the `opus` alias from 2026-09-12). family_of() reads it as
+          # "opus", so ALLOWED_FAMILIES and the same-family fallback rule below
+          # treat it exactly as they treated the alias.
+          DEFAULT_MODEL: claude-opus-5-5
           # high, not medium: in the same pilot Opus at medium quoted "13
           # degrees" as an example of a bare answer, and that is the guide's
           # principal angle to the degree. One sample, but it is the failure
@@ -228,7 +237,7 @@ jobs:
           # ---- assemble -----------------------------------------------------
           # Only send --effort to a family that has the parameter. Haiku does
           # not, so "@claude+haiku" gets "--model haiku" with no effort flag,
-          # while the default path is "--model opus --effort high".
+          # while the default path is "--model claude-opus-5-5 --effort high".
           args="--model $model"
           if [[ " $EFFORT_FAMILIES " == *" $family "* ]]; then
             args="$args --effort $effort"
@@ -269,13 +278,17 @@ jobs:
             echo "| | |"
             echo "|---|---|"
             echo "| Tag | \`$TAG\` |"
-            echo "| Model | \`$model\` (latest of that family) |"
+            if [[ "$model" == *[0-9]* ]]; then
+              echo "| Model | \`$model\` |"
+            else
+              echo "| Model | \`$model\` (latest of that family) |"
+            fi
             echo "| Effort | \`$effort\` |"
             echo "| Triggered by | @$TRIGGER_USER |"
             echo "| If the allowance is spent | ${fallback:+retry on \`$fallback\`}${fallback:-no retry (same model)} |"
             echo
             for n in "${notes[@]}"; do echo "> [!NOTE]"; echo "> $n"; echo; done
-            echo "A bare \`@claude\` is Opus at high effort. \`@claude+fable\` is the largest model and the slowest; \`@claude+sonnet\` and \`@claude+haiku\` are faster for a quick question. \`:low\`, \`:medium\`, \`:high\` or \`:xhigh\` after a model name sets its effort (Haiku has none)."
+            echo "A bare \`@claude\` is Opus 5.5 at high effort. \`@claude+fable\` is the largest model and the slowest; \`@claude+sonnet\` and \`@claude+haiku\` are faster for a quick question. \`:low\`, \`:medium\`, \`:high\` or \`:xhigh\` after a model name sets its effort (Haiku has none)."
           } >> "$GITHUB_STEP_SUMMARY"
 
           {

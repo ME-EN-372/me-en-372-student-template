@@ -9,8 +9,8 @@
       safety-record.md      the safety procedure, with photo evidence
       video-link.md         the teardown video
 
-Lab 4 (Thu Sep 24) is the teardown bazaar. The worksheet and station log from
-that session feed straight into this package.
+Lab 4 (Thu Sep 24) is the teardown bazaar. Anything a visitor catches at your
+table that session, a missed element or a wrong label, goes into this package.
 
 ## Machine-element inventory (6 points)
 

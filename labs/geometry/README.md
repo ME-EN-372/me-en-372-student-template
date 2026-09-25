@@ -15,8 +15,8 @@ below is also downloadable from the course template repository:
 |---|---|---|
 | 1 | `lab01-onboarding-bracket.step` | 120 x 40 x 6 mm cantilever plate, 12 mm hole 30 mm from the fixed edge |
 | 2 | `lab02-truss.step` | 7-member planar truss, drawn as line bodies, in mm |
-| 3, 5 | `lab03-plate-hole.step` | 100 x 40 x 5 mm plate, 10 mm hole on center, solid |
-| 3, 5 | `lab03-plate-hole-surface.step` | the same plate as a flat surface body, for the 2D plane-stress run |
+| 5 | `lab03-plate-hole.step` | 100 x 40 x 5 mm plate, 10 mm hole on center, solid (named for the lab it used to belong to; Lab 3 now uses the beam files in your `lab-03/` folder) |
+| 5 | `lab03-plate-hole-surface.step` | the same plate as a flat surface body, for the 2D plane-stress run |
 | 6 | `lab06-beam-line.step` | 2000 mm line body |
 | 6 | `lab06-beam-solid.step` | the same beam as a solid, already split at the two bearing strips and the midspan load patch |
 | 7 | `lab07-post.step` | 40 mm diameter by 200 mm cantilever post |
