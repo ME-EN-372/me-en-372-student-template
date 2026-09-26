@@ -46,7 +46,7 @@ One folder per lab, named after the lab number:
     labs/
       lab-02/
         prediction-<your netid>.md  your committed prediction, from the session
-        writeup.md                  the pair's writeup
+        writeup.md                  the writeup you wrote with your partner
         figures/                    the stage A and stage B result figures
       lab-03/
       ...
@@ -54,11 +54,11 @@ One folder per lab, named after the lab number:
 Start every writeup from [`TEMPLATE-lab-writeup.md`](TEMPLATE-lab-writeup.md).
 The headings in that file are the rubric.
 
-## One writeup per pair, one prediction per person
+## One writeup per pair, committed by each of you; one prediction per person
 
-**The writeup is a pair deliverable and earns one grade for the pair.** Decide
-with your partner which of your two repositories will hold it, put it there, and
-both of you paste that same link into the Canvas lab writeup submission.
+**You write the writeup with your partner, and each of you commits it in your
+own repository.** There is no shared repository: each of you pastes the link to
+your own `labs/lab-NN/` folder into the Canvas lab writeup submission.
 
 **The prediction is individual and is committed in the session, before you
 solve.** Each lab sheet marks one or two items as committed predictions: a
@@ -91,13 +91,15 @@ The reconciliation paragraph is graded on the **explanation, not the
 agreement**. A 30% difference with a correct diagnosis earns full credit; a 2%
 match with no diagnosis does not.
 
-Some lab sheets ask for extra items, such as the mesh-convergence table in Lab 5.
-Those fold into the Results section, and the lab sheet says so.
+Some lab sheets ask for extra items. Those fold into the Results section, and
+the lab sheet says so. **Lab 5 is the exception:** its whole deliverable is three
+screenshots and two sentences in [`labs/lab-05/README.md`](lab-05/README.md),
+which says exactly what they are.
 
 ## How to hand it in
 
-1. Commit the writeup and the figures to the repository you agreed on, with
-   links to both partners' committed prediction files.
+1. Commit the writeup and the figures to your own repository, with links to
+   both partners' committed prediction files.
 2. Open that week's **lab writeup submission** on Canvas and complete it. It
    asks for the link to the committed work, your stage A and stage B numbers,
    which part-2 task you chose, and an individual exit question.
