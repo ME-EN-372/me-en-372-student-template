@@ -51,6 +51,28 @@
       ]
     },
     {
+      "file": "lab05-notched-rod.step",
+      "lab": "lab-05",
+      "description": "Notched rod: O24 x 150 mm bar with a semicircular circumferential groove at midlength, O20 mm at the root.",
+      "kind": "solid",
+      "notes": [
+        "D/d = 1.2 and r/d = 0.10, both on printed gridlines of the grooved-round-bar-in-tension chart.",
+        "30 kN tension on one end face: net-section nominal 95.5 MPa on the O20 root, gross 66.3 MPa on the O24 shank. The chart is defined on the net section.",
+        "Refine at the groove root only. A global refinement of a 150 mm rod to reach 0.25 mm at the root is the slow way to the same number."
+      ]
+    },
+    {
+      "file": "lab05-perpendicular-beams.step",
+      "lab": "lab-05",
+      "description": "Two 20 x 20 mm square beams at 90 degrees: 100 mm upright, 100 mm arm, sharp re-entrant corner and no fillet.",
+      "kind": "solid",
+      "notes": [
+        "The sharp inside corner is deliberate and must not be filleted in the shipped file: the peak stress there does not converge, which is the point of the second half of Lab 5.",
+        "Fix the 20 x 20 mm base face; 200 N in -z on the free end face of the arm. Nominal bending in the arm at the joint face is exactly 15.0 MPa.",
+        "The extra-credit task is to fillet that one edge in DesignModeler and re-run, which makes the same peak converge."
+      ]
+    },
+    {
       "file": "lab03-plate-hole.step",
       "lab": "lab-03",
       "description": "Plate with a central hole, solid: 100 x 40 x 5 mm, O10 mm centered.",
