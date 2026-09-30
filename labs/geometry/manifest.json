@@ -41,16 +41,6 @@
       ]
     },
     {
-      "file": "lab05-stageA-beam.step",
-      "lab": "lab-05",
-      "description": "Stage A warm-up: the 600 mm dial-gauge beam as line bodies, split at midspan so the 20 N load has a vertex.",
-      "kind": "wire",
-      "notes": [
-        "Assign the 25 x 6 mm rectangular section in DesignModeler (6 mm along y), then Form New Part on both bodies.",
-        "Needs a Fixed Rotation (ROTX) as well as the simple supports: a straight beam can spin about its own axis."
-      ]
-    },
-    {
       "file": "lab05-notched-rod.step",
       "lab": "lab-05",
       "description": "Notched rod: O24 x 150 mm bar with a semicircular circumferential groove at midlength, O20 mm at the root.",
@@ -69,7 +59,16 @@
       "notes": [
         "The sharp inside corner is deliberate and must not be filleted in the shipped file: the peak stress there does not converge, which is the point of the second half of Lab 5.",
         "Fix the 20 x 20 mm base face; 200 N in -z on the free end face of the arm. Nominal bending in the arm at the joint face is exactly 15.0 MPa.",
-        "The extra-credit task is to fillet that one edge in DesignModeler and re-run, which makes the same peak converge."
+        "For the rounded version of the same kind of corner, see lab05-tee-fillet.step: the same study levels off on it."
+      ]
+    },
+    {
+      "file": "lab05-tee-fillet.step",
+      "lab": "lab-05",
+      "description": "Optional: a tee of 20 x 20 mm square beams, 200 mm base with a 100 mm branch at mid-span, and a 3 mm fillet on both junction edges. The rounded corner converges.",
+      "kind": "solid",
+      "notes": [
+        "Not used by the Lab 5 sheet's procedure. Run the same Convergence study on it and the peak at the junction levels off, because a finite radius has a finite stress."
       ]
     },
     {
