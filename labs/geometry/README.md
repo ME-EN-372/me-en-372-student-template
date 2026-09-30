@@ -19,6 +19,7 @@ below is also downloadable from the course template repository:
 | 5 | `lab03-plate-hole-surface.step` | the same plate as a flat surface body, for the 2D plane-stress run |
 | 5 | [`lab05-notched-rod.step`](lab05-notched-rod.step) | 24 mm diameter bar, 150 mm long, with a semicircular groove of radius 2 mm turned into it at mid-length, taking it down to 20 mm at the root |
 | 5 | [`lab05-perpendicular-beams.step`](lab05-perpendicular-beams.step) | two 20 x 20 mm square beams meeting at a right angle, a 100 mm upright and a 100 mm arm, with a sharp inside corner and no fillet |
+| 5 | [`lab05-tee-fillet.step`](lab05-tee-fillet.step) | optional: a tee of 20 x 20 mm square beams, a 200 mm base with a 100 mm branch rising from mid-span, and a 3 mm fillet where the two meet |
 | 6 | `lab06-beam-line.step` | 2000 mm line body |
 | 6 | `lab06-beam-solid.step` | the same beam as a solid, already split at the two bearing strips and the midspan load patch |
 | 7 | `lab07-post.step` | 40 mm diameter by 200 mm cantilever post |
@@ -68,13 +69,19 @@ treats X as the radius and revolves about the Y axis, so
 X greater than or equal to zero with Y vertical. Turning one "so it looks right"
 in a viewer breaks the analysis.
 
-**Both Lab 5 files are required, and the sharp corner in
+**Two Lab 5 files are required, and the sharp corner in
 [`lab05-perpendicular-beams.step`](lab05-perpendicular-beams.step) is
-deliberate.** It has no fillet because the peak stress at a sharp inside corner
-never settles down, however fine you make the mesh, and finding that out is half
-of [Lab 5](https://byu-machine-design.netlify.app/lab-05-mesh-convergence/). Do not
-round it off before you run the study. Adding the radius afterward, and showing
-what it does to the same refinement history, is the extra credit.
+deliberate.** The required files are
+[`lab05-notched-rod.step`](lab05-notched-rod.step) and the perpendicular beams.
+The beams have no fillet because the peak stress at a sharp inside corner never
+settles down, however fine you make the mesh, and finding that out is half of
+[Lab 5](https://byu-machine-design.netlify.app/lab-05-mesh-convergence/). Do not
+round it off before you run the study.
+
+[`lab05-tee-fillet.step`](lab05-tee-fillet.step) is optional, and the lab
+sheet's steps do not use it. It is the same kind of inside corner with a 3 mm
+radius on it: run the same Convergence study on it and the peak stress levels
+off, which is what the fillet on a real part does.
 
 **The press-fit overlap is the physics, not a modeling error.** In
 `lab11-pressfit-axisym.step` the shaft is drawn at R = 25.05 mm and the hub bore
@@ -112,11 +119,12 @@ licensed Ansys seat, not by looking at the file:
 |---|---|---|
 | 2026-08-26 | [`lab02-truss.step`](lab02-truss.step) | Exported as seven separate products, so Ansys read seven free bars that touch but transmit nothing, and no support could hold the truss. Now one product. |
 | 2026-08-28 | [`lab02-stageA-beam.step`](lab02-stageA-beam.step) | Added; Stage A had no start file. |
-| 2026-08-29 | [`lab03-stageA-cantilever.step`](lab03-stageA-cantilever.step), [`lab05-stageA-beam.step`](lab05-stageA-beam.step) | Added Stage A start files for both labs. |
+| 2026-08-29 | [`lab03-stageA-cantilever.step`](lab03-stageA-cantilever.step), `lab05-stageA-beam.step` (removed 2026-09-30) | Added Stage A start files for both labs. |
 | 2026-08-29 | [`lab06-beam-solid.step`](lab06-beam-solid.step), [`lab06-beam-line.step`](lab06-beam-line.step) | The solid was built on its side, so the 80 mm depth lay across the width and the second moment of area was wrong by 4x; the line body had no midspan vertex to hang the point load on. |
 | 2026-08-30 | [`lab13-column-bowed.step`](lab13-column-bowed.step) | The top end was **two half-disc faces** rather than one. A swept bow trimmed at its own end leaves the tilted end cap clipped in half, so clicking "the top face" selected a half disc whose center sits 2.55 mm off the axis. The pinned support and the axial load then went through that point and the column showed a quarter of the deflection it should. |
 | 2026-08-31 | [`lab12-bolted-joint.step`](lab12-bolted-joint.step) | Both plates now carry two imprinted rings on their outer faces, at the head/nut diameter and at 30 mm. Without them there was nowhere to apply the external load except a whole 6 000 mm² face, which is not where the theory introduces it, and the measured joint constant came out near 0.01 instead of Shigley's 0.21. |
-| 2026-09-23 | [`lab05-notched-rod.step`](lab05-notched-rod.step), [`lab05-perpendicular-beams.step`](lab05-perpendicular-beams.step) | Added, both required by Lab 5. Lab 5 became a mesh-convergence study on 2026-09-22 and the plate with a hole is no longer its specimen. A draft of these two shipped briefly as four files, including a pre-filleted version of the beams; the fillet is the extra credit, so that file was withdrawn before any of them reached a student repository. |
+| 2026-09-23 | [`lab05-notched-rod.step`](lab05-notched-rod.step), [`lab05-perpendicular-beams.step`](lab05-perpendicular-beams.step) | Added, both required by Lab 5. Lab 5 became a mesh-convergence study on 2026-09-22 and the plate with a hole is no longer its specimen. A draft of these two shipped briefly as four files, including a pre-filleted tee; filleting the corner was then the extra credit, so that file was withdrawn before any of them reached a student repository. |
+| 2026-09-30 | [`lab05-tee-fillet.step`](lab05-tee-fillet.step), `lab05-stageA-beam.step` | Added the filleted tee as an optional Lab 5 file; Lab 5 no longer has extra credit. Removed the Lab 5 Stage A beam: Lab 5 no longer has a Stage A, and the file, two line segments with no solid, gave an error on import in Workbench. |
 
 If a file here disagrees with what the lab sheet says, that is worth reporting:
 it means the generator and the sheet have drifted, and both are ours to fix.
