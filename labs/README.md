@@ -1,8 +1,8 @@
 # Thursday FEA labs
 
-There are 13 Thursday labs and **eight lab writeups**, one from each
-finite element analysis (FEA) lab after the first. Labs 1, 4, 9, 10 and 14 have no writeup: Lab 1 is the
-software-setup checkoff, and Labs 4, 9, 10 and 14 are project labs whose work
+There are 13 Thursday labs and **seven lab writeups**, one from each
+finite element analysis (FEA) lab after the first. Labs 1, 4, 7, 9, 10 and 14 have no writeup: Lab 1 is the
+software-setup checkoff, and Labs 4, 7, 9, 10 and 14 are project labs whose work
 product goes into P2, P3 and P4 instead. There is no Lab 6: Thursday, October 8
 is Part 1 of Exam 1, in the same room and time slot.
 
@@ -11,8 +11,7 @@ is Part 1 of Exam 1, in the same room and time slot.
 | Lab 2, chalk in torsion | Thu Sep 10 | Wed Sep 16 |
 | Lab 3, shear versus bending along a beam | Thu Sep 17 | Wed Sep 23 |
 | Lab 5, mesh convergence | Thu Oct 1 | Wed Oct 7 |
-| Lab 7, combined loading | Thu Oct 15 | Wed Oct 21 |
-| Lab 8, shaft with a keyseat | Thu Oct 22 | Wed Oct 28 |
+| Lab 8, fatigue of an engine piston | Thu Oct 22 | Wed Oct 28 |
 | Lab 11, pressure vessel and press fit | Thu Nov 12 | Wed Nov 18 |
 | Lab 12, bolted joint | Thu Nov 19 | **Tue Nov 24** |
 | Lab 13, buckling | Thu Dec 3 | **Tue Dec 8** |
