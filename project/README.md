@@ -6,24 +6,28 @@ and reconcile the two.
 **25% of your course grade**, plus a separate 10% for the oral defense.
 
 The full brief, the rubrics, and the timeline are on Canvas under "Final Design
-Project". That page is the source of truth. This folder is where the work lives.
+Project". That page is the source of truth. From P3 on, the work lives in this
+folder of your team's shared repository (`me-en-372-<section>-team-<nn>` in the
+course organization on GitHub), which every teammate can push to.
 
 ## The five submissions
 
 | # | Due, 5:00 pm Mountain Time | Points | File to fill in |
 |---|---|---:|---|
 | P1, product selection | Fri Sep 18 | 10 | [`p1-selection.md`](p1-selection.md) |
-| P2, teardown package | Fri Oct 9 | 20 | [`p2-teardown/`](p2-teardown/) |
+| P2, teardown package | Wed Oct 14 | 20 | [`p2-teardown/`](p2-teardown/) |
 | P3, analysis plan, hand calcs, preliminary FEA | Fri Nov 13 | 29 | [`p3-analysis.md`](p3-analysis.md) |
 | P4a, showcase video | Wed Dec 9 | 10 | [`p4a-video.md`](p4a-video.md) |
 | P4, final analysis package | Fri Dec 11 | 31 | [`p4-report.md`](p4-report.md) |
 | **Total** | | **100** | |
 
-## Your FEA starts in week 10, not in December
+## Your model starts in week 7, not in December
 
-Three lab sessions carry the project through the analysis phase, and the middle
+Four lab sessions carry the project through the analysis phase, and the third
 one is the reason P3 asks for a model:
 
+- **Lab 7 (Thu Oct 15), project studio.** Your team picks the component and
+  operating state, starts its geometry, and writes down its load cases.
 - **Lab 9 (Thu Oct 29), analysis studio.** You idealize the component and a
   teaching assistant (TA) signs off on the scope. Attendance is required, and the signed sheet is worth
   points in P3.
