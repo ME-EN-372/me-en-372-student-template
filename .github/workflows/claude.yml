@@ -315,8 +315,13 @@ jobs:
       # answer before the guide's release date; never reveal a guide or a
       # password). continue-on-error so that a broken unlock still leaves the
       # student with an answer, just one without the guide.
+      # Team repositories (me-en-372-<section>-team-<nn>) run Claude with
+      # shell on, so this step is skipped there: nothing from a guide is ever
+      # on a runner where a command can reach it. Team repositories hold no
+      # homework/ anyway.
       # ---------------------------------------------------------------------
       - name: Unlock the solution guides
+        if: ${{ !contains(github.repository, '-team-') }}
         continue-on-error: true
         env:
           HW01_SOLUTIONS_PASSWORD: ${{ secrets.HW01_SOLUTIONS_PASSWORD }}
@@ -366,6 +371,16 @@ jobs:
               print("could not open: " + ", ".join(failed))
           EOF
 
+      # Team repositories only (instructor, 2026-10-15, Lab 7): ffmpeg so
+      # Claude can pull frames from a teardown video committed to the repo.
+      - name: Install ffmpeg (team repositories)
+        if: ${{ contains(github.repository, '-team-') }}
+        continue-on-error: true
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg > /dev/null
+          ffmpeg -version | head -1
+
       - name: Run Claude
         id: claude
         # The job decides what to do with a failure in the steps below, so
@@ -378,6 +393,10 @@ jobs:
           # runner context is not available in a job-level env, and GitHub
           # refuses the whole file when it sees it there.
           SOLUTION_GUIDES_DIR: ${{ runner.temp }}/solution-guides
+          # A team's own Onshape API key pair, set as repository secrets on
+          # the team repository. Empty where they are not set.
+          ONSHAPE_ACCESS_KEY: ${{ secrets.ONSHAPE_ACCESS_KEY }}
+          ONSHAPE_SECRET_KEY: ${{ secrets.ONSHAPE_SECRET_KEY }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
@@ -410,9 +429,14 @@ jobs:
           # access to the repo can. A TA who needs shell for one repo can add
           # specific commands (for example --allowedTools 'Bash(python -m pytest:*)')
           # rather than opening it wholesale.
+          #
+          # Team repositories are the exception (instructor, 2026-10-15):
+          # shell on, so Claude can run ffmpeg on a teardown video and call
+          # the Onshape REST API with the team's key. The solution guides are
+          # never unlocked there (see the unlock step).
           claude_args: |
             ${{ steps.select.outputs.model_args }}
-            --permission-mode acceptEdits
+            --permission-mode ${{ contains(github.repository, '-team-') && 'bypassPermissions' || 'acceptEdits' }}
 
       # ---------------------------------------------------------------------
       # Fallback: the same design as the course repo's workflow. Did the first
@@ -592,6 +616,8 @@ jobs:
         uses: anthropics/claude-code-action@v1
         env:
           SOLUTION_GUIDES_DIR: ${{ runner.temp }}/solution-guides
+          ONSHAPE_ACCESS_KEY: ${{ secrets.ONSHAPE_ACCESS_KEY }}
+          ONSHAPE_SECRET_KEY: ${{ secrets.ONSHAPE_SECRET_KEY }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           trigger_phrase: ${{ steps.select.outputs.phrase }}
@@ -617,7 +643,7 @@ jobs:
             An earlier attempt at this same request ran on ${{ steps.select.outputs.model }} and stopped when that model's allowance ran out. You are the retry, running on ${{ steps.select.outputs.fallback_model }}. Read this thread first: if the earlier attempt already posted part of an answer, continue from it rather than starting over. Its progress comment is the one above yours that reports an error.
           claude_args: |
             ${{ steps.select.outputs.fallback_args }}
-            --permission-mode acceptEdits
+            --permission-mode ${{ contains(github.repository, '-team-') && 'bypassPermissions' || 'acceptEdits' }}
 
       # continue-on-error above hides the first attempt's failure from the job
       # status, so put it back when nothing succeeded.
