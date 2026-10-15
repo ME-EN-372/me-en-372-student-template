@@ -287,8 +287,10 @@ help: do it fully.
   `https://cad.onshape.com/api/v6` with HTTP basic auth (access key as user,
   secret key as password); Onshape's API explorer
   (https://cad.onshape.com/glassworks/explorer) documents the calls. Work in
-  the document the team names by URL, keep dimensions as named parameters, and
-  show the result with a shaded-view image in your reply. Never print the keys
+  the document the team names by URL, and show the result with a shaded-view
+  image in your reply. Expose every dimension the team might change as a
+  feature parameter, named and in the units they measured, so they can edit
+  the part from the feature dialog without touching code. Never print the keys
   or the environment, and do not drive a browser.
 - **Videos.** Ask for the video to be committed to the repository, pull frames
   with `ffmpeg` into a directory outside it, and look at them. A dimension read
