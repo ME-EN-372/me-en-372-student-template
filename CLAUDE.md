@@ -274,6 +274,134 @@ Three things to reinforce whenever the project comes up:
   sourced from a table, or assumed. Assumed values need a stated range and a
   sensitivity check. Push for this. It is where most project points are lost.
 
+## Onshape and teardown videos (team repositories only)
+
+In a team repository (`me-en-372-<section>-team-<nn>`), the `@claude`
+workflow gives you a shell, `ffmpeg`, and the team's Onshape API key pair as
+the environment variables `ONSHAPE_ACCESS_KEY` and `ONSHAPE_SECRET_KEY`. A
+student's own repository has none of these. If a student asks for Onshape or
+video work there, say that it runs in their team repository.
+
+> **If you are a student setting this up:** one teammate makes an API key in
+> the Onshape developer portal while signed in to their personal Onshape
+> account (not BYU Design: switch accounts from the top-right menu if the
+> page says to contact your enterprise admin), with read and write
+> permissions. Add the two values to the team repository under Settings,
+> Secrets and variables, Actions, named exactly `ONSHAPE_ACCESS_KEY` and
+> `ONSHAPE_SECRET_KEY`. Leave `CLAUDE_CODE_OAUTH_TOKEN` alone: deleting or
+> editing it stops `@claude` from working in your repository.
+
+Building and editing the team's geometry is software help, the same as
+teaching Ansys click paths: do it fully. The hand calculations and the
+reconciliation with FEA stay under the one boundary above.
+
+### Onshape: FeatureScript by default
+
+Model in FeatureScript unless the team asks for something else. Write the part
+as a custom feature in a `.fs` file in `cad/`, with every dimension a named
+parameter at the top and a comment giving its source (measured, read from the
+video against a scale reference, or assumed), so the team can change a
+dimension and regenerate. The finished part is a feature in the team's own
+Onshape document, editable there like any other.
+
+Everything reaches Onshape through its REST API, with the team's key; FeatureScript
+is pushed the same way. Do not drive a browser: the modeling window is drawn on
+a WebGL canvas that page automation cannot reach, and a sign-in from a
+datacenter runner gets bot-checked.
+
+1. Check the key. Authenticate with HTTP basic auth, the access key as the user
+   name and the secret key as the password:
+
+   ```python
+   import os, requests
+   s = requests.Session()
+   s.auth = (os.environ["ONSHAPE_ACCESS_KEY"], os.environ["ONSHAPE_SECRET_KEY"])
+   s.headers["Accept"] = "application/json"
+   API = "https://cad.onshape.com/api/v6"
+   print(s.get(f"{API}/users/sessioninfo").status_code)
+   ```
+
+   200 means the key works. 401 means a secret is missing, misnamed, or holds
+   the wrong value: say which two names to check, and stop. 403 on a write
+   usually means the key was made without write permission. 402 with "API
+   limit exceeded" means the account's yearly allowance is spent: say so, and
+   suggest a key from a teammate's account.
+2. Find the document. The team names it by URL,
+   `https://cad.onshape.com/documents/<did>/w/<wid>/e/<eid>`; take the ids
+   from it. Ask for the URL rather than searching. Create a new document only
+   when asked, and then put its URL in the reply. Never change a document the
+   team did not name.
+3. Push the FeatureScript into a Feature Studio in that document (create one
+   if the document has none) and read the compile result the call returns. Fix
+   every error before going on.
+4. Add the custom feature to the Part Studio through the features call. If
+   that call is refused, say so, and tell the team the one step left: in the
+   Part Studio, open the custom features menu on the toolbar and insert the
+   feature by name.
+5. Fetch a shaded view of the Part Studio and put it in the reply, so the team
+   sees the part without opening Onshape. Commit the PNG to `cad/renders/` and
+   link it.
+
+The REST API on its own is the alternative when the team asks for it, or when
+the part already exists as a STEP file: build it as a parametric
+[CadQuery](https://cadquery.readthedocs.io) script (`pip install cadquery`) in
+`cad/`, export STEP, and upload it.
+
+| Task | Call (under `https://cad.onshape.com/api/v6`) |
+|---|---|
+| Check the key | `GET /users/sessioninfo` |
+| List the team's documents | `GET /documents?filter=0&limit=20` |
+| Create a document | `POST /documents` with `{"name": ...}` |
+| List a document's tabs | `GET /documents/d/{did}/w/{wid}/elements` |
+| Create a Feature Studio | `POST /featurestudios/d/{did}/w/{wid}` with `{"name": ...}` |
+| Read, then replace, a Feature Studio's code | `GET` then `POST /featurestudios/d/{did}/w/{wid}/e/{eid}` with `contents`, sending back the `serializationVersion` and `sourceMicroversion` the `GET` returned; the response lists compile errors |
+| Read or add Part Studio features | `GET` or `POST /partstudios/d/{did}/w/{wid}/e/{eid}/features` |
+| Read the parts and their mass properties | `GET /parts/d/{did}/w/{wid}` and `GET /partstudios/d/{did}/w/{wid}/e/{eid}/massproperties` |
+| Picture of a Part Studio | `GET /partstudios/d/{did}/w/{wid}/e/{eid}/shadedviews?viewMatrix=isometric&outputWidth=800&outputHeight=600` (base64 PNG in `images[0]`) |
+| Upload a STEP file | `POST /blobelements/d/{did}/w/{wid}?translate=true`, multipart with the file, then poll `GET /translations/{tid}` until `requestState` is `DONE` |
+| Replace an uploaded STEP in place | `POST /blobelements/d/{did}/w/{wid}/e/{eid}`, same fields |
+| Export STEP or STL | `POST /partstudios/d/{did}/w/{wid}/e/{eid}/translations` with `formatName`, poll as above, then `GET /documents/d/{did}/externaldata/{id}` |
+
+If a call returns 404 or 400 where this table says it should work, check its
+exact form in Onshape's API explorer, https://cad.onshape.com/glassworks/explorer.
+
+- Never print the keys, the environment (`env`, `printenv`), or request
+  headers, and never write a key to a file.
+- Onshape caps the API calls each account makes in a year. Keep calls few:
+  poll no faster than every 2 seconds, do not loop over documents, and do not
+  re-fetch something you already have in the same run.
+- Do not depend on deleting anything. Update a Feature Studio or an upload in
+  place instead of creating a second copy.
+- Commit your work in a team repository straight to `main`
+  (`git push origin HEAD:main`) rather than leaving it on a branch, so the
+  whole team has it right away. Pull first if the push is refused as out of
+  date.
+
+### Teardown videos
+
+- The video has to be committed to the repository. GitHub's web upload takes
+  files up to 25 MB and `git push` up to 100 MB; past that, ask the team to
+  trim it or to commit the part that shows the component. A video dropped
+  into an issue comment usually cannot be downloaded by the workflow: try
+  once, then ask for it to be committed.
+- Get the length, then pull frames into a scratch directory outside the
+  repository and look at them with the Read tool:
+
+  ```bash
+  ffprobe -v error -show_entries format=duration -of csv=p=0 video.mp4
+  mkdir -p /tmp/frames
+  ffmpeg -loglevel error -i video.mp4 -vf "fps=1/2,scale=1280:-1" /tmp/frames/f_%04d.jpg
+  ```
+
+  Sample sparsely first (one frame every 2 to 5 seconds), then go back to the
+  stretch that shows the component with `-ss` and `-to` and a higher rate.
+- Commit only the stills the team wants, as small JPEGs in `media/`.
+- A dimension read from a video is an estimate. Scale it from something of
+  known size in the same frame (a ruler, a coin, a bolt of known thread),
+  name that reference in the reply, and ask the team to measure with calipers
+  anything that sets a stress. This is the sourcing tier from the project
+  section above: label each value as measured or as read from the video.
+
 ## AI disclosure
 
 Disclosure is required and is worth points. Homework is an Explore-category
