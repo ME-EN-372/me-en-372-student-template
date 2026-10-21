@@ -128,14 +128,14 @@ All three exams are **closed-AI, closed-internet, and proctored**, with one exce
 |---|---|---|
 | [Exam 1, in class](https://byu.instructure.com/courses/36965/assignments/1440421) (50 min) | **Thu Oct 8**, in your lab slot in EB 221 (section 001 from 2:00 to 2:50 pm, section 002 from 3:00 to 3:50 pm) | Loads and reactions, shear and moment diagrams, stress basics, Mohr's circle for plane stress, deflection (LO 1, 3, 8). Six multiple-choice items, then the two of five problems you circle on the cover: 70 of Exam 1's 100 points |
 | [Exam 1, take-home](https://byu.instructure.com/courses/36965/assignments/1504709) | **Thu Oct 8, 4:00 pm to Sat Oct 10, 7:00 pm** | The three problems you did not circle in class, with the same numbers, 10 points each: 30 of Exam 1's 100 points. You may use your textbook and your notes (your single-sided page of notes, your homework, in-class notes, and the practice exam). The only AI allowed is Claude through `@claude` in your own course repository; no other AI, no web search, and no help from other people |
-| Exam 2 (110 min) | **Wed Nov 18 to Sat Nov 21** (BYU Testing Center). No Testing Center fee until 7:00 pm Fri Nov 20, then a $5 late fee. Saturday hours are short: start by 2:00 pm | Mohr's circle, combined loading, stress concentrations, static failure theories, fatigue (LO 2, 4, 8) |
+| Exam 2 (110 min) | **Wed Nov 18 to Sat Nov 21** (BYU Testing Center). No Testing Center fee until 7:00 pm Fri Nov 20, then a five-dollar late fee. Saturday hours are short: start by 2:00 pm | Mohr's circle, combined loading, stress concentrations, static failure theories, fatigue (LO 2, 4, 8) |
 | Exam 3 / Final (2 h 30 min) | **Sat Dec 12 to Thu Dec 17** (university finals window; no exams Sun Dec 13) | Pressure vessels, press fits, curved beams, bolted joints and bolt patterns, buckling, FEA verification; partly cumulative (LO 5, 6, 7, 8) |
 
 ## Design project: product teardown
 
 Teams of 4 or 5, formed within your lab section, buy an inexpensive secondhand product, take it apart, document the machine elements and load paths inside it, and carry one load-bearing component through a full analysis: hand calculations, an FEA model, and a reconciliation of the two. The project closes with a two-part showcase (live lightning talks and a pre-recorded team video) and an individual oral defense.
 
-**Buying the product.** The department card covers up to **$15 before tax.** [Deseret Industries in Provo](https://deseretindustries.org/) is the default place to shop, and other options work equally well: another thrift store, a cheap new hand tool from Harbor Freight, a free listing on KSL Classifieds, or something already broken at home.
+**Buying the product.** The department card covers up to **\$15 before tax.** [Deseret Industries in Provo](https://deseretindustries.org/) is the default place to shop, and other options work equally well: another thrift store, a cheap new hand tool from Harbor Freight, a free listing on KSL Classifieds, or something already broken at home.
 
 **Where to take it apart.** The [Project Support Center](https://psc.byu.edu/), Engineering Building Room 107, has the tools and bench space. Posted hours are Monday to Friday, 8:00 am to 5:00 pm, with two exceptions: it closes Tuesdays from 11:00 am to 1:00 pm for devotional, and closes at 4:00 pm on Thursdays. Book a slot before you go.
 
@@ -175,7 +175,7 @@ The section above is the complete policy. Where a specific assignment adds to it
 | Thu Sep 10 | Add/drop deadline |
 | Thu Oct 8 | Exam 1, in class (in your lab slot) |
 | Thu Oct 8 to Sat Oct 10 | Exam 1, take-home (4:00 pm Thursday to 7:00 pm Saturday) |
-| Wed Nov 18 to Sat Nov 21 | Exam 2 (Testing Center window; $5 late fee from 7:00 pm Fri Nov 20) |
+| Wed Nov 18 to Sat Nov 21 | Exam 2 (Testing Center window; a five-dollar late fee from 7:00 pm Fri Nov 20) |
 | Tue Nov 24 | Withdraw deadline |
 | Wed Nov 25 to Fri Nov 27 | No classes (Thanksgiving break) |
 | Thu Dec 10 | Last day of classes |
