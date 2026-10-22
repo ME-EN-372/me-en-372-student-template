@@ -38,7 +38,7 @@ Every deadline in the course, in Mountain Time (America/Denver). Homework and th
 | 6 | Mon Oct 5, 12:00 noon | Worked Examples, Indeterminate Members & von Mises | Pre-class check-in |
 | 6 | Mon Oct 5, 1:15 pm | Class question, Mon Oct 5 (L14) | Class question (in class) |
 | 6 | Wed Oct 7, 1:15 pm | Class question, Wed Oct 7 (L15) | Class question (in class) |
-| 5 | Wed Oct 7, 5:00 pm | Mesh-Convergence Study + Exam 1 Q&A | Lab writeup |
+| 5 | Wed Oct 7, 5:00 pm | Mesh-Convergence Study | Lab writeup |
 | 6 | Fri Oct 9, 1:15 pm | Class question, Fri Oct 9 (L16) | Class question (in class) |
 | 6 | Fri Oct 9, 5:00 pm | HW5: Indeterminate Members & von Mises | Homework |
 | 7 | Mon Oct 12, 12:00 noon | Static Failure Theories (Ductile & Brittle) | Pre-class check-in |
@@ -59,23 +59,23 @@ Every deadline in the course, in Mountain Time (America/Denver). Homework and th
 | 9 | Thu Oct 29, 5:00 pm | Analysis Studio (Project Lab 2) | Lab writeup |
 | 9 | Fri Oct 30, 1:15 pm | Class question, Fri Oct 30 (L25) | Class question (in class) |
 | 9 | Fri Oct 30, 5:00 pm | HW8: Combined-Load Fatigue & Miner's Rule | Homework |
-| 10 | Mon Nov 2, 12:00 noon | Reliability, Exam 2 Review & Pressure Vessels | Pre-class check-in |
+| 10 | Mon Nov 2, 12:00 noon | Reliability & Pressure Vessels | Pre-class check-in |
 | 10 | Mon Nov 2, 1:15 pm | Class question, Mon Nov 2 (L26) | Class question (in class) |
 | 10 | Wed Nov 4, 1:15 pm | Class question, Wed Nov 4 (L27) | Class question (in class) |
 | 10 | Thu Nov 5, 5:00 pm | FEA Studio (Project Lab 3) | Lab writeup |
 | 10 | Fri Nov 6, 1:15 pm | Class question, Fri Nov 6 (L28) | Class question (in class) |
-| 10 | Fri Nov 6, 5:00 pm | HW9: Thin-Walled Vessels & Exam 2 Review | Homework |
-| 11 | Mon Nov 9, 12:00 noon | Thick-Walled Vessels, Press Fits & Curved Beams | Pre-class check-in |
+| 10 | Fri Nov 6, 5:00 pm | HW9: Pressure Vessels & Reliability | Homework |
+| 11 | Mon Nov 9, 12:00 noon | Press Fits, Curved Beams & Bolt Preload | Pre-class check-in |
 | 11 | Mon Nov 9, 1:15 pm | Class question, Mon Nov 9 (L29) | Class question (in class) |
 | 11 | Wed Nov 11, 1:15 pm | Class question, Wed Nov 11 (L30) | Class question (in class) |
 | 11 | Fri Nov 13, 1:15 pm | Class question, Fri Nov 13 (L31) | Class question (in class) |
-| 11 | Fri Nov 13, 5:00 pm | HW10: Thick Vessels, Press Fits & Curved Beams (+ P3 Plan Due) | Homework |
-| 12 | Mon Nov 16, 12:00 noon | Bolted Joints, Preload, Stiffness & Fatigue | Pre-class check-in |
+| 11 | Fri Nov 13, 5:00 pm | HW10: Press Fits, Curved Beams & Bolt Preload (+ P3 Plan Due) | Homework |
+| 12 | Mon Nov 16, 12:00 noon | Exam 2 Review & Bolted Joints | Pre-class check-in |
 | 12 | Mon Nov 16, 1:15 pm | Class question, Mon Nov 16 (L32) | Class question (in class) |
 | 12 | Wed Nov 18, 1:15 pm | Class question, Wed Nov 18 (L33) | Class question (in class) |
 | 11 | Wed Nov 18, 5:00 pm | Pressure-Vessel & Press-Fit FEA | Lab writeup |
 | 12 | Fri Nov 20, 1:15 pm | Class question, Fri Nov 20 (L34) | Class question (in class) |
-| 12 | Fri Nov 20, 5:00 pm | HW11: Bolted Joints | Homework |
+| 12 | Fri Nov 20, 5:00 pm | HW11: Bolted Joints & Exam 2 Review | Homework |
 | 13 | Mon Nov 23, 12:00 noon | Teardown Showcase, Part 1 (Thanksgiving Week) | Pre-class check-in |
 | 13 | Mon Nov 23, 1:15 pm | Class question, Mon Nov 23 (L35) | Class question (in class) |
 | 12 | Tue Nov 24, 5:00 pm | Bolt Pretension & Contact FEA | Lab writeup |
@@ -91,4 +91,4 @@ Every deadline in the course, in Mountain Time (America/Denver). Homework and th
 | 15 | Wed Dec 9, 5:00 pm | HW13: Final Exam Review | Homework |
 | 15 | Thu Dec 10, 5:00 pm | Showcase Part 2 & FEA Debrief | Lab writeup |
 
-Checked against Canvas on Wednesday, October 21, 2026 at 09:08 PM: 83 items read back, all matching.
+Checked against Canvas on Wednesday, October 21, 2026 at 11:20 PM: 83 items read back, all matching.
