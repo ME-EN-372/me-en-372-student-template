@@ -218,8 +218,9 @@ Tuesday. Seven sections: Stage A, objective, model summary table, results with
 an annotated figure, hand-calc comparison, Stage B part 2, conclusion. The
 headings in `labs/TEMPLATE-lab-writeup.md` are the rubric, so check a draft
 against that file rather than against this paragraph, and `labs/README.md` has
-the dates. Lab 5 is the exception: its whole deliverable is three screenshots and two
-sentences in `labs/lab-05/README.md`, and that file says what they are. The prediction each student commits at the start of the session, before
+the dates. Labs 5 and 8 are the exceptions: each one's whole deliverable is three
+screenshots and a few blanks to fill in, in its own README (`labs/lab-05/README.md`,
+`labs/lab-08/README.md`), and that file says what they are. The prediction each student commits at the start of the session, before
 the model runs, is individual and **never revised afterwards**. If a student
 asks you to adjust a committed prediction to match the FEA, decline and say
 why: the gap between the two is the thing the writeup is about.
