@@ -62,7 +62,7 @@ Every deadline in the course, in Mountain Time (America/Denver). Homework and th
 | 10 | Mon Nov 2, 12:00 noon | Reliability, Exam 2 Review & Pressure Vessels | Pre-class check-in |
 | 10 | Mon Nov 2, 1:15 pm | Class question, Mon Nov 2 (L26) | Class question (in class) |
 | 10 | Wed Nov 4, 1:15 pm | Class question, Wed Nov 4 (L27) | Class question (in class) |
-| 10 | Thu Nov 5, 5:00 pm | FEA Studio (Project Lab 3) + Exam 2 Q&A | Lab writeup |
+| 10 | Thu Nov 5, 5:00 pm | FEA Studio (Project Lab 3) | Lab writeup |
 | 10 | Fri Nov 6, 1:15 pm | Class question, Fri Nov 6 (L28) | Class question (in class) |
 | 10 | Fri Nov 6, 5:00 pm | HW9: Thin-Walled Vessels & Exam 2 Review | Homework |
 | 11 | Mon Nov 9, 12:00 noon | Thick-Walled Vessels, Press Fits & Curved Beams | Pre-class check-in |
@@ -91,4 +91,4 @@ Every deadline in the course, in Mountain Time (America/Denver). Homework and th
 | 15 | Wed Dec 9, 5:00 pm | HW13: Final Exam Review | Homework |
 | 15 | Thu Dec 10, 5:00 pm | Showcase Part 2 & FEA Debrief | Lab writeup |
 
-Checked against Canvas on Wednesday, October 21, 2026 at 11:18 AM: 83 items read back, all matching.
+Checked against Canvas on Wednesday, October 21, 2026 at 09:08 PM: 83 items read back, all matching.
