@@ -125,6 +125,16 @@
       "notes": []
     },
     {
+      "file": "lab08-piston-full.step",
+      "lab": "lab-08",
+      "description": "Whole aluminum-engine piston, 86 mm bore: flat crown 7 mm thick, 4 mm wall, 57 mm tall, O21 mm pin bore 30 mm below the crown top, bosses 26 mm apart, 3 mm fillets. Y up, pin axis X. The crown top is four quadrant faces with a vertex at its center.",
+      "kind": "solid",
+      "notes": [
+        "Supports: Compression Only Support on the two pin-bore faces, plus a Displacement on the crown-top center vertex with X = 0 and Z = 0 (Y free). The gas load is symmetric, so that vertex carries no force; it only stops the piston sliding along the pin and spinning about it.",
+        "Load: Pressure on all four crown-top faces."
+      ]
+    },
+    {
       "file": "lab11-cylinder-axisym.step",
       "lab": "lab-11",
       "description": "Thick-walled cylinder, 2D axisymmetric half-section: r 50-80 mm, 50 mm long.",
