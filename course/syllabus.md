@@ -190,8 +190,8 @@ The section above is the complete policy. Where a specific assignment adds to it
 | 3-4 | Bending and transverse shear; stress concentrations; combined loading, including 3D stress states (Ch. 3) |
 | 5-6 | Deflection: integration, superposition, statically indeterminate members (Ch. 4); **Exam 1**; von Mises stress |
 | 7-8 | Static failure theories, ductile and brittle (Ch. 5); fatigue: S-N curves, endurance limit, notch sensitivity, Marin factors (Ch. 6) |
-| 9-10 | Fluctuating stresses and the Goodman diagram; combined-loading fatigue; shaft design examples; Miner's rule; reliability (Ch. 6, 7, 20) |
-| 11-12 | Pressure vessels (thin- and thick-walled); press and shrink fits; curved beams; bolted joints, bolt fatigue, and bolt patterns (Ch. 3, 8); **Exam 2** in week 12, on the material of weeks 6 to 10 |
+| 9-10 | Fluctuating stresses and the Goodman diagram; combined-loading fatigue; shaft design examples; Miner's rule; reliability (Ch. 6, 7, 20); pressure vessels, thin- and thick-walled (Ch. 3) |
+| 11-12 | Press and shrink fits; curved beams; bolted joints, bolt fatigue, and bolt patterns (Ch. 3, 8); the Exam 2 review on Mon Nov 16 and **Exam 2** in week 12, on the material of weeks 6 to 9 (Mohr's circle through Miner's rule) |
 | 13 | Project showcase, part 1 (Thanksgiving week, Monday only) |
 | 14-15 | Buckling: Euler and Johnson columns, eccentric loading, buckling design (Ch. 4); FEA credibility capstone; course review; showcase part 2 |
 | Finals | **Exam 3** in the university finals window |
