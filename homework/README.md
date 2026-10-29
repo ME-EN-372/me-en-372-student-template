@@ -24,14 +24,17 @@ line, `$$ ... $$`, center it. The one thing worth knowing: a dollar sign of
 money has to be written `\$`, or everything between two prices is read as an
 equation. None of this is required and none of it is graded.
 
-## You grade your own work
+## How homework is graded
 
 Homework is formative. Its job is to build the problem-solving habit before it
-is certified on the exams and the project, so you grade your own process against
-a released key.
+is certified on the exams and the project, so you grade your own process
+against a released key as well. The full rule is under "Homework: two
+deadlines" in [`../course/syllabus.md`](../course/syllabus.md).
 
-1. Submit by the Friday 5:00 pm deadline. The solution guide goes up on Canvas
-   only after the deadline.
+1. Submit by the Friday 5:00 pm deadline. The solution guide opens on Canvas
+   the Monday after, at 8:00 am, inside that set's Self-Grade & Corrections
+   quiz. From Homework 8 on, your initial grade appears in Canvas Grades at the
+   same time.
 2. Grade your own submission against the per-problem checklists in that guide,
    in a different color of ink or as PDF annotations, so the grading marks are
    distinguishable from the original work.
@@ -42,10 +45,8 @@ a released key.
    that are most likely, such as diameter versus radius or millimeters versus
    meters. Note in the margin which class yours fell into. Rounding differences
    are free; a factor of 2, 4, or a million is worth hunting down and naming.
-5. Total the score out of 100 and enter it on Canvas as directed.
-6. **If you score below 70**, rework the missed problems and bring the marked-up
-   sheet to office hours or the Thursday lab. Seventy is the on-track line, not
-   a punishment line.
-
-A sample of submissions is re-graded each week so the keys stay calibrated
-across both sections. The grade you most need to be accurate is your own.
+5. By Thursday at 11:59 pm, answer the quiz's one question per checklist row
+   (required) and upload the marked-up PDF, with any corrections on new pages
+   after it (optional). Corrections earn back a share of the points you missed.
+6. **If your initial grade is below 70**, rework the missed problems and bring
+   the marked-up sheet to office hours or the Thursday lab.
