@@ -131,7 +131,7 @@ All three exams are **closed-AI, closed-internet, and proctored**, with one exce
 |---|---|---|
 | [Exam 1, in class](https://byu.instructure.com/courses/36965/assignments/1440421) (50 min) | **Thu Oct 8**, in your lab slot in EB 221 (section 001 from 2:00 to 2:50 pm, section 002 from 3:00 to 3:50 pm) | Loads and reactions, shear and moment diagrams, stress basics, Mohr's circle for plane stress, deflection (LO 1, 3, 8). Six multiple-choice items, then the two of five problems you circle on the cover: 70 of Exam 1's 100 points |
 | [Exam 1, take-home](https://byu.instructure.com/courses/36965/assignments/1504709) | **Thu Oct 8, 4:00 pm to Sat Oct 10, 7:00 pm** | The three problems you did not circle in class, with the same numbers, 10 points each: 30 of Exam 1's 100 points. You may use your textbook and your notes (your single-sided page of notes, your homework, in-class notes, and the practice exam). The only AI allowed is Claude through `@claude` in your own course repository; no other AI, no web search, and no help from other people |
-| Exam 2 (110 min) | **Wed Nov 18 to Sat Nov 21** (BYU Testing Center). No Testing Center fee until 7:00 pm Fri Nov 20, then a five-dollar late fee. Saturday hours are short: start by 2:00 pm | Mohr's circle, combined loading, stress concentrations, static failure theories, fatigue (LO 2, 4, 8) |
+| Exam 2 (3 hours) | **Wed Nov 18 to Sat Nov 21** (BYU Testing Center). No Testing Center fee until 7:00 pm Fri Nov 20, then a five-dollar late fee. To have the full 3 hours, start by 7:00 pm Wednesday to Friday or by 1:00 pm Saturday | Cumulative, through Miner's rule: Exam 1's topics (loads and reactions, shear and moment diagrams, stress basics, Mohr's circle, deflection) plus combined loading, stress concentrations, static failure theories, and fatigue (LO 1 to 4, 8). Multiple-choice questions and worked problems |
 | Exam 3 / Final (2 h 30 min) | **Sat Dec 12 to Thu Dec 17** (university finals window; no exams Sun Dec 13) | Pressure vessels, press fits, curved beams, bolted joints and bolt patterns, buckling, FEA verification; partly cumulative (LO 5, 6, 7, 8) |
 
 ## Design project: product teardown
@@ -194,7 +194,7 @@ The section above is the complete policy. Where a specific assignment adds to it
 | 5-6 | Deflection: integration, superposition, statically indeterminate members (Ch. 4); **Exam 1**; von Mises stress |
 | 7-8 | Static failure theories, ductile and brittle (Ch. 5); fatigue: S-N curves, endurance limit, notch sensitivity, Marin factors (Ch. 6) |
 | 9-10 | Fluctuating stresses and the Goodman diagram; combined-loading fatigue; shaft design examples; Miner's rule; reliability (Ch. 6, 7, 20); pressure vessels, thin- and thick-walled (Ch. 3) |
-| 11-12 | Press and shrink fits; curved beams; bolted joints, bolt fatigue, and bolt patterns (Ch. 3, 8); the Exam 2 review on Mon Nov 16 and **Exam 2** in week 12, on the material of weeks 6 to 9 (Mohr's circle through Miner's rule) |
+| 11-12 | Press and shrink fits; curved beams; bolted joints, bolt fatigue, and bolt patterns (Ch. 3, 8); the Exam 2 review on Mon Nov 16 and **Exam 2** in week 12, cumulative over weeks 1 to 9 (everything through Miner's rule) |
 | 13 | Project showcase, part 1 (Thanksgiving week, Monday only) |
 | 14-15 | Buckling: Euler and Johnson columns, eccentric loading, buckling design (Ch. 4); FEA credibility capstone; course review; showcase part 2 |
 | Finals | **Exam 3** in the university finals window |
