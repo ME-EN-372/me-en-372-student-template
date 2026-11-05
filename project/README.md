@@ -28,11 +28,10 @@ one is the reason P3 asks for a model:
 
 - **Lab 7 (Thu Oct 15), project studio.** Your team picks the component and
   operating state, starts its geometry, and writes down its load cases.
-- **Lab 9 (Thu Oct 29), analysis studio.** You idealize the component and a
-  teaching assistant (TA) signs off on the scope. Attendance is required, and the signed sheet is worth
-  points in P3.
+- **Lab 9 (Thu Oct 29), analysis studio.** You idealize the component and write down
+  its scope, which P3's idealization section builds on. Attendance is required.
 - **Lab 10 (Thu Nov 5), FEA studio.** This is where you build the preliminary
-  FEA model, with TA support, a week before P3 is due.
+  FEA model, with teaching assistant (TA) support, a week before P3 is due.
 - **Lab 14 (Thu Dec 10), showcase and validation wrap.** Your P4a video is
   screened and the FEA-vs-hand-calc reconciliation is finalized.
 
@@ -60,10 +59,8 @@ member checks the department card out from the ME office and returns it the same
 day, so the seller has to be able to take a card. A private seller cannot, which
 means anything from a yard sale or a classifieds listing has to be free.
 
-**Get a TA thumbs-up on your choice before you tear it down.** Post a photo of
-the product and your element list to your team's channel. A product that turns
-out to be sealed or unopenable costs you a second trip if you find out early and
-the whole P2 package if you find out late.
+A product that turns out to be sealed or unopenable costs you a second trip if
+you find out before the teardown and the whole P2 package if you find out late.
 
 ## Before you open anything: safety
 
