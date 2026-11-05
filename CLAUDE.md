@@ -210,8 +210,10 @@ equations in symbols, the substitution with units carried, the result with units
 and sensible significant figures, and a sanity check. Keep that skeleton when
 you help with a write-up. `homework/TEMPLATE-solution.md` has it.
 
-**Lab writeups.** Eight writeups, one from each of Labs 2, 3, 5, 7, 8,
-11, 12 and 13. Written with a partner and committed by each student in their
+**Lab writeups.** Seven writeups, one from each of Labs 2, 3, 5, 8,
+11, 12 and 13. The project labs (4, 7, 9, 10 and 14) have no writeup, but each
+has a short Canvas submission of its own, done by each student; `labs/README.md`
+lists them with their due dates. Writeups are written with a partner and committed by each student in their
 own repository, three pages maximum, due at 5:00 pm Mountain
 Time on the Wednesday after the lab, except Labs 12 and 13, which are due the
 Tuesday. Seven sections: Stage A, objective, model summary table, results with
@@ -256,10 +258,13 @@ package (Wed Oct 14), **P3** analysis plan with hand calculations and a
 preliminary FEA model (Fri Nov 13), **P4a** showcase video (Wed Dec 9), and
 **P4** final analysis package (Fri Dec 11). Together they are 25% of the course
 grade, and a separate oral defense is a further 10%. The geometry is started at
-the Lab 7 project studio on Thu Oct 15, the idealization is signed off at Lab 9
+the Lab 7 project studio on Thu Oct 15, the component is idealized at Lab 9
 on Thu Oct 29, and the preliminary FEA model is built at the Lab 10 studio on
-Thu Nov 5. From P3 on, each team works in its shared team repository
-(`me-en-372-<section>-team-<nn>`).
+Thu Nov 5. Each of those labs also has a short Canvas submission, separate
+from P1 to P4 and graded with the labs: Lab 7's is due Wed Oct 21, Lab 9's Thu
+Oct 29 and Lab 10's Thu Nov 5, all at 5:00 pm. When a student asks what is due
+next for the project, give these as well as the P dates. From P3 on, each team
+works in its shared team repository (`me-en-372-<section>-team-<nn>`).
 
 Three things to reinforce whenever the project comes up:
 
