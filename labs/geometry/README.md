@@ -30,6 +30,9 @@ below is also downloadable from the course template repository:
 | 12 | `lab12-bolted-joint.step` | two plates plus an M10 bolt, as three separate bodies |
 | 13 | `lab13-column-straight.step` | 12 mm diameter by 1000 mm column |
 | 13 | `lab13-column-bowed.step` | the same column with a 2 mm midspan bow, about L/500 |
+| Dynamics | [`dyn1-actuator.step`](dyn1-actuator.step) | an air cylinder on a mounting foot whose piston rod is a rack, driving a 16, a 32 and a 24 tooth gear; five separate parts |
+| Dynamics | [`dyn4-slider-crank.step`](dyn4-slider-crank.step) | a single-cylinder engine: a crank of 40 mm radius, a 140 mm connecting rod and a 70 mm piston; three separate parts |
+| Dynamics | [`dyn5-valve-spring.step`](dyn5-valve-spring.step) | a valve spring: 4 mm wire on a 28 mm mean coil diameter, 6 coils at 9 mm pitch |
 | 2 | `lab02-torsion-helicoid.js` | not geometry: a DesignModeler script that draws the 45 degree spiral fracture surface of a twisted 10 mm by 80 mm chalk bar (see below) |
 
 `manifest.json` holds the same table in machine-readable form.
@@ -44,6 +47,19 @@ sweeps a helicoid surface that meets the outside of the bar at 45 degrees everyw
 the shape a brittle bar breaks on. Right-click the solid body and **Hide Body** to see
 the surface on its own. Do not save that surface into your solved project; it would
 be meshed as a shell and change the model. Keep it in a scratch copy.
+
+## The three dynamics files are assemblies, on purpose
+
+[`dyn1-actuator.step`](dyn1-actuator.step) and
+[`dyn4-slider-crank.step`](dyn4-slider-crank.step) each hold one part per moving
+body. Keep them that way: Motion and Rigid Dynamics treat a part made of several
+bodies as one rigid body, so a merged file has nothing left to move.
+
+Two kinds of rounded corner in them are deliberate. Every gear tooth and rack
+tooth has a 0.75 mm fillet at its root, and the connecting rod has a 4 mm fillet
+where the shank meets each eye. Both sit where stress concentrates, and a
+sharp corner there would give a peak that keeps rising as the mesh gets finer
+(Lab 5). Leave them in.
 
 ## These files carry geometry only
 
@@ -125,6 +141,7 @@ licensed Ansys seat, not by looking at the file:
 | 2026-08-31 | [`lab12-bolted-joint.step`](lab12-bolted-joint.step) | Both plates now carry two imprinted rings on their outer faces, at the head/nut diameter and at 30 mm. Without them there was nowhere to apply the external load except a whole 6 000 mm² face, which is not where the theory introduces it, and the measured joint constant came out near 0.01 instead of Shigley's 0.21. |
 | 2026-09-23 | [`lab05-notched-rod.step`](lab05-notched-rod.step), [`lab05-perpendicular-beams.step`](lab05-perpendicular-beams.step) | Added, both required by Lab 5. Lab 5 became a mesh-convergence study on 2026-09-22 and the plate with a hole is no longer its specimen. A draft of these two shipped briefly as four files, including a pre-filleted tee; filleting the corner was then the extra credit, so that file was withdrawn before any of them reached a student repository. |
 | 2026-09-30 | [`lab05-tee-fillet.step`](lab05-tee-fillet.step), `lab05-stageA-beam.step` | Added the filleted tee as an optional Lab 5 file; Lab 5 no longer has extra credit. Removed the Lab 5 Stage A beam: Lab 5 no longer has a Stage A, and the file, two line segments with no solid, gave an error on import in Workbench. |
+| 2026-11-09 | [`dyn1-actuator.step`](dyn1-actuator.step), [`dyn4-slider-crank.step`](dyn4-slider-crank.step), [`dyn5-valve-spring.step`](dyn5-valve-spring.step) | Added for the dynamics lab. These are the models in the dynamics-lab recordings, with root fillets on the gear and rack teeth and shank-to-eye fillets on the connecting rod added so their peak stresses converge. |
 
 If a file here disagrees with what the lab sheet says, that is worth reporting:
 it means the generator and the sheet have drifted, and both are ours to fix.

@@ -179,6 +179,33 @@
       "notes": []
     },
     {
+      "file": "dyn1-actuator.step",
+      "lab": "dynamics",
+      "description": "Air cylinder (O46 x 2 mm barrel on a mounting foot) whose piston rod is a rack driving a 16T pinion, a 32T gear and a 24T output gear (module 2.5, 10 mm face). Five parts; 0.75 mm tooth-root fillets.",
+      "kind": "assembly",
+      "notes": [
+        "Five separate parts: barrel, rack_piston, pinion16, gear32, gear24. Motion and Rigid Dynamics need one part per moving body.",
+        "Pitch radii 20, 40 and 30 mm; gear bores O10 mm. Trapezoid teeth, not involutes: a tooth-root stress is checked against a cantilever tooth, not Lewis's Y."
+      ]
+    },
+    {
+      "file": "dyn4-slider-crank.step",
+      "lab": "dynamics",
+      "description": "Single-cylinder slider-crank: crank (r = 40 mm), connecting rod (l = 140 mm, 14 x 10 mm shank, 4 mm shank-to-eye fillets) and a O70 mm piston. Three parts, crank pin at top dead center.",
+      "kind": "assembly",
+      "notes": [
+        "Crank axis is global Z through the origin; the piston slides along +Y.",
+        "Bores: main journal O20, crank pin and big end O16, small end and wrist pin O12."
+      ]
+    },
+    {
+      "file": "dyn5-valve-spring.step",
+      "lab": "dynamics",
+      "description": "Valve spring: O4 mm wire on a 28 mm mean coil diameter, 6 coils at 9 mm pitch, plain ends. Helix axis is global Z; wire ends at (14, 0, 0) and (14, 0, 54).",
+      "kind": "solid",
+      "notes": []
+    },
+    {
       "file": "exam3-column-template.step",
       "lab": "exam-3",
       "description": "Exam 3 SD column template: O25 x 1200 mm round column, the SB tie rod. Replaces the exam3_column_template.SLDPRT the paper named and the repo never had.",
