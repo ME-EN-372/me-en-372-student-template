@@ -206,6 +206,17 @@
       "notes": []
     },
     {
+      "file": "dyn6-gear-pair.step",
+      "lab": "dynamics",
+      "description": "Involute spur gear pair for the transient gear-mesh lab: two identical gears, 26 teeth, module 6 mm, 20 degree pressure angle, 20 mm face, O80 mm bore, 1.8 mm root fillets, 0.1 mm backlash. gear1 is centred on the origin and gear2 at x = 156 mm, both axes along global Z.",
+      "kind": "assembly",
+      "notes": [
+        "Two separate parts, gear1 and gear2, sized like the gears in the Transient Structural gear tutorial (https://www.youtube.com/watch?v=r6xBZUw81ZY), so its 10 N*m, 0.25 s, 3 mm and 1 cm settings carry over.",
+        "Each tooth flank is one face (229.7 mm^2), so 'faces with same area' picks all 52 flanks of a gear; tip lands are 85.8 mm^2 and root fillets 55.7 mm^2.",
+        "Use this pair, not the dyn1 gears, for a contact model: the dyn1 teeth are trapezoids that do not roll on each other."
+      ]
+    },
+    {
       "file": "exam3-column-template.step",
       "lab": "exam-3",
       "description": "Exam 3 SD column template: O25 x 1200 mm round column, the SB tie rod. Replaces the exam3_column_template.SLDPRT the paper named and the repo never had.",
