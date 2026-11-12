@@ -2,8 +2,11 @@
 
 There are 13 Thursday labs and **seven lab writeups**, one from each
 finite element analysis (FEA) lab after the first. Labs 1, 4, 7, 9, 10 and 14 have no writeup: Lab 1 is the
-software-setup checkoff, and Labs 4, 7, 9, 10 and 14 are project labs whose work
-product goes into P2, P3 and P4 instead. There is no Lab 6: Thursday, October 8
+software-setup checkoff, Lab 9 is topology optimization of a beam handed in
+through its own [README](lab-09/README.md), and Labs 4, 7, 10 and 14 are project
+labs whose work product goes into P2, P3 and P4. **Labs 4, 7, 9, 10 and 14 each
+have a short Canvas submission of their own (required)**, done by each of you
+and listed in the second table below. There is no Lab 6: Thursday, October 8
 is Part 1 of Exam 1, in the same room and time slot.
 
 | Writeup | Lab meets | Due, 5:00 pm Mountain Time |
@@ -12,7 +15,7 @@ is Part 1 of Exam 1, in the same room and time slot.
 | Lab 3, shear versus bending along a beam | Thu Sep 17 | Wed Sep 23 |
 | Lab 5, mesh convergence | Thu Oct 1 | Wed Oct 7 |
 | Lab 8, fatigue of an engine piston | Thu Oct 22 | Wed Oct 28 |
-| Lab 11, pressure vessel and press fit | Thu Nov 12 | Wed Nov 18 |
+| Lab 11, moving parts: a gear pair and a slider-crank | Thu Nov 12 | Wed Nov 18 |
 | Lab 12, bolted joint | Thu Nov 19 | **Tue Nov 24** |
 | Lab 13, buckling | Thu Dec 3 | **Tue Dec 8** |
 
@@ -20,6 +23,18 @@ The last two are pulled one day earlier than the pattern: Wed Nov 25 is a BYU
 no-class day, and Wed Dec 9 already carries HW 13 and P4a. Each lab sheet
 repeats its own due date at the top. If a date on a sheet ever disagrees with
 this table, the sheet is the authority.
+
+| No writeup, Canvas submission | Lab meets | Due, 5:00 pm Mountain Time |
+|---|---|---|
+| [Lab 4, teardown bazaar](https://byu.instructure.com/courses/36965/quizzes/644765) | Thu Sep 24 | Fri Sep 25 |
+| [Lab 7, project studio](https://byu.instructure.com/courses/36965/quizzes/644768) | Thu Oct 15 | Wed Oct 21 |
+| [Lab 9, topology optimization](https://byu.instructure.com/courses/36965/quizzes/644770) | Thu Oct 29 | Wed Nov 4 |
+| [Lab 10, FEA studio](https://byu.instructure.com/courses/36965/quizzes/644771) | Thu Nov 5 | Thu Nov 5 |
+| [Lab 14, showcase part 2 and FEA debrief](https://byu.instructure.com/courses/36965/quizzes/644775) | Thu Dec 10 | Thu Dec 10 |
+
+These are graded with the labs, not as part of the project's P1 to P4. Lab 7's
+submission sits in the Week 7 module on Canvas and is listed again in Week 8,
+the week it is due.
 
 ## Every FEA lab runs in two stages
 
@@ -91,9 +106,11 @@ agreement**. A 30% difference with a correct diagnosis earns full credit; a 2%
 match with no diagnosis does not.
 
 Some lab sheets ask for extra items. Those fold into the Results section, and
-the lab sheet says so. **Lab 5 is the exception:** its whole deliverable is three
-screenshots and two sentences in [`labs/lab-05/README.md`](lab-05/README.md),
-which says exactly what they are.
+the lab sheet says so. **Labs 5, 8 and 11 are the exceptions:** each one's whole
+deliverable is two or three screenshots, plus a few blanks to fill in for Labs 5
+and 8, in its own README ([`labs/lab-05/README.md`](lab-05/README.md),
+[`labs/lab-08/README.md`](lab-08/README.md),
+[`labs/lab-11/README.md`](lab-11/README.md)), which says exactly what they are.
 
 ## How to hand it in
 
