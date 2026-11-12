@@ -24,17 +24,22 @@ below is also downloadable from the course template repository:
 | 6 | `lab06-beam-solid.step` | the same beam as a solid, already split at the two bearing strips and the midspan load patch |
 | 7 | `lab07-post.step` | 40 mm diameter by 200 mm cantilever post |
 | 8 | `lab08-keyseat-shaft.step` | stepped 32 mm to 25 mm shaft with an end-milled keyseat and a 0.5 mm floor fillet |
-| 11 | `lab11-cylinder-axisym.step` | thick-walled cylinder, 2D axisymmetric half-section |
-| 11 | `lab11-pressfit-axisym.step` | press fit, 2D axisymmetric, with a 0.05 mm modeled overlap |
-| 11 | `lab11-cylinder-sector-3d.step` | 5 degree 3D wedge of the same cylinder |
+| Not used | `lab11-cylinder-axisym.step` | thick-walled cylinder, 2D axisymmetric half-section |
+| Not used | `lab11-pressfit-axisym.step` | press fit, 2D axisymmetric, with a 0.05 mm modeled overlap |
+| Not used | `lab11-cylinder-sector-3d.step` | 5 degree 3D wedge of the same cylinder |
 | 12 | `lab12-bolted-joint.step` | two plates plus an M10 bolt, as three separate bodies |
 | 13 | `lab13-column-straight.step` | 12 mm diameter by 1000 mm column |
 | 13 | `lab13-column-bowed.step` | the same column with a 2 mm midspan bow, about L/500 |
 | Dynamics | [`dyn1-actuator.step`](dyn1-actuator.step) | an air cylinder on a mounting foot whose piston rod is a rack, driving a 16, a 32 and a 24 tooth gear; five separate parts |
-| Dynamics | [`dyn4-slider-crank.step`](dyn4-slider-crank.step) | a single-cylinder engine: a crank of 40 mm radius, a 140 mm connecting rod and a 70 mm piston; three separate parts |
+| 11 | [`dyn4-slider-crank.step`](dyn4-slider-crank.step) | a single-cylinder engine: a crank of 40 mm radius, a 140 mm connecting rod and a 70 mm piston; three separate parts |
 | Dynamics | [`dyn5-valve-spring.step`](dyn5-valve-spring.step) | a valve spring: 4 mm wire on a 28 mm mean coil diameter, 6 coils at 9 mm pitch |
-| Dynamics | [`dyn6-gear-pair.step`](dyn6-gear-pair.step) | two identical involute spur gears in mesh (26 teeth, module 6 mm, 20 mm face, 80 mm bore) for the transient gear-mesh lab; two separate parts |
+| 11 | [`dyn6-gear-pair.step`](dyn6-gear-pair.step) | two identical involute spur gears in mesh (26 teeth, module 6 mm, 20 mm face, 80 mm bore); two separate parts |
 | 2 | `lab02-torsion-helicoid.js` | not geometry: a DesignModeler script that draws the 45 degree spiral fracture surface of a twisted 10 mm by 80 mm chalk bar (see below) |
+
+Lab 11 uses [`dyn6-gear-pair.step`](dyn6-gear-pair.step) and
+[`dyn4-slider-crank.step`](dyn4-slider-crank.step). The three `lab11-` files
+are from the pressure-vessel version of Lab 11, which those two replaced, and
+no lab uses them now.
 
 `manifest.json` holds the same table in machine-readable form.
 
