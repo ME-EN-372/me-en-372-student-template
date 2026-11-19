@@ -106,11 +106,12 @@ agreement**. A 30% difference with a correct diagnosis earns full credit; a 2%
 match with no diagnosis does not.
 
 Some lab sheets ask for extra items. Those fold into the Results section, and
-the lab sheet says so. **Labs 5, 8 and 11 are the exceptions:** each one's whole
-deliverable is two or three screenshots, plus a few blanks to fill in for Labs 5
-and 8, in its own README ([`labs/lab-05/README.md`](lab-05/README.md),
+the lab sheet says so. **Labs 5, 8, 11 and 12 are the exceptions:** each one's
+whole deliverable is one to three screenshots, plus a few blanks to fill in for
+Labs 5 and 8, in its own README ([`labs/lab-05/README.md`](lab-05/README.md),
 [`labs/lab-08/README.md`](lab-08/README.md),
-[`labs/lab-11/README.md`](lab-11/README.md)), which says exactly what they are.
+[`labs/lab-11/README.md`](lab-11/README.md),
+[`labs/lab-12/README.md`](lab-12/README.md)), which says exactly what they are.
 
 ## How to hand it in
 
